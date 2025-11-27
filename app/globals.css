@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Backgrounds - Ghost White */
+    --background: 233 100% 98%;
+    --foreground: 210 20% 18%;
+
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 18%;
+
+    /* Primary Actions - Jordy Blue #96C5F7 (darkened for better contrast) */
+    --primary: 207 86% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary/Muted - Dim Gray #6C756B */
+    --secondary: 100 6% 44%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 13% 91%;
+    --muted-foreground: 215 16% 40%;
+
+    /* Accent/Processing - Uranian Blue #A9D3FF */
+    --accent: 213 100% 83%;
+    --accent-foreground: 210 20% 18%;
+
+    /* Success States - Green for completed/signed */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Destructive/Error - Red for errors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs - Cadet Gray tones */
+    --border: 220 13% 85%;
+    --input: 220 13% 91%;
+    --ring: 207 86% 78%;
+
+    /* Brand Colors */
+    --dim-gray: 120 7% 45%;        /* #6C756B */
+    --jordy-blue: 208 85% 78%;     /* #96C5F7 */
+    --uranian-blue: 210 100% 83%;  /* #A9D3FF */
+    --cadet-gray: 140 8% 65%;      /* #9FA8A3 */
+    --ghost-white: 235 100% 97%;   /* #F2F4FF */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark backgrounds */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    /* Dark cards & surfaces */
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary Actions - Jordy Blue (slightly adjusted for dark mode) */
+    --primary: 207 86% 65%;
+    --primary-foreground: 222 47% 11%;
+
+    /* Secondary/Muted - Dim Gray adjusted for dark mode */
+    --secondary: 222 47% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent/Processing - Uranian Blue (adjusted for dark mode) */
+    --accent: 213 100% 70%;
+    --accent-foreground: 222 47% 11%;
+
+    /* Success States - Green for completed/signed */
+    --success: 142 71% 45%;
+    --success-foreground: 210 40% 98%;
+
+    /* Destructive/Error - Red for errors */
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders & Inputs - adjusted for dark mode */
+    --border: 217 33% 25%;
+    --input: 217 33% 17%;
+    --ring: 207 86% 65%;
+
+    /* Brand Colors (same as light mode) */
+    --dim-gray: 120 7% 45%;
+    --jordy-blue: 208 85% 78%;
+    --uranian-blue: 210 100% 83%;
+    --cadet-gray: 140 8% 65%;
+    --ghost-white: 235 100% 97%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Global select styling - add padding for dropdown caret */
+  select {
+    padding-right: 3rem !important;
+  }
+
+  /* Page heading spacing */
+  h1 {
+    @apply pt-2;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but maintain scroll functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
