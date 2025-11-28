@@ -54,11 +54,7 @@ jobs:
       - name: Build and push Docker image
         run: |
           IMAGE_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}"
-          docker build -t $IMAGE_TAG \
-            --build-arg NEXT_PUBLIC_API_URL=${{ secrets.BACKEND_URL_PROD }} \
-            --build-arg NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL_PROD }} \
-            --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY_PROD }} \
-            .
+          docker build -t $IMAGE_TAG .
           docker push $IMAGE_TAG
 
       - name: Deploy to Cloud Run

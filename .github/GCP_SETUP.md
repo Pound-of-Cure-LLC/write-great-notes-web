@@ -14,9 +14,8 @@ Copy these secrets from the `write-great-notes` repository (Settings → Secrets
 |--------|-------------|
 | `WORKLOAD_IDENTITY_PROVIDER_PROD` | Workload Identity Provider for prod |
 | `SERVICE_ACCOUNT_EMAIL_PROD` | Service account email for prod |
-| `BACKEND_URL_PROD` | Backend API URL for production |
-| `SUPABASE_URL_PROD` | Supabase project URL for production |
-| `SUPABASE_ANON_KEY_PROD` | Supabase anonymous key for production |
+
+That's it! No application secrets needed - this is a static marketing site.
 
 ## One-Time Setup: Create Artifact Registry Repository
 
