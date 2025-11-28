@@ -174,7 +174,7 @@ export default function CharmLandingPage() {
                 </span>
               </div>
               <img
-                src="/images/charmhealth-logo.svg"
+                src="/images/charmhealth-logo.png"
                 alt="Charm Health"
                 className="h-8 sm:h-10 w-auto"
               />
