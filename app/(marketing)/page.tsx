@@ -156,8 +156,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider mb-4">
-                <Upload className="h-4 w-4" />
+              <span className="inline-flex items-center gap-2 text-primary font-semibold text-xl uppercase tracking-wider mb-4">
+                <Upload className="h-5 w-5" />
                 Personalized to You
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -220,8 +220,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-16">
-              <span className="inline-flex items-center gap-2 text-destructive font-semibold text-sm uppercase tracking-wider mb-4">
-                <Shield className="h-4 w-4" />
+              <span className="inline-flex items-center gap-2 text-destructive font-semibold text-xl uppercase tracking-wider mb-4">
+                <Shield className="h-5 w-5" />
                 Fight Back
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -310,8 +310,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-16">
-              <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-sm uppercase tracking-wider mb-4">
-                <Sparkles className="h-4 w-4" />
+              <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xl uppercase tracking-wider mb-4">
+                <Sparkles className="h-5 w-5" />
                 The New Way
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold text-white">
@@ -357,8 +357,8 @@ export default function HomePage() {
       <section className="py-24 sm:py-32 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider mb-4">
-              <Link2 className="h-4 w-4" />
+            <span className="inline-flex items-center gap-2 text-primary font-semibold text-xl uppercase tracking-wider mb-4">
+              <Link2 className="h-5 w-5" />
               Designed for Integration
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -374,18 +374,42 @@ export default function HomePage() {
             {/* EMR Logos/Names */}
             <div className="bg-muted/30 rounded-2xl p-8 border border-border mb-8">
               <p className="text-sm text-muted-foreground uppercase tracking-wider mb-6">Current & Coming Soon</p>
-              <div className="flex flex-wrap justify-center gap-6">
-                {["Charm Health", "Epic", "Cerner", "Athena", "eClinicalWorks", "NextGen", "Allscripts", "DrChrono", "And more..."].map((emr) => (
-                  <div 
-                    key={emr} 
-                    className="px-6 py-3 bg-card rounded-lg border border-border text-foreground font-medium"
+              <div className="flex flex-wrap justify-center gap-4">
+                {/* Charm Health - Available Now */}
+                <Link 
+                  href="/integrations/charm-health"
+                  className="px-6 py-3 bg-success/10 rounded-lg border-2 border-success text-success font-semibold hover:bg-success/20 transition-colors flex items-center gap-2"
+                >
+                  <CheckCircle2 className="h-4 w-4" />
+                  Charm Health
+                </Link>
+                {/* Other EMRs - On Roadmap */}
+                {[
+                  { name: "Epic", slug: "epic" },
+                  { name: "Cerner", slug: "cerner" },
+                  { name: "Athena", slug: "athena" },
+                  { name: "eClinicalWorks", slug: "eclinicalworks" },
+                  { name: "NextGen", slug: "nextgen" },
+                  { name: "Allscripts", slug: "allscripts" },
+                  { name: "DrChrono", slug: "drchrono" },
+                ].map((emr) => (
+                  <Link 
+                    key={emr.slug}
+                    href={`/integrations/${emr.slug}`}
+                    className="px-6 py-3 bg-card rounded-lg border border-border text-foreground font-medium hover:border-primary hover:bg-primary/5 transition-colors"
                   >
-                    {emr}
-                  </div>
+                    {emr.name}
+                  </Link>
                 ))}
+                <Link 
+                  href="/contact?type=emr"
+                  className="px-6 py-3 bg-card rounded-lg border border-dashed border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-colors"
+                >
+                  + Other EMRs
+                </Link>
               </div>
               <p className="text-sm text-muted-foreground mt-6">
-                Don&apos;t see yours? <Link href="/contact" className="text-primary hover:underline">Let us know</Link>—we&apos;re adding new integrations monthly.
+                <span className="text-success font-medium">✓ Available now</span> · Click any EMR to learn more or express interest—<span className="text-primary font-medium">demand drives our roadmap!</span>
               </p>
             </div>
 
@@ -410,8 +434,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-16">
-              <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-sm uppercase tracking-wider mb-4">
-                <Sparkles className="h-4 w-4" />
+              <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xl uppercase tracking-wider mb-4">
+                <Sparkles className="h-5 w-5" />
                 Deep EMR Integration
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
@@ -485,8 +509,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-16">
-              <span className="inline-flex items-center gap-2 text-destructive font-semibold text-sm uppercase tracking-wider mb-4">
-                <Shield className="h-4 w-4" />
+              <span className="inline-flex items-center gap-2 text-destructive font-semibold text-xl uppercase tracking-wider mb-4">
+                <Shield className="h-5 w-5" />
                 Fight Back
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -574,8 +598,8 @@ export default function HomePage() {
       <section className="py-24 sm:py-32 bg-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center gap-2 text-white/90 font-semibold text-sm uppercase tracking-wider mb-4">
-              <Heart className="h-4 w-4" />
+            <span className="inline-flex items-center gap-2 text-white/90 font-semibold text-xl uppercase tracking-wider mb-4">
+              <Heart className="h-5 w-5" />
               Be a Professional, Not a Box Checker
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">

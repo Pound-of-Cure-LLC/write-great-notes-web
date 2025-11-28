@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -21,6 +22,7 @@ import {
   CheckCircle2,
   ArrowRight,
   Headphones,
+  TrendingUp,
 } from "lucide-react";
 
 const contactMethods = [
@@ -47,7 +49,26 @@ const contactMethods = [
   },
 ];
 
+// Wrapper component to handle Suspense for useSearchParams
 export default function ContactPage() {
+  return (
+    <Suspense fallback={<ContactPageContent emrParam={null} typeParam={null} />}>
+      <ContactPageWithParams />
+    </Suspense>
+  );
+}
+
+function ContactPageWithParams() {
+  const searchParams = useSearchParams();
+  const emrParam = searchParams.get("emr");
+  const typeParam = searchParams.get("type");
+  
+  return <ContactPageContent emrParam={emrParam} typeParam={typeParam} />;
+}
+
+function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; typeParam: string | null }) {
+  const isEMRRequest = typeParam === "emr";
+
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -55,9 +76,11 @@ export default function ContactPage() {
     phone: "",
     company: "",
     practiceSize: "",
-    currentEMR: "",
-    inquiryType: "",
-    message: "",
+    currentEMR: emrParam || "",
+    inquiryType: typeParam === "emr" ? "emr" : "",
+    message: typeParam === "emr" && emrParam 
+      ? `I'm interested in the ${emrParam} integration. Please notify me when it's available!`
+      : "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -156,16 +179,39 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Roadmap Info Banner - Show for EMR requests */}
+      {isEMRRequest && (
+        <section className="py-8 bg-primary/5 border-y border-primary/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto flex items-center gap-4">
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <TrendingUp className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">Your input shapes our roadmap!</h3>
+                <p className="text-sm text-muted-foreground">
+                  The more people express interest in an EMR integration, the higher it moves on our priority list. 
+                  Fill out the form below to help us decide which adapter to build next.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Contact Form */}
       <section id="demo-form" className="py-20 sm:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
             <Card className="border-0 shadow-xl">
               <CardHeader className="text-center">
-                <CardTitle className="text-2xl">Request a Demo</CardTitle>
+                <CardTitle className="text-2xl">
+                  {isEMRRequest ? "Request EMR Integration" : "Request a Demo"}
+                </CardTitle>
                 <CardDescription>
-                  Fill out the form below and we&apos;ll get back to you within 24
-                  hours.
+                  {isEMRRequest 
+                    ? "Let us know you're interested! Your input directly influences our development priorities."
+                    : "Fill out the form below and we'll get back to you within 24 hours."}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -250,7 +296,9 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="currentEMR">What EMR do you currently use? *</Label>
+                      <Label htmlFor="currentEMR" className={isEMRRequest ? "text-primary font-semibold" : ""}>
+                        {isEMRRequest ? "Which EMR integration are you interested in? *" : "What EMR do you currently use? *"}
+                      </Label>
                       <Input
                         id="currentEMR"
                         name="currentEMR"
@@ -258,7 +306,13 @@ export default function ContactPage() {
                         value={formState.currentEMR}
                         onChange={handleChange}
                         placeholder="e.g., Epic, Charm, Athena, eClinicalWorks..."
+                        className={isEMRRequest ? "border-primary/50 focus:border-primary" : ""}
                       />
+                      {isEMRRequest && (
+                        <p className="text-xs text-muted-foreground">
+                          This helps us prioritize which EMR integrations to build next.
+                        </p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -322,15 +376,25 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {isEMRRequest && (
+                      <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center">
+                        <p className="text-sm font-medium text-foreground mb-1">
+                          🗳️ Every submission counts!
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          We review all requests and prioritize integrations based on demand. 
+                          The more interest we see, the faster we&apos;ll build it.
+                        </p>
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
                       className="w-full"
                       size="lg"
                       disabled={isSubmitting}
-                      isLoading={isSubmitting}
-                      loadingText="Submitting..."
                     >
-                      Submit Request
+                      {isSubmitting ? "Submitting..." : isEMRRequest ? "Submit Interest" : "Submit Request"}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
 
