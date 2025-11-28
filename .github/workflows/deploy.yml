@@ -1,15 +1,13 @@
 name: Deploy to Cloud Run
 
 on:
-  push:
-    branches:
-      - master
   release:
     types: [published]
 
 env:
   SERVICE_NAME: write-great-notes-web
   REGION: us-central1
+  PROJECT_ID: write-great-notes
 
 jobs:
   deploy:
@@ -22,38 +20,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Determine environment
-        id: env
-        run: |
-          if [[ "${{ github.event_name }}" == "release" ]]; then
-            echo "environment=production" >> $GITHUB_OUTPUT
-            echo "project=write-great-notes" >> $GITHUB_OUTPUT
-            echo "workload_identity_provider=${{ secrets.WORKLOAD_IDENTITY_PROVIDER_PROD }}" >> $GITHUB_OUTPUT
-            echo "service_account=${{ secrets.SERVICE_ACCOUNT_EMAIL_PROD }}" >> $GITHUB_OUTPUT
-            echo "backend_url=${{ secrets.BACKEND_URL_PROD }}" >> $GITHUB_OUTPUT
-            echo "supabase_url=${{ secrets.SUPABASE_URL_PROD }}" >> $GITHUB_OUTPUT
-            echo "supabase_anon_key=${{ secrets.SUPABASE_ANON_KEY_PROD }}" >> $GITHUB_OUTPUT
-          else
-            echo "environment=development" >> $GITHUB_OUTPUT
-            echo "project=write-great-notes-dev-474317" >> $GITHUB_OUTPUT
-            echo "workload_identity_provider=${{ secrets.WORKLOAD_IDENTITY_PROVIDER_DEV }}" >> $GITHUB_OUTPUT
-            echo "service_account=${{ secrets.SERVICE_ACCOUNT_EMAIL_DEV }}" >> $GITHUB_OUTPUT
-            echo "backend_url=${{ secrets.BACKEND_URL_DEV }}" >> $GITHUB_OUTPUT
-            echo "supabase_url=${{ secrets.SUPABASE_URL_DEV }}" >> $GITHUB_OUTPUT
-            echo "supabase_anon_key=${{ secrets.SUPABASE_ANON_KEY_DEV }}" >> $GITHUB_OUTPUT
-          fi
-
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: ${{ steps.env.outputs.workload_identity_provider }}
-          service_account: ${{ steps.env.outputs.service_account }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_PROD }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT_EMAIL_PROD }}
           retries: 3
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: ${{ steps.env.outputs.project }}
+          project_id: ${{ env.PROJECT_ID }}
         continue-on-error: true
         id: setup_gcloud_attempt1
 
@@ -61,7 +38,7 @@ jobs:
         if: steps.setup_gcloud_attempt1.outcome == 'failure'
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: ${{ steps.env.outputs.project }}
+          project_id: ${{ env.PROJECT_ID }}
         continue-on-error: true
         id: setup_gcloud_attempt2
 
@@ -69,7 +46,7 @@ jobs:
         if: steps.setup_gcloud_attempt2.outcome == 'failure'
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: ${{ steps.env.outputs.project }}
+          project_id: ${{ env.PROJECT_ID }}
 
       - name: Authorize Docker
         run: |
@@ -77,25 +54,25 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_TAG="${{ env.REGION }}-docker.pkg.dev/${{ steps.env.outputs.project }}/${{ env.SERVICE_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}"
+          IMAGE_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}"
           docker build -t $IMAGE_TAG \
-            --build-arg NEXT_PUBLIC_API_URL=${{ steps.env.outputs.backend_url }} \
-            --build-arg NEXT_PUBLIC_SUPABASE_URL=${{ steps.env.outputs.supabase_url }} \
-            --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ steps.env.outputs.supabase_anon_key }} \
+            --build-arg NEXT_PUBLIC_API_URL=${{ secrets.BACKEND_URL_PROD }} \
+            --build-arg NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL_PROD }} \
+            --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY_PROD }} \
             .
           docker push $IMAGE_TAG
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy ${{ env.SERVICE_NAME }} \
-            --image ${{ env.REGION }}-docker.pkg.dev/${{ steps.env.outputs.project }}/${{ env.SERVICE_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+            --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
             --platform managed \
             --region ${{ env.REGION }} \
-            --project ${{ steps.env.outputs.project }} \
+            --project ${{ env.PROJECT_ID }} \
             --allow-unauthenticated \
             --max-instances=10 \
-            --min-instances=1 \
-            --memory=1Gi \
+            --min-instances=0 \
+            --memory=512Mi \
             --cpu=1 \
             --timeout=60 \
             --concurrency=80

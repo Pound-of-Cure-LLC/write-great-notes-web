@@ -173,11 +173,16 @@ export default function CharmLandingPage() {
                   integrated with
                 </span>
               </div>
-              <img
-                src="https://charmhealth.com/wp-content/themes/developer/assets/images/charm-health-logo.svg"
-                alt="Charm Health"
-                className="h-8 sm:h-10 w-auto"
-              />
+              <div className="flex items-center gap-2">
+                <svg viewBox="0 0 32 32" className="h-8 sm:h-10 w-8 sm:w-10" fill="none">
+                  <rect width="32" height="32" rx="6" fill="#2E6FA8"/>
+                  <path d="M16 6C10.477 6 6 10.477 6 16s4.477 10 10 10 10-4.477 10-10S21.523 6 16 6zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" fill="white"/>
+                  <path d="M16 10c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z" fill="white"/>
+                </svg>
+                <span className="text-xl sm:text-2xl font-bold text-[#2E6FA8]">
+                  CharmHealth
+                </span>
+              </div>
             </div>
 
             <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
