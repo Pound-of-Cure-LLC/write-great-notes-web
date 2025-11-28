@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -22,9 +23,13 @@ export function MarketingHeader() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">W</span>
-              </div>
+              <Image
+                src="/images/write-great-notes-logo.png"
+                alt="Write Great Notes"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
               <span className="font-semibold text-lg hidden sm:block">
                 Write Great Notes
               </span>

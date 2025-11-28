@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Shield, Lock, FileCheck } from "lucide-react";
 
 const footerNavigation = {
@@ -44,9 +45,13 @@ export function MarketingFooter() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">W</span>
-              </div>
+              <Image
+                src="/images/write-great-notes-logo.png"
+                alt="Write Great Notes"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
               <span className="font-semibold">Write Great Notes</span>
             </div>
             <p className="text-sm text-muted-foreground">

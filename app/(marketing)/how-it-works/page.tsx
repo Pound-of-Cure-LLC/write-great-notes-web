@@ -132,11 +132,6 @@ export default function HowItWorksPage() {
                   key={step.number}
                   className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                 >
-                  {/* Connector line */}
-                  {index < steps.length - 1 && (
-                    <div className="absolute left-8 top-24 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary/20 hidden lg:block" />
-                  )}
-
                   <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                     {/* Step number and icon */}
                     <div className="flex items-center gap-4 mb-6">

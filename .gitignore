@@ -1,1 +1,15 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
 tsconfig.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+
+# IDE
+.idea
+*.swp
+*.swo

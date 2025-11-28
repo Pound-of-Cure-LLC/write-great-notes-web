@@ -1,0 +1,9 @@
+{
+  "/(marketing)/contact/page": "app/(marketing)/contact/page.js",
+  "/(marketing)/features/page": "app/(marketing)/features/page.js",
+  "/(marketing)/how-it-works/page": "app/(marketing)/how-it-works/page.js",
+  "/(marketing)/page": "app/(marketing)/page.js",
+  "/icon.png/route": "app/icon.png/route.js",
+  "/login/page": "app/login/page.js",
+  "/signup/page": "app/signup/page.js"
+}

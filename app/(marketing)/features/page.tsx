@@ -38,7 +38,7 @@ const coreFeatures = [
     icon: Brain,
     title: "AI-Powered Note Generation",
     description:
-      "Generate comprehensive clinical notes using GPT-4 AI. Our fire-and-forget architecture means you never wait.",
+      "Generate comprehensive clinical notes using the latest and most advanced AI models. Our fire-and-forget architecture means you never wait.",
     benefits: [
       "Generate notes in under 30 seconds",
       "Move to next patient immediately",
