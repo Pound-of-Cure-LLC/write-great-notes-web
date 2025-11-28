@@ -174,7 +174,7 @@ export default function CharmLandingPage() {
                 </span>
               </div>
               <img
-                src="https://www.charmhealth.com/images/charmhealth-logo.png"
+                src="/images/charmhealth-logo.svg"
                 alt="Charm Health"
                 className="h-8 sm:h-10 w-auto"
               />
@@ -503,7 +503,7 @@ export default function CharmLandingPage() {
                 className="h-6 w-auto"
               />
               <span className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} Write Great Notes
+                © 2025 Write Great Notes
               </span>
             </div>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
