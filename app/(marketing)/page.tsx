@@ -375,7 +375,7 @@ export default function HomePage() {
             <div className="bg-muted/30 rounded-2xl p-8 border border-border mb-8">
               <p className="text-sm text-muted-foreground uppercase tracking-wider mb-6">Current & Coming Soon</p>
               <div className="flex flex-wrap justify-center gap-6">
-                {["Epic", "Cerner", "Athena", "eClinicalWorks", "NextGen", "Allscripts", "DrChrono", "And more..."].map((emr) => (
+                {["Charm Health", "Epic", "Cerner", "Athena", "eClinicalWorks", "NextGen", "Allscripts", "DrChrono", "And more..."].map((emr) => (
                   <div 
                     key={emr} 
                     className="px-6 py-3 bg-card rounded-lg border border-border text-foreground font-medium"
