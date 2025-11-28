@@ -25,7 +25,6 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_PROD }}
           service_account: ${{ secrets.SERVICE_ACCOUNT_EMAIL_PROD }}
-          retries: 3
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2

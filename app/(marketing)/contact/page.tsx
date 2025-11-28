@@ -16,21 +16,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  Mail,
-  Phone,
   MessageSquare,
   Calendar,
   CheckCircle2,
   ArrowRight,
+  Headphones,
 } from "lucide-react";
 
 const contactMethods = [
   {
-    icon: Mail,
-    title: "Email Us",
-    description: "Get a response within 24 hours",
-    contact: "support@writegreatnotes.ai",
-    href: "mailto:support@writegreatnotes.ai",
+    icon: Headphones,
+    title: "In-App Support",
+    description: "Get help directly in the app",
+    contact: "Submit a support ticket",
+    href: "https://app.writegreatnotes.ai/login",
   },
   {
     icon: Calendar,
@@ -41,10 +40,10 @@ const contactMethods = [
   },
   {
     icon: MessageSquare,
-    title: "Live Chat",
-    description: "Available Mon-Fri 9am-5pm ET",
-    contact: "Start a conversation",
-    href: "#",
+    title: "Request a Callback",
+    description: "We'll reach out to you",
+    contact: "Fill out the form below",
+    href: "#demo-form",
   },
 ];
 

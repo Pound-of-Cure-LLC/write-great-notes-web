@@ -20,7 +20,7 @@ const plans = [
       { name: "Unlimited note generation", included: true },
       { name: "Custom note templates", included: true },
       { name: "Real-time status updates", included: true },
-      { name: "Email support", included: true },
+      { name: "In-app support", included: true },
       { name: "EMR integration", included: false },
       { name: "Team management", included: false },
       { name: "Priority support", included: false },
@@ -39,7 +39,7 @@ const plans = [
       { name: "Unlimited note generation", included: true },
       { name: "Custom note templates", included: true },
       { name: "Real-time status updates", included: true },
-      { name: "Email support", included: true },
+      { name: "In-app support", included: true },
       { name: "EMR integration (Charm)", included: true },
       { name: "Team management", included: true },
       { name: "Priority support", included: false },
@@ -72,7 +72,7 @@ const faqs = [
   {
     question: "How does the free trial work?",
     answer:
-      "Start with a 14-day free trial with full access to all features. No credit card required. Cancel anytime.",
+      "Start with a 7-day free trial with full access to all features. No credit card required. Cancel anytime.",
   },
   {
     question: "Can I change plans later?",
@@ -112,7 +112,7 @@ export default function PricingPage() {
               Simple, Transparent Pricing
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Choose the plan that fits your practice. Start with a 14-day free
+              Choose the plan that fits your practice. Start with a 7-day free
               trial, no credit card required.
             </p>
 
@@ -246,7 +246,7 @@ export default function PricingPage() {
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-8">
-            All plans include 14-day free trial. No credit card required.
+            All plans include 7-day free trial. No credit card required.
           </p>
         </div>
       </section>
