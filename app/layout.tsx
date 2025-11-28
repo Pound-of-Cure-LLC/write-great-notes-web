@@ -1,12 +1,16 @@
-"use client";
-
-import React from "react";
+import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
-import { SWRConfig } from "swr";
-import { swrConfig } from "@/lib/swr-config";
-import { EMRConfigErrorModal } from "@/components/EMRConfigErrorModal";
+
+export const metadata: Metadata = {
+  title: "Write Great Notes - AI Clinical Documentation",
+  description: "AI-powered ambient scribing that captures your conversations and generates comprehensive, professional clinical notes.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -15,27 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <title key="title">Write Great Notes</title>
-        <meta key="description" name="description" content="Clinical note generation for healthcare providers" />
-        <link key="icon" rel="icon" href="/icon.png" />
-        <link key="apple-icon" rel="apple-touch-icon" href="/apple-icon.png" />
-      </head>
       <body>
-        <SWRConfig value={swrConfig}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <React.Fragment key="app-content">
-              {children}
-            </React.Fragment>
-            <Toaster key="toaster" richColors position="top-right" />
-            <EMRConfigErrorModal key="emr-error-modal" />
-          </ThemeProvider>
-        </SWRConfig>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster richColors position="top-right" />
+        </ThemeProvider>
       </body>
     </html>
   );

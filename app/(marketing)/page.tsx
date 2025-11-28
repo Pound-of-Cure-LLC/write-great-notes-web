@@ -113,7 +113,7 @@ export default function HomePage() {
                 asChild 
                 className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 shadow-lg transition-all hover:scale-105"
               >
-                <Link href="/signup">
+                <Link href="https://app.writegreatnotes.ai/signup">
                   Start Writing Great Notes
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -734,7 +734,7 @@ export default function HomePage() {
                 asChild 
                 className="text-lg px-10 py-7 shadow-xl transition-all hover:scale-105"
               >
-                <Link href="/signup">
+                <Link href="https://app.writegreatnotes.ai/signup">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

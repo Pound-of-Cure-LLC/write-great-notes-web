@@ -361,7 +361,7 @@ export default function ContactPage() {
               required.
             </p>
             <Button size="lg" asChild className="text-lg px-8 py-6">
-              <Link href="/signup">
+              <Link href="https://app.writegreatnotes.ai/signup">
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

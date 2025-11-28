@@ -233,7 +233,7 @@ export default function PricingPage() {
                   >
                     <Link
                       href={
-                        plan.monthlyPrice !== null ? "/signup" : "/contact"
+                        plan.monthlyPrice !== null ? "https://app.writegreatnotes.ai/signup" : "/contact"
                       }
                     >
                       {plan.cta}
@@ -294,7 +294,7 @@ export default function PricingPage() {
                 asChild
                 className="text-lg px-8 py-6"
               >
-                <Link href="/signup">Start Free Trial</Link>
+                <Link href="https://app.writegreatnotes.ai/signup">Start Free Trial</Link>
               </Button>
             </div>
           </div>

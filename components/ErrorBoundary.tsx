@@ -4,8 +4,6 @@ import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { AlertCircle, type LucideIcon } from 'lucide-react'
-
-import { logger } from "@/lib/logger";
 interface ErrorBoundaryProps {
   error: Error & { digest?: string }
   reset: () => void
@@ -49,13 +47,13 @@ export function ErrorBoundary({
   secondaryButtonHref,
 }: ErrorBoundaryProps) {
   useEffect(() => {
-    // Log error to error reporting service (e.g., Sentry)
-    logger.error('Error boundary caught:', title, error)
+    // Log error to console (could integrate with error reporting service)
+    console.error('Error boundary caught:', title, error)
   }, [error, title])
 
   // Default secondary button behavior
   const defaultSecondaryText = fullScreen ? "Go Home" : "Refresh Page"
-  const defaultSecondaryHref = fullScreen ? "/appointments" : window.location.href
+  const defaultSecondaryHref = fullScreen ? "/" : window.location.href
 
   const containerClass = fullScreen
     ? "flex min-h-screen items-center justify-center p-4"
