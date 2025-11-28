@@ -211,7 +211,7 @@ export default function CharmLandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" className="text-lg px-8 py-6" asChild>
                 <a href="#contact-form">
-                  Get Started with Charm
+                  Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
@@ -470,7 +470,7 @@ export default function CharmLandingPage() {
                       size="lg"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Submitting..." : "Get Started with Charm"}
+                      {isSubmitting ? "Submitting..." : "Get Started"}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
 
