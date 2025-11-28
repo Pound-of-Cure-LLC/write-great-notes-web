@@ -38,7 +38,7 @@ const coreFeatures = [
     icon: Brain,
     title: "AI-Powered Note Generation",
     description:
-      "Generate comprehensive clinical notes using the latest and most advanced AI models. Our fire-and-forget architecture means you never wait.",
+      "Generate comprehensive clinical notes using the latest and most advanced AI models. See your patient, move to the next—notes are ready when you need them.",
     benefits: [
       "Generate notes in under 30 seconds",
       "Move to next patient immediately",
@@ -75,9 +75,9 @@ const coreFeatures = [
 const additionalFeatures = [
   {
     icon: Clock,
-    title: "Fire & Forget Architecture",
+    title: "No Documentation Backlog",
     description:
-      "Start note generation and immediately move to your next patient. No waiting, no interruptions.",
+      "Move seamlessly from patient to patient. Your notes are ready when you are—no staying late to catch up.",
   },
   {
     icon: RefreshCw,
@@ -166,10 +166,14 @@ export default function FeaturesPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="h-14 w-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <feature.icon className="h-7 w-7 text-primary" />
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="h-14 w-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="h-7 w-7 text-primary" />
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold">{feature.title}</h2>
+                    </div>
                   </div>
-                  <h2 className="text-3xl font-bold mb-4">{feature.title}</h2>
                   <p className="text-lg text-muted-foreground mb-6">
                     {feature.description}
                   </p>
@@ -213,14 +217,16 @@ export default function FeaturesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {additionalFeatures.map((feature) => (
               <Card key={feature.title} className="border-0 shadow-md">
-                <CardHeader>
-                  <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
-                    <feature.icon className="h-5 w-5 text-primary" />
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </div>
                   </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -245,13 +251,17 @@ export default function FeaturesPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {securityFeatures.map((feature) => (
-              <Card key={feature.title} className="border-0 shadow-md text-center">
-                <CardContent className="pt-8">
-                  <div className="h-14 w-14 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-4">
-                    <feature.icon className="h-7 w-7 text-success" />
+              <Card key={feature.title} className="border-0 shadow-md">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="h-12 w-12 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="h-6 w-6 text-success" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}

@@ -52,7 +52,7 @@ export function MarketingHeader() {
           {/* Desktop CTA */}
           <div className="hidden md:flex md:items-center md:space-x-4">
             <Button variant="ghost" asChild>
-              <Link href="/login">Sign In</Link>
+              <Link href="https://app.writegreatnotes.ai/login">Sign In</Link>
             </Button>
             <Button asChild>
               <Link href="/signup">Start Free Trial</Link>
@@ -92,7 +92,7 @@ export function MarketingHeader() {
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t">
                 <Button variant="ghost" asChild className="justify-start">
-                  <Link href="/login">Sign In</Link>
+                  <Link href="https://app.writegreatnotes.ai/login">Sign In</Link>
                 </Button>
                 <Button asChild>
                   <Link href="/signup">Start Free Trial</Link>

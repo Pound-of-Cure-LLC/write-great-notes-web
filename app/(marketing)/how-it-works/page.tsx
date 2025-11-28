@@ -35,7 +35,7 @@ const steps = [
     description:
       "Click 'Generate Note' and immediately move to your next patient. Our AI creates comprehensive clinical documentation while you continue working.",
     details: [
-      "Fire-and-forget generation",
+      "Move to your next patient immediately",
       "No waiting required",
       "Custom template support",
       "AI-optimized formatting",
@@ -83,7 +83,7 @@ const workflowBenefits = [
     icon: Zap,
     title: "Zero Wait Time",
     description:
-      "Our fire-and-forget architecture means you never wait for notes to generate.",
+      "Move to your next patient immediately—your notes are ready when you need them.",
   },
   {
     icon: CheckCircle2,
