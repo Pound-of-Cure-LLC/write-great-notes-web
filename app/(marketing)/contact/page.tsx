@@ -56,21 +56,49 @@ export default function ContactPage() {
     phone: "",
     company: "",
     practiceSize: "",
+    currentEMR: "",
     inquiryType: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formState,
+          source: "Main Contact Form",
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      // Open mailto as fallback to ensure email is sent
+      if (data.mailto) {
+        window.open(
+          `mailto:${data.mailto.to}?subject=${data.mailto.subject}&body=${data.mailto.body}`,
+          "_blank"
+        );
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -219,6 +247,18 @@ export default function ContactPage() {
                         value={formState.company}
                         onChange={handleChange}
                         placeholder="ABC Medical Practice"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="currentEMR">What EMR do you currently use? *</Label>
+                      <Input
+                        id="currentEMR"
+                        name="currentEMR"
+                        required
+                        value={formState.currentEMR}
+                        onChange={handleChange}
+                        placeholder="e.g., Epic, Charm, Athena, eClinicalWorks..."
                       />
                     </div>
 
