@@ -9,14 +9,11 @@ const footerNavigation = {
     { name: "Pricing", href: "/pricing" },
   ],
   company: [
-    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Blog", href: "/blog" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "HIPAA Compliance", href: "/hipaa" },
   ],
 };
 
@@ -114,7 +111,7 @@ export function MarketingFooter() {
         {/* Copyright */}
         <div className="pt-8 border-t text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Pound of Cure LLC. All rights reserved.
+            &copy; 2025 Pound of Cure LLC. All rights reserved.
           </p>
         </div>
       </div>
