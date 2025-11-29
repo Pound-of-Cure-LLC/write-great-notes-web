@@ -87,48 +87,47 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formState,
-          source: "Main Contact Form",
-        }),
-      });
+    // Build email content
+    const emailSubject = `[Contact Form] New inquiry from ${formState.firstName} ${formState.lastName}`;
+    const emailBody = `
+New Contact Form Submission
+============================
 
-      const data = await response.json();
+Name: ${formState.firstName} ${formState.lastName}
+Email: ${formState.email}
+Phone: ${formState.phone || "Not provided"}
+Practice/Organization: ${formState.company || "Not specified"}
+Practice Size: ${formState.practiceSize || "Not specified"}
+Current EMR: ${formState.currentEMR || "Not specified"}
+Inquiry Type: ${formState.inquiryType || "Not specified"}
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to submit form");
-      }
+Message:
+${formState.message || "No message provided"}
 
-      // Open mailto as fallback to ensure email is sent
-      if (data.mailto) {
-        window.open(
-          `mailto:${data.mailto.to}?subject=${data.mailto.subject}&body=${data.mailto.body}`,
-          "_blank"
-        );
-      }
+---
+Submitted at: ${new Date().toISOString()}
+    `.trim();
 
-      // Track conversion in Google Analytics
-      sendGAEvent("event", "generate_lead", {
-        source: "Contact Form",
-        inquiry_type: formState.inquiryType,
-        practice_size: formState.practiceSize,
-      });
+    // Track conversion in Google Analytics
+    sendGAEvent("event", "generate_lead", {
+      source: "Contact Form",
+      inquiry_type: formState.inquiryType,
+      practice_size: formState.practiceSize,
+    });
 
-      setIsSubmitted(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Open mailto to send the email
+    window.open(
+      `mailto:matthew.weiner@poundofcureweightloss.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`,
+      "_blank"
+    );
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
   };
 
   const handleChange = (

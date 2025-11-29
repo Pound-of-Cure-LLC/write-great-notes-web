@@ -91,7 +91,7 @@ export default function GetStartedPage() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
@@ -101,44 +101,22 @@ export default function GetStartedPage() {
       ? formState.otherEMR 
       : formState.currentEMR;
 
-    try {
-      // Submit lead data to our API
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formState,
-          currentEMR: emrValue,
-          inquiryType: "signup",
-          source: "Get Started Form",
-        }),
-      });
+    // Track conversion in Google Analytics
+    sendGAEvent("event", "sign_up", {
+      method: "Get Started Form",
+      practice_size: formState.practiceSize,
+      current_emr: emrValue,
+    });
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || "Failed to submit form");
-      }
-
-      // Track conversion in Google Analytics
-      sendGAEvent("event", "sign_up", {
-        method: "Get Started Form",
-        practice_size: formState.practiceSize,
-        current_emr: emrValue,
-      });
-
-      // Redirect to signup page with email pre-filled
-      const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
-      signupUrl.searchParams.set("email", formState.email);
-      signupUrl.searchParams.set("name", `${formState.firstName} ${formState.lastName}`);
-      if (formState.practiceName) {
-        signupUrl.searchParams.set("practice", formState.practiceName);
-      }
-      
-      window.location.href = signupUrl.toString();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
-      setIsSubmitting(false);
+    // Redirect to signup page with email pre-filled
+    const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
+    signupUrl.searchParams.set("email", formState.email);
+    signupUrl.searchParams.set("name", `${formState.firstName} ${formState.lastName}`);
+    if (formState.practiceName) {
+      signupUrl.searchParams.set("practice", formState.practiceName);
     }
+    
+    window.location.href = signupUrl.toString();
   };
 
   return (
