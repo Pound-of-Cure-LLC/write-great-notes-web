@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,6 +11,7 @@ export async function POST(request: NextRequest) {
       email,
       phone,
       company,
+      practiceName,
       practiceSize,
       currentEMR,
       inquiryType,
@@ -17,31 +19,52 @@ export async function POST(request: NextRequest) {
       source,
     } = body;
 
-    // Validate required fields
-    if (!firstName || !lastName || !email || !company) {
+    // Validate required fields - email is always required, others depend on form type
+    if (!email) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Email is required" },
         { status: 400 }
       );
     }
 
+    // Save lead to Supabase
+    const { error: dbError } = await supabase
+      .from("marketing_leads")
+      .insert({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone: phone || null,
+        practice_name: practiceName || company || null,
+        practice_size: practiceSize || null,
+        current_emr: currentEMR || null,
+        inquiry_type: inquiryType || null,
+        message: message || null,
+        source: source || "Website",
+      });
+
+    if (dbError) {
+      console.error("Supabase error:", dbError);
+      // Don't fail the request if DB save fails - still process the lead
+    }
+
     // Build email content
     const emailSubject = source 
-      ? `[${source}] New Contact Form Submission from ${firstName} ${lastName}`
-      : `New Contact Form Submission from ${firstName} ${lastName}`;
+      ? `[${source}] New Lead from ${firstName} ${lastName}`
+      : `New Lead from ${firstName} ${lastName}`;
 
     const emailBody = `
-New Contact Form Submission
+New Lead Submission
 ============================
 
 Name: ${firstName} ${lastName}
 Email: ${email}
 Phone: ${phone || "Not provided"}
-Practice/Organization: ${company}
+Practice/Organization: ${practiceName || company || "Not specified"}
 Practice Size: ${practiceSize || "Not specified"}
 Current EMR: ${currentEMR || "Not specified"}
 Inquiry Type: ${inquiryType || "Not specified"}
-Source: ${source || "Main Contact Form"}
+Source: ${source || "Website"}
 
 Message:
 ${message || "No message provided"}
@@ -50,30 +73,12 @@ ${message || "No message provided"}
 Submitted at: ${new Date().toISOString()}
     `.trim();
 
-    // Send email using mailto link workaround for client-side
-    // In production, you'd use a service like SendGrid, Resend, etc.
-    // For now, we'll return the data to be handled client-side
-    
-    // You can implement email sending here with services like:
-    // - Resend (npm install resend)
-    // - SendGrid
-    // - Nodemailer
-    // - AWS SES
-    
-    // Example with Resend (uncomment when API key is available):
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'noreply@writegreatnotes.ai',
-    //   to: 'matthew.weiner@poundofcureweightloss.com',
-    //   subject: emailSubject,
-    //   text: emailBody,
-    // });
-
-    // For now, log the submission and return success
-    console.log("Contact form submission:", {
+    // Log the submission
+    console.log("Lead submission:", {
       to: "matthew.weiner@poundofcureweightloss.com",
       subject: emailSubject,
-      body: emailBody,
+      email,
+      source,
     });
 
     return NextResponse.json({

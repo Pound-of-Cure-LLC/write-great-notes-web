@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -60,6 +61,39 @@ export function generateStaticParams() {
   return Object.keys(emrConfig).map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const emr = emrConfig[slug];
+  
+  if (!emr) {
+    return {
+      title: "EMR Integration",
+    };
+  }
+
+  return {
+    title: `${emr.name} AI Scribe Integration - Coming Soon`,
+    description: `Write Great Notes AI medical scribe integration for ${emr.name} EMR is coming soon. Express interest to help prioritize development. AI ambient scribe for ${emr.name} users.`,
+    keywords: [
+      `${emr.name} AI scribe`,
+      `AI scribe for ${emr.name}`,
+      `${emr.name} integration`,
+      `${emr.name} ambient scribe`,
+      `${emr.name} clinical documentation`,
+      "AI medical scribe",
+      "EMR AI integration",
+    ],
+    openGraph: {
+      title: `${emr.name} AI Scribe Integration | Write Great Notes`,
+      description: `AI medical scribe integration for ${emr.name} coming soon. Express interest to help prioritize.`,
+      url: `https://writegreatnotes.ai/integrations/${slug}`,
+    },
+    alternates: {
+      canonical: `https://writegreatnotes.ai/integrations/${slug}`,
+    },
+  };
+}
+
 export default async function EMRRoadmapPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const emr = emrConfig[slug];
@@ -71,7 +105,7 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <Badge variant="secondary" className="mb-4">
@@ -130,7 +164,7 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sm:py-32">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
             <Card className="border-2 border-primary/20 shadow-xl">
@@ -164,7 +198,7 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
       </section>
 
       {/* What to Expect */}
-      <section className="py-20 sm:py-32 bg-muted/30">
+      <section className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">
@@ -195,7 +229,7 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
       </section>
 
       {/* Already Available CTA */}
-      <section className="py-20 sm:py-32">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">

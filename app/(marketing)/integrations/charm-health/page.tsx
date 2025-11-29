@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,31 @@ import {
   Shield,
   Clock,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Charm Health AI Scribe Integration - Best AI Scribe for Charm EMR",
+  description: "Write Great Notes is the best AI scribe for Charm Health EMR. Deep integration with automatic appointment sync, one-click note push, patient demographics, and real-time vitals. Start free trial.",
+  keywords: [
+    "Charm Health AI scribe",
+    "Charm AI scribe",
+    "AI scribe for Charm Health",
+    "Charm Health integration",
+    "Charm EMR AI documentation",
+    "CharmHealth AI scribe alternative",
+    "best AI scribe Charm Health",
+    "Charm Health ambient scribe",
+    "Charm EHR AI integration",
+    "AI medical scribe Charm",
+  ],
+  openGraph: {
+    title: "Charm Health AI Scribe Integration | Write Great Notes",
+    description: "The best AI scribe for Charm Health EMR. Automatic appointment sync, one-click note push, deep EMR integration. Start your free trial.",
+    url: "https://writegreatnotes.ai/integrations/charm-health",
+  },
+  alternates: {
+    canonical: "https://writegreatnotes.ai/integrations/charm-health",
+  },
+};
 
 const features = [
   {
@@ -51,7 +77,7 @@ export default function CharmHealthIntegrationPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <Badge className="mb-4 bg-success text-success-foreground">
@@ -84,13 +110,13 @@ export default function CharmHealthIntegrationPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" asChild className="text-lg px-8 py-6">
-                <Link href="https://app.writegreatnotes.ai/signup">
+                <Link href="/get-started">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="text-lg px-8 py-6">
-                <Link href="/contact">Request a Demo</Link>
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>
@@ -98,9 +124,9 @@ export default function CharmHealthIntegrationPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 sm:py-32">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-16">
+          <div className="mx-auto max-w-2xl text-center mb-10">
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
               Deep Integration Features
             </h2>
@@ -129,10 +155,10 @@ export default function CharmHealthIntegrationPage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 sm:py-32 bg-muted/30">
+      <section className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
                 Get Connected in Minutes
               </h2>
@@ -174,7 +200,7 @@ export default function CharmHealthIntegrationPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sm:py-32 bg-primary/10">
+      <section className="py-12 sm:py-16 bg-primary/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
@@ -184,7 +210,7 @@ export default function CharmHealthIntegrationPage() {
               Start your free trial and connect your Charm Health account in minutes.
             </p>
             <Button size="lg" asChild className="text-lg px-10 py-7">
-              <Link href="https://app.writegreatnotes.ai/signup">
+              <Link href="/get-started">
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

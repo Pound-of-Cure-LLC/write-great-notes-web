@@ -7,6 +7,12 @@ const footerNavigation = {
     { name: "Features", href: "/features" },
     { name: "How It Works", href: "/how-it-works" },
     { name: "Pricing", href: "/pricing" },
+    { name: "Start Free Trial", href: "/get-started" },
+  ],
+  integrations: [
+    { name: "Charm Health", href: "/integrations/charm-health" },
+    { name: "Epic", href: "/integrations/epic" },
+    { name: "Athena", href: "/integrations/athena" },
   ],
   company: [
     { name: "Contact", href: "/contact" },
@@ -38,7 +44,7 @@ export function MarketingFooter() {
         </div>
 
         {/* Navigation */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
@@ -61,6 +67,23 @@ export function MarketingFooter() {
             <h3 className="text-sm font-semibold mb-4">Product</h3>
             <ul className="space-y-3">
               {footerNavigation.product.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Integrations */}
+          <div>
+            <h3 className="text-sm font-semibold mb-4">Integrations</h3>
+            <ul className="space-y-3">
+              {footerNavigation.integrations.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}

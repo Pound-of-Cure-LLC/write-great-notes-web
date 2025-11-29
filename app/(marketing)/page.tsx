@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,15 +10,39 @@ import {
   CheckCircle2,
   Sparkles,
   Heart,
-  Scale,
-  Puzzle,
   Mic,
   Copy,
   XCircle,
   Upload,
   Link2,
   RefreshCw,
+  Send,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "AI Medical Scribe - Ambient Clinical Documentation | Write Great Notes",
+  description: "Write Great Notes is the best AI medical scribe for Charm Health and other EMRs. Ambient AI listens to patient conversations and generates comprehensive clinical notes in seconds. HIPAA compliant. Start your free trial.",
+  keywords: [
+    "AI medical scribe",
+    "ambient AI scribe",
+    "Charm Health AI scribe",
+    "AI clinical documentation",
+    "medical scribe software",
+    "AI SOAP notes",
+    "healthcare AI",
+    "physician AI assistant",
+    "reduce physician burnout",
+    "AI for doctors",
+  ],
+  openGraph: {
+    title: "Write Great Notes - AI Medical Scribe & Ambient Documentation",
+    description: "AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health. Start free trial.",
+    url: "https://writegreatnotes.ai",
+  },
+  alternates: {
+    canonical: "https://writegreatnotes.ai",
+  },
+};
 
 const oldWayProblems = [
   {
@@ -71,10 +94,10 @@ const features = [
       "We're building integrations with major EMRs and adding new ones monthly. Don't see yours? Let us know—it's probably next.",
   },
   {
-    icon: Clock,
-    title: "No Waiting, No Backlog",
+    icon: Send,
+    title: "Integrated Faxing",
     description:
-      "See your patient, move to the next. Your notes are ready when you need them—no staying late.",
+      "Automatically send completed notes to referring doctors. HIPAA-compliant faxing built into every plan.",
   },
   {
     icon: Shield,
@@ -88,7 +111,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-24 sm:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-16 sm:py-20">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
         
@@ -113,7 +136,7 @@ export default function HomePage() {
                 asChild 
                 className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 shadow-lg transition-all hover:scale-105"
               >
-                <Link href="https://app.writegreatnotes.ai/signup">
+                <Link href="/get-started">
                   Start Writing Great Notes
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -131,7 +154,7 @@ export default function HomePage() {
             </div>
             
             <p className="mt-6 text-sm text-muted-foreground">
-              No credit card required · 7-day free trial · Works with any EMR
+              No credit card required · 7-day free trial · Integrated faxing included · Works with any EMR
             </p>
           </div>
         </div>
@@ -152,9 +175,9 @@ export default function HomePage() {
       </section>
 
       {/* Your Notes, Your Way Section */}
-      <section className="py-24 sm:py-32 bg-card">
+      <section className="py-12 sm:py-16 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-flex items-center gap-2 text-primary font-semibold text-xl uppercase tracking-wider mb-4">
                 <Upload className="h-5 w-5" />
@@ -216,10 +239,10 @@ export default function HomePage() {
       </section>
 
       {/* Fight Insurance AI Section */}
-      <section className="py-24 sm:py-32 bg-muted/30">
+      <section className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <span className="inline-flex items-center gap-2 text-destructive font-semibold text-xl uppercase tracking-wider mb-4">
                 <Shield className="h-5 w-5" />
                 Fight Back
@@ -306,10 +329,10 @@ export default function HomePage() {
       </section>
 
       {/* The Solution: AI Ambient Scribing */}
-      <section className="py-24 sm:py-32 bg-slate-900 text-white">
+      <section className="py-12 sm:py-16 bg-slate-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xl uppercase tracking-wider mb-4">
                 <Sparkles className="h-5 w-5" />
                 The New Way
@@ -354,7 +377,7 @@ export default function HomePage() {
       </section>
 
       {/* EMR Integration Section */}
-      <section className="py-24 sm:py-32 bg-card">
+      <section className="py-12 sm:py-16 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <span className="inline-flex items-center gap-2 text-primary font-semibold text-xl uppercase tracking-wider mb-4">
@@ -430,10 +453,10 @@ export default function HomePage() {
       </section>
 
       {/* Deep EMR Integration Section */}
-      <section className="py-24 sm:py-32 bg-slate-900 text-white">
+      <section className="py-12 sm:py-16 bg-slate-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xl uppercase tracking-wider mb-4">
                 <Sparkles className="h-5 w-5" />
                 Deep EMR Integration
@@ -504,11 +527,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Integrated Faxing Section */}
+      <section className="py-16 sm:py-24 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
+                  <Send className="h-10 w-10 text-white" />
+                </div>
+              </div>
+              <div className="text-center md:text-left">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                  Deliver notes automatically via integrated HIPAA-compliant faxing.
+                </h2>
+                <p className="text-muted-foreground mb-4">
+                  Every plan includes built-in faxing to send notes directly to referring physicians, 
+                  specialists, and care partners. Additional faxes just $0.10 each.
+                </p>
+                <Link href="/pricing" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
+                  See faxing details on pricing page
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Fight Insurance AI Section */}
-      <section className="py-24 sm:py-32 bg-muted/30">
+      <section className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <span className="inline-flex items-center gap-2 text-destructive font-semibold text-xl uppercase tracking-wider mb-4">
                 <Shield className="h-5 w-5" />
                 Fight Back
@@ -595,7 +646,7 @@ export default function HomePage() {
       </section>
 
       {/* Work-Life Balance Section */}
-      <section className="py-24 sm:py-32 bg-primary text-white">
+      <section className="py-12 sm:py-16 bg-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <span className="inline-flex items-center gap-2 text-white/90 font-semibold text-xl uppercase tracking-wider mb-4">
@@ -645,9 +696,9 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 sm:py-32 bg-background">
+      <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-16">
+          <div className="mx-auto max-w-2xl text-center mb-10">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">
               Built for real clinical workflows
             </h2>
@@ -676,10 +727,10 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 sm:py-32 bg-muted/30">
+      <section className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Frequently Asked Questions
               </h2>
@@ -743,7 +794,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 sm:py-32 bg-primary/10">
+      <section className="py-12 sm:py-16 bg-primary/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -758,7 +809,7 @@ export default function HomePage() {
                 asChild 
                 className="text-lg px-10 py-7 shadow-xl transition-all hover:scale-105"
               >
-                <Link href="https://app.writegreatnotes.ai/signup">
+                <Link href="/get-started">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -769,7 +820,7 @@ export default function HomePage() {
                 asChild
                 className="text-lg px-10 py-7"
               >
-                <Link href="/contact">Request a Demo</Link>
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">

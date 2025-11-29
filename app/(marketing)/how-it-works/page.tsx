@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,6 +13,29 @@ import {
   Clock,
   Zap,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "How AI Medical Scribe Works - From Recording to EMR in Minutes",
+  description: "Learn how Write Great Notes AI medical scribe works: Record patient visits, AI generates clinical notes in 30 seconds, review and push to your EMR. Save 2+ hours daily on documentation.",
+  keywords: [
+    "how AI scribe works",
+    "AI medical documentation workflow",
+    "ambient scribe process",
+    "clinical note generation",
+    "medical transcription AI",
+    "EMR documentation workflow",
+    "save time on charting",
+    "physician documentation",
+  ],
+  openGraph: {
+    title: "How AI Medical Scribe Works | Write Great Notes",
+    description: "Record, generate, review, push to EMR. See how Write Great Notes AI scribe saves doctors 2+ hours daily on clinical documentation.",
+    url: "https://writegreatnotes.ai/how-it-works",
+  },
+  alternates: {
+    canonical: "https://writegreatnotes.ai/how-it-works",
+  },
+};
 
 const steps = [
   {
@@ -97,7 +121,7 @@ export default function HowItWorksPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4">
@@ -123,7 +147,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Steps Section */}
-      <section className="py-20 sm:py-32">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="space-y-24">
@@ -182,7 +206,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Demo Video Section */}
-      <section id="demo" className="py-20 sm:py-32 bg-muted/30">
+      <section id="demo" className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">
@@ -214,9 +238,9 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 sm:py-32">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-16">
+          <div className="mx-auto max-w-2xl text-center mb-10">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Why This Workflow Works
             </h2>
@@ -241,7 +265,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sm:py-32 bg-primary/5">
+      <section className="py-12 sm:py-16 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
@@ -252,7 +276,7 @@ export default function HowItWorksPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" asChild className="text-lg px-8 py-6">
-                <Link href="https://app.writegreatnotes.ai/signup">
+                <Link href="/get-started">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -263,7 +287,7 @@ export default function HowItWorksPage() {
                 asChild
                 className="text-lg px-8 py-6"
               >
-                <Link href="/contact">Schedule a Demo</Link>
+                <Link href="/pricing">View Pricing</Link>
               </Button>
             </div>
           </div>

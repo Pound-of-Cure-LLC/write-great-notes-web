@@ -34,18 +34,18 @@ const contactMethods = [
     href: "https://app.writegreatnotes.ai/login",
   },
   {
-    icon: Calendar,
-    title: "Schedule a Demo",
-    description: "See the product in action",
-    contact: "Book a 30-min call",
-    href: "/contact#demo-form",
+    icon: MessageSquare,
+    title: "Send a Message",
+    description: "We'll respond within 24 hours",
+    contact: "Fill out the form below",
+    href: "#contact-form",
   },
   {
-    icon: MessageSquare,
-    title: "Request a Callback",
-    description: "We'll reach out to you",
-    contact: "Fill out the form below",
-    href: "#demo-form",
+    icon: Calendar,
+    title: "Start Free Trial",
+    description: "Try it free for 7 days",
+    contact: "Get started now",
+    href: "/get-started",
   },
 ];
 
@@ -135,7 +135,7 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4">
@@ -145,8 +145,7 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
               Let&apos;s Talk
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Have questions about Write Great Notes? Want to schedule a demo?
-              We&apos;re here to help.
+              Have questions about Write Great Notes? We&apos;re here to help.
             </p>
           </div>
         </div>
@@ -200,13 +199,13 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
       )}
 
       {/* Contact Form */}
-      <section id="demo-form" className="py-20 sm:py-32 bg-muted/30">
+      <section id="contact-form" className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
             <Card className="border-0 shadow-xl">
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl">
-                  {isEMRRequest ? "Request EMR Integration" : "Request a Demo"}
+                  {isEMRRequest ? "Request EMR Integration" : "Contact Us"}
                 </CardTitle>
                 <CardDescription>
                   {isEMRRequest 
@@ -354,10 +353,11 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
                             <SelectValue placeholder="Select type" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="demo">Request a Demo</SelectItem>
+                            <SelectItem value="general">General Inquiry</SelectItem>
                             <SelectItem value="pricing">Pricing Question</SelectItem>
                             <SelectItem value="emr">EMR Integration</SelectItem>
                             <SelectItem value="support">Technical Support</SelectItem>
+                            <SelectItem value="partnership">Partnership</SelectItem>
                             <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
@@ -394,7 +394,7 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
                       size="lg"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Submitting..." : isEMRRequest ? "Submit Interest" : "Submit Request"}
+                      {isSubmitting ? "Submitting..." : isEMRRequest ? "Submit Interest" : "Send Message"}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
 
@@ -414,18 +414,17 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
       </section>
 
       {/* Quick Start CTA */}
-      <section className="py-20 sm:py-32">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Prefer to Get Started Right Away?
+              Ready to Get Started?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Skip the demo and start your free trial today. No credit card
-              required.
+              Start your free trial today. No credit card required.
             </p>
             <Button size="lg" asChild className="text-lg px-8 py-6">
-              <Link href="https://app.writegreatnotes.ai/signup">
+              <Link href="/get-started">
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

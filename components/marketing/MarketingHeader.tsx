@@ -55,7 +55,7 @@ export function MarketingHeader() {
               <Link href="https://app.writegreatnotes.ai/login">Sign In</Link>
             </Button>
             <Button asChild>
-              <Link href="https://app.writegreatnotes.ai/signup">Start Free Trial</Link>
+              <Link href="/get-started">Start Free Trial</Link>
             </Button>
           </div>
 
@@ -95,7 +95,7 @@ export function MarketingHeader() {
                   <Link href="https://app.writegreatnotes.ai/login">Sign In</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="https://app.writegreatnotes.ai/signup">Start Free Trial</Link>
+                  <Link href="/get-started">Start Free Trial</Link>
                 </Button>
               </div>
             </div>
