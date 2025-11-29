@@ -27,10 +27,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Debug: Log environment variable status
+    console.log("Supabase config check:", {
+      hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+      hasKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      urlPrefix: process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 30),
+    });
+
     // Save lead to Supabase (if configured)
     const supabase = getSupabase();
+    let dbSaved = false;
+    
     if (supabase) {
-      const { error: dbError } = await supabase
+      console.log("Supabase client created, attempting insert...");
+      const { data, error: dbError } = await supabase
         .from("marketing_leads")
         .insert({
           first_name: firstName,
@@ -43,11 +53,14 @@ export async function POST(request: NextRequest) {
           inquiry_type: inquiryType || null,
           message: message || null,
           source: source || "Website",
-        });
+        })
+        .select();
 
       if (dbError) {
-        console.error("Supabase error:", dbError);
-        // Don't fail the request if DB save fails - still process the lead
+        console.error("Supabase insert error:", JSON.stringify(dbError));
+      } else {
+        console.log("Supabase insert success:", data);
+        dbSaved = true;
       }
     } else {
       console.log("Supabase not configured, skipping database save");
@@ -63,6 +76,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Form submitted successfully",
+      dbSaved,
     });
   } catch (error) {
     console.error("Contact form error:", error);
