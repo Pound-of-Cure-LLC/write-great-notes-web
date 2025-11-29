@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSupabase } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,72 +18,47 @@ export async function POST(request: NextRequest) {
       source,
     } = body;
 
-    // Validate required fields - email is always required, others depend on form type
-    if (!email) {
+    // Map to external API format (snake_case)
+    const externalApiBody = {
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      phone: phone || null,
+      practice_name: practiceName || company || null,
+      company: company || null, // Include company as well if available
+      practice_size: practiceSize || null,
+      current_emr: currentEMR || null,
+      inquiry_type: inquiryType || null,
+      message: message || null,
+      source: source || "Website",
+    };
+
+    const response = await fetch('https://api.writegreatnotes.ai/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(externalApiBody),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("External API error:", data);
       return NextResponse.json(
-        { error: "Email is required" },
-        { status: 400 }
+        data, // Forward the error details from external API
+        { status: response.status }
       );
     }
-
-    // Debug: Log environment variable status
-    console.log("Supabase config check:", {
-      hasUrl: !!(process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL),
-      hasKey: !!(process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
-      urlPrefix: (process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL)?.substring(0, 30),
-    });
-
-    // Save lead to Supabase (if configured)
-    const supabase = getSupabase();
-    let dbSaved = false;
-    let leadId: string | null = null;
-    
-    if (supabase) {
-      console.log("Supabase client created, attempting insert...");
-      const { data, error: dbError } = await supabase
-        .from("marketing_leads")
-        .insert({
-          first_name: firstName,
-          last_name: lastName,
-          email,
-          phone: phone || null,
-          practice_name: practiceName || company || null,
-          practice_size: practiceSize || null,
-          current_emr: currentEMR || null,
-          inquiry_type: inquiryType || null,
-          message: message || null,
-          source: source || "Website",
-        })
-        .select("id")
-        .single();
-
-      if (dbError) {
-        console.error("Supabase insert error:", JSON.stringify(dbError));
-      } else {
-        console.log("Supabase insert success:", data);
-        dbSaved = true;
-        leadId = data?.id || null;
-      }
-    } else {
-      console.log("Supabase not configured, skipping database save");
-    }
-
-    // Log the submission
-    console.log("Lead submission:", {
-      email,
-      name: `${firstName} ${lastName}`,
-      source,
-      leadId,
-    });
 
     return NextResponse.json({
       success: true,
       message: "Form submitted successfully",
-      dbSaved,
-      leadId,
+      ...data // Include any other data returned by the external API
     });
+
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error("Contact proxy error:", error);
     return NextResponse.json(
       { error: "Failed to process submission" },
       { status: 500 }

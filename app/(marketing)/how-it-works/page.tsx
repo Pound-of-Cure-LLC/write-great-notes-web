@@ -14,6 +14,7 @@ import {
   Clock,
   Zap,
 } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 
 export const metadata: Metadata = {
   title: "How AI Medical Scribe Works - From Recording to EMR in Minutes",
@@ -124,93 +125,108 @@ const workflowBenefits = [
 
 export default function HowItWorksPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="secondary" className="mb-4">
-              How It Works
-            </Badge>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              From Recording to EMR in Minutes
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Write Great Notes streamlines your clinical documentation workflow
-              into four simple steps. No more after-hours charting.
-            </p>
-            <div className="mt-10">
-              <Button size="lg" variant="outline" asChild className="text-lg px-8 py-6">
-                <Link href="#demo">
-                  <Play className="mr-2 h-5 w-5" />
-                  Watch Demo Video
-                </Link>
-              </Button>
-            </div>
+            <FadeIn>
+              <Badge variant="secondary" className="mb-6 px-4 py-2 bg-primary/10 text-primary border-primary/20">
+                How It Works
+              </Badge>
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl leading-tight mb-8">
+                From Recording to EMR in Minutes
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed mb-10">
+                Write Great Notes streamlines your clinical documentation workflow
+                into four simple steps. No more after-hours charting.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="mt-10">
+                <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 border-2 hover:bg-background shadow-sm">
+                  <Link href="#demo">
+                    <Play className="mr-2 h-5 w-5 fill-current" />
+                    Watch Demo Video
+                  </Link>
+                </Button>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Steps Section */}
-      <section className="py-12 sm:py-16">
+      <section className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-24">
+          <div className="max-w-5xl mx-auto">
+            <div className="space-y-32">
               {steps.map((step, index) => (
                 <div
                   key={step.number}
-                  className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                  className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
                 >
-                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  {/* Connecting Line */}
+                  {index < steps.length - 1 && (
+                    <div className="absolute left-8 top-24 bottom-[-128px] w-1 bg-border hidden lg:block -z-10" 
+                         style={{ left: index % 2 === 0 ? '2rem' : 'auto', right: index % 2 === 1 ? '2rem' : 'auto' }} />
+                  )}
+                  
+                  <FadeIn direction={index % 2 === 1 ? "left" : "right"} className={index % 2 === 1 ? "lg:order-2" : ""}>
                     {/* Step number and icon */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="h-16 w-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-primary-foreground relative z-10">
+                    <div className="flex items-center gap-6 mb-8">
+                      <div className="h-20 w-20 rounded-full bg-primary flex items-center justify-center text-3xl font-bold text-primary-foreground shadow-xl ring-8 ring-background relative z-10">
                         {step.number}
                       </div>
                       <div>
-                        <Badge variant="outline" className="mb-1">
+                        <Badge variant="outline" className="mb-2 text-sm font-medium px-3 py-1">
                           {step.duration}
                         </Badge>
-                        <h2 className="text-2xl font-bold">{step.title}</h2>
+                        <h2 className="text-3xl font-bold">{step.title}</h2>
                       </div>
                     </div>
 
-                    <p className="text-lg text-muted-foreground mb-6">
+                    <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                       {step.description}
                     </p>
 
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       {step.details.map((detail) => (
-                        <li key={detail} className="flex items-center">
-                          <CheckCircle2 className="h-5 w-5 text-success mr-3 flex-shrink-0" />
+                        <li key={detail} className="flex items-center text-lg group">
+                          <CheckCircle2 className="h-6 w-6 text-success mr-4 flex-shrink-0 group-hover:scale-110 transition-transform" />
                           <span>{detail}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </FadeIn>
 
-                  <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                  <FadeIn direction={index % 2 === 1 ? "right" : "left"} className={index % 2 === 1 ? "lg:order-1" : ""}>
                     {step.screenshot ? (
-                      <div className="aspect-video rounded-xl overflow-hidden border border-border shadow-lg">
+                      <div className="aspect-video rounded-2xl overflow-hidden border border-border shadow-2xl hover:shadow-3xl transition-all duration-500 bg-card group">
                         <Image
                           src={step.screenshot}
                           alt={`Step ${step.number}: ${step.title}`}
                           width={800}
                           height={450}
-                          className="w-full h-full object-cover object-top"
+                          className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
                         />
                       </div>
                     ) : (
-                      <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/10 to-uranian-blue/10 border border-primary/20 flex items-center justify-center">
+                      <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/5 to-uranian-blue/10 border border-primary/10 flex items-center justify-center shadow-xl">
                         <div className="text-center p-8">
-                          <step.icon className="h-16 w-16 text-primary/30 mx-auto mb-4" />
-                          <p className="text-muted-foreground">
-                            Step {step.number}: {step.title}
+                          <div className="h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                            <step.icon className="h-12 w-12 text-primary/40" />
+                          </div>
+                          <p className="text-muted-foreground font-medium">
+                            Step {step.number}: {step.title} Interface
                           </p>
                         </div>
                       </div>
                     )}
-                  </div>
+                  </FadeIn>
                 </div>
               ))}
             </div>
@@ -219,60 +235,92 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Demo Video Section */}
-      <section id="demo" className="py-12 sm:py-16 bg-muted/30">
+      <section id="demo" className="py-20 sm:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                See It In Action
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Watch how Write Great Notes transforms clinical documentation.
-              </p>
-            </div>
-
-            {/* Video placeholder */}
-            <div className="aspect-video rounded-xl bg-gradient-to-br from-card to-muted border-2 border-dashed border-primary/30 flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Play className="h-10 w-10 text-primary" />
-                </div>
-                <p className="text-xl font-medium mb-2">Demo Video</p>
-                <p className="text-muted-foreground">
-                  Add your product demonstration video here
-                </p>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Recommended: 2-3 minute walkthrough showing the complete workflow
+            <FadeIn>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-6">
+                  See It In Action
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  Watch how Write Great Notes transforms clinical documentation.
                 </p>
               </div>
-            </div>
+            </FadeIn>
+
+            {/* Video placeholder */}
+            <FadeIn delay={0.2}>
+              <div className="aspect-video rounded-3xl bg-gradient-to-br from-card to-muted border-4 border-dashed border-primary/20 flex items-center justify-center shadow-inner hover:border-primary/40 transition-colors group cursor-pointer">
+                <div className="text-center p-8 transition-transform group-hover:scale-105">
+                  <div className="h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
+                    <Play className="h-12 w-12 text-primary fill-primary/20 group-hover:fill-primary transition-colors" />
+                  </div>
+                  <p className="text-2xl font-bold mb-3">Demo Video</p>
+                  <p className="text-muted-foreground text-lg mb-4">
+                    Click to watch the product walkthrough
+                  </p>
+                  <Badge variant="secondary" className="text-sm">
+                    Coming Soon
+                  </Badge>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-12 sm:py-16">
+      <section className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-10">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Why This Workflow Works
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Designed with busy healthcare providers in mind.
-            </p>
+          <div className="mx-auto max-w-2xl text-center mb-16">
+            <FadeIn>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-6">
+                Why This Workflow Works
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Designed with busy healthcare providers in mind.
+              </p>
+            </FadeIn>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {workflowBenefits.map((benefit) => (
-              <Card key={benefit.title} className="border-0 shadow-md text-center">
-                <CardContent className="pt-8">
-                  <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <benefit.icon className="h-7 w-7 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground">{benefit.description}</p>
+              <StaggerItem key={benefit.title}>
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center h-full">
+                  <CardContent className="pt-10 p-8">
+                    <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                      <benefit.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+                    <p className="text-muted-foreground text-lg leading-relaxed">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Questions CTA */}
+      <section className="py-20 sm:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <Card className="border-primary/20 bg-primary/5 shadow-lg">
+                <CardContent className="pt-12 pb-12 px-8">
+                  <h3 className="text-3xl font-bold mb-6">Have Questions?</h3>
+                  <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+                    Our team is here to help you understand how Write Great Notes can fit your practice.
+                  </p>
+                  <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 border-2 hover:bg-background">
+                    <Link href="/contact">
+                      Contact Us
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
                 </CardContent>
               </Card>
-            ))}
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -300,31 +348,33 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-primary/5">
+      <section className="py-20 sm:py-32 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Ready to Simplify Your Documentation?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Start your free trial today and experience the difference.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" asChild className="text-lg px-8 py-6">
-                <Link href="/get-started">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="text-lg px-8 py-6"
-              >
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <h2 className="text-4xl font-bold tracking-tight sm:text-5xl mb-8">
+                Ready to Simplify Your Documentation?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-12">
+                Start your free trial today and experience the difference.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Button size="lg" asChild className="text-lg px-12 py-8 shadow-xl transition-all hover:scale-105">
+                  <Link href="/get-started">
+                    Start Free Trial
+                    <ArrowRight className="ml-2 h-6 w-6" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="text-lg px-12 py-8 border-2 bg-background/50 backdrop-blur-sm"
+                >
+                  <Link href="/contact">Contact Us</Link>
+                </Button>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>

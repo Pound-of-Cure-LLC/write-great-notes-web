@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,40 +11,15 @@ import {
   Sparkles,
   Heart,
   Mic,
-  Copy,
-  XCircle,
   Upload,
   Link2,
   RefreshCw,
   Send,
+  XCircle,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 import { TypingEffect } from "@/components/marketing/typing-effect";
-
-export const metadata: Metadata = {
-  title: "AI Medical Scribe - Ambient Clinical Documentation | Write Great Notes",
-  description: "Write Great Notes is the best AI medical scribe for Charm Health and other EMRs. Ambient AI listens to patient conversations and generates comprehensive clinical notes in seconds. HIPAA compliant. Start your free trial.",
-  keywords: [
-    "AI medical scribe",
-    "ambient AI scribe",
-    "Charm Health AI scribe",
-    "AI clinical documentation",
-    "medical scribe software",
-    "AI SOAP notes",
-    "healthcare AI",
-    "physician AI assistant",
-    "reduce physician burnout",
-    "AI for doctors",
-  ],
-  openGraph: {
-    title: "Write Great Notes - AI Medical Scribe & Ambient Documentation",
-    description: "AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health. Start free trial.",
-    url: "https://writegreatnotes.ai",
-  },
-  alternates: {
-    canonical: "https://writegreatnotes.ai",
-  },
-};
+import { motion } from "framer-motion";
 
 const newWayBenefits = [
   {
@@ -93,84 +69,190 @@ const features = [
 const exampleHPI = "Mr. Johnson is a 45-year-old carpenter who presents with progressive right knee pain over the past 3 weeks. He reports the pain began after kneeling for extended periods while installing flooring. Pain is localized to the anterior knee, worse with stairs and prolonged sitting, rated 6/10. He has tried ibuprofen with minimal relief. He denies locking, giving way, or swelling. No prior knee injuries or surgeries.";
 const exampleAssessment = "Presentation is most consistent with patellofemoral syndrome given the anterior location, provocation with stairs and prolonged flexion, and occupational risk factors. Less likely but considered: prepatellar bursitis (no visible swelling on exam), meniscal pathology (no mechanical symptoms).";
 
-export default function HomePage() {
+function HeroSection() {
   return (
-    <div className="flex flex-col overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-20 sm:py-32 lg:py-40">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-        
-        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl text-center">
-            {/* Main headline */}
-            <FadeIn delay={0.1} duration={0.8}>
-              <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground mb-8 leading-tight">
-                You listen. You examine.
-                <br />
-                <span className="text-primary">You care.</span>
-              </h1>
-            </FadeIn>
-            
-            <FadeIn delay={0.3} duration={0.8}>
-              <p className="text-2xl sm:text-3xl lg:text-4xl font-medium text-muted-foreground/80 mb-8">
-                Your notes should show it.
-              </p>
-            </FadeIn>
+    <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-20 sm:py-32 lg:py-40">
+      {/* Animated background pattern */}
+      <motion.div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"
+        animate={{
+          backgroundPosition: ["0% 0%", "100% 100%"],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "linear",
+        }}
+      />
+      
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl text-center">
+          {/* Main headline with floating animation */}
+          <FadeIn delay={0.1} duration={0.8}>
+            <motion.h1 
+              className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground mb-8 leading-tight"
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              You listen. You examine.
+              <br />
+              <motion.span 
+                className="text-primary inline-block"
+                animate={{
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                You care.
+              </motion.span>
+            </motion.h1>
+          </FadeIn>
+          
+          <FadeIn delay={0.3} duration={0.8}>
+            <motion.p 
+              className="text-2xl sm:text-3xl lg:text-4xl font-medium text-muted-foreground/80 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              Your notes should show it.
+            </motion.p>
+          </FadeIn>
 
-            <FadeIn delay={0.5} duration={0.8}>
-              <p className="mt-8 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                EMRs destroyed the art of writing a great medical note. Our AI scribe is bringing it back.
-              </p>
-            </FadeIn>
+          <FadeIn delay={0.5} duration={0.8}>
+            <p className="mt-8 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              EMRs destroyed the art of writing a great medical note. Our AI scribe is bringing it back.
+            </p>
+          </FadeIn>
 
-            <FadeIn delay={0.7} duration={0.8}>
-              <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
+          <FadeIn delay={0.7} duration={0.8}>
+            <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
                 <Button 
                   size="lg" 
                   asChild 
-                  className="w-full sm:w-auto text-lg px-10 py-7 shadow-xl transition-all hover:scale-105 hover:shadow-2xl bg-primary hover:bg-primary/90"
+                  className="w-full sm:w-auto text-lg px-10 py-7 shadow-xl transition-all hover:shadow-2xl bg-primary hover:bg-primary/90 group"
                 >
-                  <Link href="/get-started">
+                  <Link href="/get-started" className="flex items-center">
                     Start Writing Great Notes
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </motion.div>
                   </Link>
                 </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
                 <Button
                   size="lg"
                   variant="outline"
                   asChild
-                  className="w-full sm:w-auto text-lg px-10 py-7 border-2 hover:bg-accent/50"
+                  className="w-full sm:w-auto text-lg px-10 py-7 border-2 hover:bg-accent/50 hover:border-primary/50 transition-all"
                 >
                   <Link href="/how-it-works">
                     See How It Works
                   </Link>
                 </Button>
-              </div>
-            </FadeIn>
-            
-            <FadeIn delay={0.9} duration={0.8}>
-              <p className="mt-8 text-sm text-muted-foreground/80 font-medium">
-                No credit card required · 7-day free trial · Integrated faxing included · Works with any EMR
-              </p>
-            </FadeIn>
-          </div>
+              </motion.div>
+            </div>
+          </FadeIn>
+          
+          <FadeIn delay={0.9} duration={0.8}>
+            <p className="mt-8 text-sm text-muted-foreground/80 font-medium">
+              No credit card required · 7-day free trial · Integrated faxing included · Works with any EMR
+            </p>
+          </FadeIn>
         </div>
+      </div>
 
-        {/* Decorative glow using brand colors */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} />
-        
-        {/* Additional brand color decoration */}
-        <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-uranian-blue opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-          />
-        </div>
-      </section>
+      {/* Enhanced decorative glow with floating animation */}
+      <motion.div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl pointer-events-none"
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      
+      {/* Floating gradient decoration */}
+      <motion.div 
+        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        animate={{
+          rotate: [30, 35, 30],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <div
+          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-uranian-blue opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+        />
+      </motion.div>
+
+      {/* Additional floating particles */}
+      {[...Array(3)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 bg-primary/20 rounded-full blur-sm"
+          style={{
+            left: `${20 + i * 30}%`,
+            top: `${30 + i * 20}%`,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 20, 0],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 4 + i * 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.5,
+          }}
+        />
+      ))}
+    </section>
+  );
+}
+
+export default function HomePageContent() {
+  return (
+    <div className="flex flex-col overflow-x-hidden">
+      {/* Hero Section */}
+      <HeroSection />
 
       {/* Your Notes, Your Way Section */}
       <section className="py-20 sm:py-32 bg-card">
@@ -205,37 +287,39 @@ export default function HomePage() {
             </FadeIn>
 
             <FadeIn direction="left" delay={0.2}>
-              <div className="bg-muted/30 rounded-3xl p-10 border border-border shadow-sm">
+              <motion.div 
+                className="bg-muted/30 rounded-3xl p-10 border border-border shadow-sm hover:shadow-xl transition-all duration-300"
+                whileHover={{ y: -4, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
                 <StaggerContainer className="space-y-8">
-                  <StaggerItem className="flex items-start gap-5">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold text-lg">1</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">Upload an example</h3>
-                      <p className="text-muted-foreground text-lg">Paste one of your best notes—the format you want to keep using.</p>
-                    </div>
-                  </StaggerItem>
-                  <StaggerItem className="flex items-start gap-5">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold text-lg">2</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">We learn your style</h3>
-                      <p className="text-muted-foreground text-lg">AI parses your sections, headings, and documentation patterns.</p>
-                    </div>
-                  </StaggerItem>
-                  <StaggerItem className="flex items-start gap-5">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold text-lg">3</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">Every note matches</h3>
-                      <p className="text-muted-foreground text-lg">All future notes follow your format. Consistency without the copy-paste.</p>
-                    </div>
-                  </StaggerItem>
+                  {[
+                    { num: "1", title: "Upload an example", desc: "Paste one of your best notes—the format you want to keep using." },
+                    { num: "2", title: "We learn your style", desc: "AI parses your sections, headings, and documentation patterns." },
+                    { num: "3", title: "Every note matches", desc: "All future notes follow your format. Consistency without the copy-paste." },
+                  ].map((item, idx) => (
+                    <StaggerItem key={idx}>
+                      <motion.div 
+                        className="flex items-start gap-5 group cursor-default"
+                        whileHover={{ x: 4 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      >
+                        <motion.div 
+                          className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors"
+                          whileHover={{ rotate: 360, scale: 1.1 }}
+                          transition={{ duration: 0.5, type: "spring" }}
+                        >
+                          <span className="text-primary font-bold text-lg">{item.num}</span>
+                        </motion.div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                          <p className="text-muted-foreground text-lg">{item.desc}</p>
+                        </div>
+                      </motion.div>
+                    </StaggerItem>
+                  ))}
                 </StaggerContainer>
-              </div>
+              </motion.div>
             </FadeIn>
           </div>
         </div>
@@ -364,16 +448,26 @@ export default function HomePage() {
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               {newWayBenefits.map((benefit) => (
-                <StaggerItem key={benefit.title} className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:bg-slate-800/80 transition-colors">
-                  <div className="flex flex-col gap-6">
-                    <div className="h-14 w-14 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <benefit.icon className="h-7 w-7 text-primary" />
+                <StaggerItem key={benefit.title}>
+                  <motion.div 
+                    className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:bg-slate-800/80 transition-colors cursor-default group"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div className="flex flex-col gap-6">
+                      <motion.div 
+                        className="h-14 w-14 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors"
+                        whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <benefit.icon className="h-7 w-7 text-primary" />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">{benefit.title}</h3>
+                        <p className="text-slate-300 text-lg leading-relaxed">{benefit.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-3 text-white">{benefit.title}</h3>
-                      <p className="text-slate-300 text-lg leading-relaxed">{benefit.description}</p>
-                    </div>
-                  </div>
+                  </motion.div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -403,17 +497,31 @@ export default function HomePage() {
             
             {/* EMR Logos/Names */}
             <FadeIn delay={0.2}>
-              <div className="bg-muted/30 rounded-3xl p-10 border border-border mb-12">
+              <motion.div 
+                className="bg-muted/30 rounded-3xl p-10 border border-border mb-12"
+                whileHover={{ scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              >
                 <p className="text-sm text-muted-foreground uppercase tracking-wider mb-8 font-semibold">Current & Coming Soon</p>
                 <div className="flex flex-wrap justify-center gap-4">
                   {/* Charm Health - Available Now */}
-                  <Link 
-                    href="/integrations/charm-health"
-                    className="px-8 py-4 bg-success/10 rounded-xl border-2 border-success text-success font-bold hover:bg-success/20 transition-all hover:scale-105 flex items-center gap-3 text-lg"
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <CheckCircle2 className="h-5 w-5" />
-                    Charm Health
-                  </Link>
+                    <Link 
+                      href="/integrations/charm-health"
+                      className="px-8 py-4 bg-success/10 rounded-xl border-2 border-success text-success font-bold hover:bg-success/20 transition-all flex items-center gap-3 text-lg group"
+                    >
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                      >
+                        <CheckCircle2 className="h-5 w-5" />
+                      </motion.div>
+                      Charm Health
+                    </Link>
+                  </motion.div>
                   {/* Other EMRs - On Roadmap */}
                   {[
                     { name: "AdvancedMD", slug: "advancedmd" },
@@ -424,25 +532,35 @@ export default function HomePage() {
                     { name: "Allscripts", slug: "allscripts" },
                     { name: "DrChrono", slug: "drchrono" },
                   ].map((emr) => (
-                    <Link 
+                    <motion.div
                       key={emr.slug}
-                      href={`/integrations/${emr.slug}`}
-                      className="px-8 py-4 bg-card rounded-xl border border-border text-foreground font-medium hover:border-primary hover:bg-primary/5 transition-all hover:scale-105 text-lg"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      {emr.name}
-                    </Link>
+                      <Link 
+                        href={`/integrations/${emr.slug}`}
+                        className="px-8 py-4 bg-card rounded-xl border border-border text-foreground font-medium hover:border-primary hover:bg-primary/5 transition-all text-lg"
+                      >
+                        {emr.name}
+                      </Link>
+                    </motion.div>
                   ))}
-                  <Link 
-                    href="/contact?type=emr#contact-form"
-                    className="px-8 py-4 bg-card rounded-xl border border-dashed border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-all hover:scale-105 text-lg"
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    + Other EMRs
-                  </Link>
+                    <Link 
+                      href="/contact?type=emr"
+                      className="px-8 py-4 bg-card rounded-xl border border-dashed border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-all text-lg"
+                    >
+                      + Other EMRs
+                    </Link>
+                  </motion.div>
                 </div>
                 <p className="text-sm text-muted-foreground mt-8 font-medium">
                   <span className="text-success font-bold">✓ Available now</span> · Click any EMR to learn more or express interest—<span className="text-primary font-bold">demand drives our roadmap!</span>
                 </p>
-              </div>
+              </motion.div>
             </FadeIn>
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -451,9 +569,32 @@ export default function HomePage() {
                 { number: "New", label: "Integrations monthly", icon: RefreshCw },
                 { number: "5 min", label: "To get started" },
               ].map((stat) => (
-                <StaggerItem key={stat.label} className="bg-muted/50 rounded-2xl p-8 border border-border hover:border-primary/50 transition-colors">
-                  <div className="text-5xl font-black text-primary mb-3">{stat.number}</div>
-                  <div className="text-lg text-muted-foreground font-medium">{stat.label}</div>
+                <StaggerItem key={stat.label}>
+                  <motion.div 
+                    className="bg-muted/50 rounded-2xl p-8 border border-border hover:border-primary/50 transition-colors cursor-default group"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <motion.div 
+                      className="text-5xl font-black text-primary mb-3"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      {stat.number}
+                      {stat.icon && (
+                        <motion.span
+                          className="inline-block ml-2"
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        >
+                          <stat.icon className="h-8 w-8 inline" />
+                        </motion.span>
+                      )}
+                    </motion.div>
+                    <div className="text-lg text-muted-foreground font-medium group-hover:text-foreground transition-colors">{stat.label}</div>
+                  </motion.div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -514,14 +655,35 @@ export default function HomePage() {
                   icon: "🚀",
                 },
               ].map((feature) => (
-                <StaggerItem key={feature.title} className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:bg-slate-800/80 transition-colors group">
-                  <div className="flex items-start gap-5">
-                    <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2 text-white">{feature.title}</h3>
-                      <p className="text-slate-300 text-base leading-relaxed">{feature.description}</p>
+                <StaggerItem key={feature.title}>
+                  <motion.div 
+                    className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:bg-slate-800/80 transition-colors group cursor-default"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div className="flex items-start gap-5">
+                      <motion.div 
+                        className="text-4xl"
+                        animate={{ 
+                          y: [0, -5, 0],
+                          rotate: [0, 5, -5, 0],
+                        }}
+                        transition={{ 
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: Math.random() * 2,
+                        }}
+                        whileHover={{ scale: 1.2, rotate: 0 }}
+                      >
+                        {feature.icon}
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">{feature.title}</h3>
+                        <p className="text-slate-300 text-base leading-relaxed">{feature.description}</p>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -546,11 +708,28 @@ export default function HomePage() {
           <div className="mx-auto max-w-4xl">
             <FadeIn>
               <div className="flex flex-col md:flex-row items-center gap-10">
-                <div className="flex-shrink-0">
-                  <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-xl rotate-3 hover:rotate-6 transition-transform duration-300">
-                    <Send className="h-12 w-12 text-white" />
+                <motion.div 
+                  className="flex-shrink-0"
+                  animate={{ 
+                    rotate: [3, 8, 3],
+                    y: [0, -10, 0],
+                  }}
+                  transition={{ 
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  whileHover={{ scale: 1.1, rotate: 0 }}
+                >
+                  <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-xl">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <Send className="h-12 w-12 text-white" />
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
                 <div className="text-center md:text-left">
                   <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                     Deliver notes automatically via integrated HIPAA-compliant faxing.
@@ -559,10 +738,20 @@ export default function HomePage() {
                     Every plan includes built-in faxing to send notes directly to referring physicians, 
                     specialists, and care partners. Additional faxes just $0.10 each.
                   </p>
-                  <Link href="/pricing" className="text-primary font-bold text-lg hover:underline inline-flex items-center gap-2">
-                    See faxing details on pricing page
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
+                    <Link href="/pricing" className="text-primary font-bold text-lg hover:underline inline-flex items-center gap-2 group">
+                      See faxing details on pricing page
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      </motion.div>
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </FadeIn>
@@ -577,7 +766,7 @@ export default function HomePage() {
             <FadeIn>
               <span className="inline-flex items-center gap-2 text-white/90 font-bold text-lg uppercase tracking-wider mb-4">
                 <Heart className="h-5 w-5" />
-                Be a Professional, Not a Professional Box Checker
+                Be a Professional, Not a Box Checker
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
                 Clock in. See patients.
@@ -592,27 +781,39 @@ export default function HomePage() {
             </FadeIn>
             
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-              <StaggerItem className="bg-white/10 rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
-                <div className="text-5xl mb-6">☀️</div>
-                <h3 className="text-xl font-bold mb-3 text-white">Morning</h3>
-                <p className="text-white/90 text-lg">
-                  Log in. Review your schedule. Start seeing patients.
-                </p>
-              </StaggerItem>
-              <StaggerItem className="bg-white/10 rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
-                <div className="text-5xl mb-6">🩺</div>
-                <h3 className="text-xl font-bold mb-3 text-white">During the Day</h3>
-                <p className="text-white/90 text-lg">
-                  Focus on patients. AI captures and documents each encounter as you go.
-                </p>
-              </StaggerItem>
-              <StaggerItem className="bg-white/10 rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
-                <div className="text-5xl mb-6">🏠</div>
-                <h3 className="text-xl font-bold mb-3 text-white">End of Day</h3>
-                <p className="text-white/90 text-lg">
-                  Log off. Go home. All notes complete. No pajama time documentation.
-                </p>
-              </StaggerItem>
+              {[
+                { emoji: "☀️", title: "Morning", desc: "Log in. Review your schedule. Start seeing patients." },
+                { emoji: "🩺", title: "During the Day", desc: "Focus on patients. AI captures and documents each encounter as you go." },
+                { emoji: "🏠", title: "End of Day", desc: "Log off. Go home. All notes complete. No pajama time documentation." },
+              ].map((item) => (
+                <StaggerItem key={item.title}>
+                  <motion.div 
+                    className="bg-white/10 rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors cursor-default group"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <motion.div 
+                      className="text-5xl mb-6"
+                      animate={{ 
+                        rotate: [0, 5, -5, 0],
+                        scale: [1, 1.05, 1],
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      whileHover={{ scale: 1.2, rotate: 0 }}
+                    >
+                      {item.emoji}
+                    </motion.div>
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">{item.title}</h3>
+                    <p className="text-white/90 text-lg">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
+              ))}
             </StaggerContainer>
 
             <FadeIn delay={0.4}>
@@ -640,19 +841,28 @@ export default function HomePage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature) => (
               <StaggerItem key={feature.title}>
-                <Card className="border-border shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 h-full">
-                  <CardContent className="pt-8 p-8">
-                    <div className="flex flex-col gap-6">
-                      <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary to-uranian-blue flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <feature.icon className="h-7 w-7 text-primary-foreground" />
+                <motion.div
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <Card className="border-border shadow-sm hover:shadow-xl transition-all h-full group cursor-default">
+                    <CardContent className="pt-8 p-8">
+                      <div className="flex flex-col gap-6">
+                        <motion.div 
+                          className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary to-uranian-blue flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow"
+                          whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <feature.icon className="h-7 w-7 text-primary-foreground" />
+                        </motion.div>
+                        <div>
+                          <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{feature.title}</h3>
+                          <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
-                        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -710,10 +920,14 @@ export default function HomePage() {
                 },
               ].map((faq, index) => (
                 <StaggerItem key={index}>
-                  <div className="bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-xl font-bold text-foreground mb-3">{faq.question}</h3>
+                  <motion.div 
+                    className="bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl transition-shadow cursor-default group"
+                    whileHover={{ y: -4, scale: 1.01 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{faq.question}</h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">{faq.answer}</p>
-                  </div>
+                  </motion.div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -747,24 +961,41 @@ export default function HomePage() {
             
             <FadeIn delay={0.2}>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Button 
-                  size="lg" 
-                  asChild 
-                  className="w-full sm:w-auto text-lg px-12 py-8 shadow-xl transition-all hover:scale-105 hover:shadow-2xl"
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <Link href="/get-started">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-6 w-6" />
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="w-full sm:w-auto text-lg px-12 py-8 border-2 bg-background/50 backdrop-blur-sm"
+                  <Button 
+                    size="lg" 
+                    asChild 
+                    className="w-full sm:w-auto text-lg px-12 py-8 shadow-xl transition-all hover:shadow-2xl group"
+                  >
+                    <Link href="/get-started" className="flex items-center">
+                      Start Free Trial
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                      </motion.div>
+                    </Link>
+                  </Button>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    asChild
+                    className="w-full sm:w-auto text-lg px-12 py-8 border-2 bg-background/50 backdrop-blur-sm hover:border-primary/50"
+                  >
+                    <Link href="/contact">Contact Us</Link>
+                  </Button>
+                </motion.div>
               </div>
               <p className="mt-8 text-sm text-muted-foreground font-medium">
                 No credit card required · 7-day free trial · Works with any EMR · HIPAA compliant
@@ -776,3 +1007,4 @@ export default function HomePage() {
     </div>
   );
 }
+

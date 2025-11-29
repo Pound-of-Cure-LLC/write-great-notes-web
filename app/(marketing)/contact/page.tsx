@@ -25,6 +25,8 @@ import {
   Headphones,
   TrendingUp,
 } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
+import { cn } from "@/lib/utils";
 
 const contactMethods = [
   {
@@ -133,302 +135,320 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="secondary" className="mb-4">
-              Contact
-            </Badge>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Let&apos;s Talk
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Have questions about Write Great Notes? We&apos;re here to help.
-            </p>
+            <FadeIn>
+              <Badge variant="secondary" className="mb-6 px-4 py-2 bg-primary/10 text-primary border-primary/20">
+                Contact
+              </Badge>
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-8">
+                Let&apos;s Talk
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Have questions about Write Great Notes? We&apos;re here to help.
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Contact Methods */}
-      <section className="py-12 sm:py-16">
+      <section className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {contactMethods.map((method) => (
-              <Card key={method.title} className="border-0 shadow-md text-center hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <method.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-1">{method.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {method.description}
-                  </p>
-                  <Link
-                    href={method.href}
-                    className="text-primary hover:underline font-medium"
-                  >
-                    {method.contact}
-                  </Link>
-                </CardContent>
-              </Card>
+              <StaggerItem key={method.title}>
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center h-full">
+                  <CardContent className="pt-10 p-8">
+                    <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                      <method.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">{method.title}</h3>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {method.description}
+                    </p>
+                    <Button variant="link" asChild className="text-lg font-semibold p-0 h-auto">
+                      <Link href={method.href}>
+                        {method.contact}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Roadmap Info Banner - Show for EMR requests */}
       {isEMRRequest && (
-        <section className="py-8 bg-primary/5 border-y border-primary/20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto flex items-center gap-4">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <TrendingUp className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Your input shapes our roadmap!</h3>
-                <p className="text-sm text-muted-foreground">
-                  The more people express interest in an EMR integration, the higher it moves on our priority list. 
-                  Fill out the form below to help us decide which adapter to build next.
-                </p>
+        <FadeIn>
+          <section className="py-12 bg-primary/5 border-y border-primary/20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <TrendingUp className="h-8 w-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Your input shapes our roadmap!</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    The more people express interest in an EMR integration, the higher it moves on our priority list. 
+                    Fill out the form below to help us decide which adapter to build next.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </FadeIn>
       )}
 
       {/* Contact Form */}
-      <section id="contact-form" className="py-12 sm:py-16 bg-muted/30">
+      <section id="contact-form" className="py-20 sm:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
-            <Card className="border-0 shadow-xl">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl">
-                  {isEMRRequest ? "Request EMR Integration" : "Contact Us"}
-                </CardTitle>
-                <CardDescription>
-                  {isEMRRequest 
-                    ? "Let us know you're interested! Your input directly influences our development priorities."
-                    : "Fill out the form below and we'll get back to you within 24 hours."}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {isSubmitted ? (
-                  <div className="text-center py-12">
-                    <div className="h-16 w-16 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle2 className="h-8 w-8 text-success" />
+            <FadeIn delay={0.2}>
+              <Card className="border-0 shadow-2xl overflow-hidden">
+                <CardHeader className="text-center pt-10 pb-6 bg-muted/10">
+                  <CardTitle className="text-3xl font-bold mb-2">
+                    {isEMRRequest ? "Request EMR Integration" : "Contact Us"}
+                  </CardTitle>
+                  <CardDescription className="text-lg">
+                    {isEMRRequest 
+                      ? "Let us know you're interested! Your input directly influences our development priorities."
+                      : "Fill out the form below and we'll get back to you within 24 hours."}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-8 sm:p-10">
+                  {isSubmitted ? (
+                    <div className="text-center py-16">
+                      <div className="h-20 w-20 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-8">
+                        <CheckCircle2 className="h-10 w-10 text-success" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">
+                        Thank You!
+                      </h3>
+                      <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
+                        We&apos;ve received your request and will be in touch within
+                        24 hours.
+                      </p>
+                      <Button asChild size="lg" className="px-8">
+                        <Link href="/">Return to Home</Link>
+                      </Button>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">
-                      Thank You!
-                    </h3>
-                    <p className="text-muted-foreground mb-6">
-                      We&apos;ve received your request and will be in touch within
-                      24 hours.
-                    </p>
-                    <Button asChild>
-                      <Link href="/">Return to Home</Link>
-                    </Button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First Name *</Label>
+                          <Input
+                            id="firstName"
+                            name="firstName"
+                            required
+                            value={formState.firstName}
+                            onChange={handleChange}
+                            placeholder="John"
+                            className="h-12"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last Name *</Label>
+                          <Input
+                            id="lastName"
+                            name="lastName"
+                            required
+                            value={formState.lastName}
+                            onChange={handleChange}
+                            placeholder="Doe"
+                            className="h-12"
+                          />
+                        </div>
+                      </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name *</Label>
+                        <Label htmlFor="email">Work Email *</Label>
                         <Input
-                          id="firstName"
-                          name="firstName"
+                          id="email"
+                          name="email"
+                          type="email"
                           required
-                          value={formState.firstName}
+                          value={formState.email}
                           onChange={handleChange}
-                          placeholder="John"
+                          placeholder="john.doe@practice.com"
+                          className="h-12"
                         />
                       </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name *</Label>
+                        <Label htmlFor="phone">Phone Number</Label>
                         <Input
-                          id="lastName"
-                          name="lastName"
-                          required
-                          value={formState.lastName}
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formState.phone}
                           onChange={handleChange}
-                          placeholder="Doe"
+                          placeholder="(555) 123-4567"
+                          className="h-12"
                         />
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Work Email *</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formState.email}
-                        onChange={handleChange}
-                        placeholder="john.doe@practice.com"
-                      />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="company">Practice/Organization Name *</Label>
+                        <Input
+                          id="company"
+                          name="company"
+                          required
+                          value={formState.company}
+                          onChange={handleChange}
+                          placeholder="ABC Medical Practice"
+                          className="h-12"
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formState.phone}
-                        onChange={handleChange}
-                        placeholder="(555) 123-4567"
-                      />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="currentEMR" className={isEMRRequest ? "text-primary font-bold" : ""}>
+                          {isEMRRequest ? "Which EMR integration are you interested in? *" : "What EMR do you currently use? *"}
+                        </Label>
+                        <Input
+                          id="currentEMR"
+                          name="currentEMR"
+                          required
+                          value={formState.currentEMR}
+                          onChange={handleChange}
+                          placeholder="e.g., Epic, Charm, Athena, eClinicalWorks..."
+                          className={cn("h-12", isEMRRequest ? "border-primary/50 focus:border-primary ring-primary/20" : "")}
+                        />
+                        {isEMRRequest && (
+                          <p className="text-sm text-muted-foreground">
+                            This helps us prioritize which EMR integrations to build next.
+                          </p>
+                        )}
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Practice/Organization Name *</Label>
-                      <Input
-                        id="company"
-                        name="company"
-                        required
-                        value={formState.company}
-                        onChange={handleChange}
-                        placeholder="ABC Medical Practice"
-                      />
-                    </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="practiceSize">Practice Size *</Label>
+                          <Select
+                            value={formState.practiceSize}
+                            onValueChange={(value) =>
+                              setFormState((prev) => ({
+                                ...prev,
+                                practiceSize: value,
+                              }))
+                            }
+                          >
+                            <SelectTrigger className="h-12">
+                              <SelectValue placeholder="Select size" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="solo">Solo Provider</SelectItem>
+                              <SelectItem value="small">2-5 Providers</SelectItem>
+                              <SelectItem value="medium">6-20 Providers</SelectItem>
+                              <SelectItem value="large">21-50 Providers</SelectItem>
+                              <SelectItem value="enterprise">50+ Providers</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="inquiryType">Inquiry Type *</Label>
+                          <Select
+                            value={formState.inquiryType}
+                            onValueChange={(value) =>
+                              setFormState((prev) => ({
+                                ...prev,
+                                inquiryType: value,
+                              }))
+                            }
+                          >
+                            <SelectTrigger className="h-12">
+                              <SelectValue placeholder="Select type" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="general">General Inquiry</SelectItem>
+                              <SelectItem value="pricing">Pricing Question</SelectItem>
+                              <SelectItem value="emr">EMR Integration</SelectItem>
+                              <SelectItem value="support">Technical Support</SelectItem>
+                              <SelectItem value="partnership">Partnership</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="currentEMR" className={isEMRRequest ? "text-primary font-semibold" : ""}>
-                        {isEMRRequest ? "Which EMR integration are you interested in? *" : "What EMR do you currently use? *"}
-                      </Label>
-                      <Input
-                        id="currentEMR"
-                        name="currentEMR"
-                        required
-                        value={formState.currentEMR}
-                        onChange={handleChange}
-                        placeholder="e.g., Epic, Charm, Athena, eClinicalWorks..."
-                        className={isEMRRequest ? "border-primary/50 focus:border-primary" : ""}
-                      />
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          value={formState.message}
+                          onChange={handleChange}
+                          placeholder="Tell us about your practice and what you're looking for..."
+                          rows={5}
+                          className="resize-none"
+                        />
+                      </div>
+
                       {isEMRRequest && (
-                        <p className="text-xs text-muted-foreground">
-                          This helps us prioritize which EMR integrations to build next.
-                        </p>
+                        <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 text-center">
+                          <p className="text-base font-bold text-foreground mb-2">
+                            🗳️ Every submission counts!
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            We review all requests and prioritize integrations based on demand. 
+                            The more interest we see, the faster we&apos;ll build it.
+                          </p>
+                        </div>
                       )}
-                    </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="practiceSize">Practice Size *</Label>
-                        <Select
-                          value={formState.practiceSize}
-                          onValueChange={(value) =>
-                            setFormState((prev) => ({
-                              ...prev,
-                              practiceSize: value,
-                            }))
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select size" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="solo">Solo Provider</SelectItem>
-                            <SelectItem value="small">2-5 Providers</SelectItem>
-                            <SelectItem value="medium">6-20 Providers</SelectItem>
-                            <SelectItem value="large">21-50 Providers</SelectItem>
-                            <SelectItem value="enterprise">50+ Providers</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="inquiryType">Inquiry Type *</Label>
-                        <Select
-                          value={formState.inquiryType}
-                          onValueChange={(value) =>
-                            setFormState((prev) => ({
-                              ...prev,
-                              inquiryType: value,
-                            }))
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="general">General Inquiry</SelectItem>
-                            <SelectItem value="pricing">Pricing Question</SelectItem>
-                            <SelectItem value="emr">EMR Integration</SelectItem>
-                            <SelectItem value="support">Technical Support</SelectItem>
-                            <SelectItem value="partnership">Partnership</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
+                      <Button
+                        type="submit"
+                        className="w-full text-lg h-14"
+                        size="lg"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Submitting..." : isEMRRequest ? "Submit Interest" : "Send Message"}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formState.message}
-                        onChange={handleChange}
-                        placeholder="Tell us about your practice and what you're looking for..."
-                        rows={4}
-                      />
-                    </div>
-
-                    {isEMRRequest && (
-                      <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center">
-                        <p className="text-sm font-medium text-foreground mb-1">
-                          🗳️ Every submission counts!
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          We review all requests and prioritize integrations based on demand. 
-                          The more interest we see, the faster we&apos;ll build it.
-                        </p>
-                      </div>
-                    )}
-
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      size="lg"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Submitting..." : isEMRRequest ? "Submit Interest" : "Send Message"}
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-
-                    <p className="text-xs text-muted-foreground text-center">
-                      By submitting this form, you agree to our{" "}
-                      <Link href="/privacy" className="underline hover:text-foreground">
-                        Privacy Policy
-                      </Link>
-                      .
-                    </p>
-                  </form>
-                )}
-              </CardContent>
-            </Card>
+                      <p className="text-xs text-muted-foreground text-center">
+                        By submitting this form, you agree to our{" "}
+                        <Link href="/privacy" className="underline hover:text-foreground">
+                          Privacy Policy
+                        </Link>
+                        .
+                      </p>
+                    </form>
+                  )}
+                </CardContent>
+              </Card>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Quick Start CTA */}
-      <section className="py-12 sm:py-16">
+      <section className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Start your free trial today. No credit card required.
-            </p>
-            <Button size="lg" asChild className="text-lg px-8 py-6">
-              <Link href="/get-started">
-                Start Free Trial
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
+                Ready to Get Started?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-10">
+                Start your free trial today. No credit card required.
+              </p>
+              <Button size="lg" asChild className="text-lg px-12 py-8 shadow-lg transition-all hover:scale-105">
+                <Link href="/get-started">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </FadeIn>
           </div>
         </div>
       </section>

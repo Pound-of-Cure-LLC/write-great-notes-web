@@ -43,6 +43,10 @@ const emrConfig: Record<string, { name: string; description: string }> = {
     name: "DrChrono",
     description: "All-in-one EHR, practice management, and medical billing.",
   },
+  "advancedmd": {
+    name: "AdvancedMD",
+    description: "Unified practice management, EHR, and patient engagement software.",
+  },
   "greenway": {
     name: "Greenway Health",
     description: "Integrated EHR and practice management solutions.",
@@ -183,7 +187,7 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
                   </div>
                 </div>
                 <Button size="lg" asChild className="w-full text-lg py-6">
-                  <Link href={`/contact?emr=${encodeURIComponent(emr.name)}&type=emr`}>
+                  <Link href={`/contact?emr=${encodeURIComponent(emr.name)}&type=emr#contact-form`}>
                     Express Interest
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -236,19 +240,14 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
               Can&apos;t Wait?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Write Great Notes works great in standalone mode too! You can use it today and 
-              copy notes to {emr.name} manually until the integration launches.
+              Write Great Notes is designed to make copying and pasting effortless. 
+              You can still save hours every day by using our standalone mode until the integration launches.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" asChild className="text-lg px-8 py-6">
                 <Link href="https://app.writegreatnotes.ai/signup">
                   Try Standalone Mode
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="text-lg px-8 py-6">
-                <Link href="/integrations/charm-health">
-                  See Charm Health Integration
                 </Link>
               </Button>
             </div>
@@ -258,4 +257,3 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
     </div>
   );
 }
-

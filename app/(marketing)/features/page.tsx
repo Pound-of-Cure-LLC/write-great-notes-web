@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import {
   Mic,
   FileText,
-  Zap,
   Shield,
   Clock,
   Stethoscope,
@@ -23,6 +22,7 @@ import {
   FileEdit,
   Send,
 } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 
 export const metadata: Metadata = {
   title: "AI Medical Scribe Features - Real-Time Transcription & EMR Integration",
@@ -177,30 +177,35 @@ const securityFeatures = [
 
 export default function FeaturesPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="secondary" className="mb-4">
-              Features
-            </Badge>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Everything You Need for Clinical Documentation
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Write Great Notes combines real-time transcription, AI-powered
-              note generation, and seamless EMR integration into one powerful
-              platform.
-            </p>
+            <FadeIn>
+              <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-primary/20">
+                Features
+              </Badge>
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl leading-tight mb-8">
+                Everything You Need for Clinical Documentation
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Write Great Notes combines real-time transcription, AI-powered
+                note generation, and seamless EMR integration into one powerful
+                platform.
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Core Features */}
-      <section className="py-12 sm:py-16">
+      <section className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-12">
+          <div className="space-y-24">
             {coreFeatures.map((feature, index) => (
               <div
                 key={feature.title}
@@ -208,49 +213,52 @@ export default function FeaturesPage() {
                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="h-14 w-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="h-7 w-7 text-primary" />
+                <FadeIn direction={index % 2 === 1 ? "left" : "right"} className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  <div className="flex items-start gap-6 mb-6">
+                    <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <feature.icon className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <h2 className="text-3xl font-bold">{feature.title}</h2>
+                      <h2 className="text-3xl sm:text-4xl font-bold">{feature.title}</h2>
                     </div>
                   </div>
-                  <p className="text-lg text-muted-foreground mb-6">
+                  <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                     {feature.description}
                   </p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {feature.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-start">
-                        <CheckCircle2 className="h-5 w-5 text-success mr-3 mt-0.5 flex-shrink-0" />
-                        <span>{benefit}</span>
+                      <li key={benefit} className="flex items-start group">
+                        <CheckCircle2 className="h-6 w-6 text-success mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                        <span className="text-lg">{benefit}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                </FadeIn>
+                
+                <FadeIn direction={index % 2 === 1 ? "right" : "left"} className={index % 2 === 1 ? "lg:order-1" : ""}>
                   {feature.screenshot ? (
-                    <div className="aspect-video rounded-xl overflow-hidden border border-border shadow-lg">
+                    <div className="aspect-video rounded-2xl overflow-hidden border border-border shadow-2xl hover:shadow-3xl transition-shadow duration-500 bg-card">
                       <Image
                         src={feature.screenshot}
                         alt={`${feature.title} screenshot`}
                         width={800}
                         height={450}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-top transform hover:scale-105 transition-transform duration-700"
                       />
                     </div>
                   ) : (
-                    <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/10 to-uranian-blue/10 border border-primary/20 flex items-center justify-center">
+                    <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/5 to-uranian-blue/10 border border-primary/10 flex items-center justify-center shadow-xl">
                       <div className="text-center p-8">
-                        <feature.icon className="h-16 w-16 text-primary/30 mx-auto mb-4" />
-                        <p className="text-muted-foreground text-sm">
-                          {feature.title}
+                        <div className="h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                          <feature.icon className="h-12 w-12 text-primary/40" />
+                        </div>
+                        <p className="text-muted-foreground font-medium">
+                          {feature.title} Interface
                         </p>
                       </div>
                     </div>
                   )}
-                </div>
+                </FadeIn>
               </div>
             ))}
           </div>
@@ -258,151 +266,195 @@ export default function FeaturesPage() {
       </section>
 
       {/* Faxing Feature Highlight */}
-      <section className="py-16 sm:py-24 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
+      <section className="py-24 sm:py-32 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <div className="text-center mb-12">
-              <Badge variant="secondary" className="mb-4 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">
-                Included in Every Plan
-              </Badge>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Integrated Faxing System
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Faxing is a critical part of medical workflows. WriteGreatNotes.ai makes it 
-                automatic, affordable, and fully integrated with the clinical note creation process.
-              </p>
-            </div>
+            <FadeIn>
+              <div className="text-center mb-16">
+                <Badge variant="secondary" className="mb-6 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 border-amber-200 px-4 py-2 text-sm font-medium">
+                  Included in Every Plan
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-6">
+                  Integrated Faxing System
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Faxing is a critical part of medical workflows. WriteGreatNotes.ai makes it 
+                  automatic, affordable, and fully integrated with the clinical note creation process.
+                </p>
+              </div>
+            </FadeIn>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="border-amber-200 dark:border-amber-800">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">Faxing Included</h3>
-                  <p className="text-muted-foreground text-sm mb-3">
-                    Each plan includes a monthly allowance of faxes to send notes 
-                    directly to referring physicians and care partners.
-                  </p>
-                  <ul className="text-sm space-y-1">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-success" />
-                      Essential: 400 faxes/month
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-success" />
-                      Pro: 600 faxes/month
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <StaggerItem>
+                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
+                  <CardContent className="p-8">
+                    <h3 className="font-bold text-xl mb-3 text-foreground">Faxing Included</h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      Each plan includes a monthly allowance of faxes to send notes 
+                      directly to referring physicians and care partners.
+                    </p>
+                    <ul className="space-y-2 text-sm font-medium">
+                      <li className="flex items-center gap-3">
+                        <CheckCircle2 className="h-5 w-5 text-success" />
+                        Essential: 400 faxes/month
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <CheckCircle2 className="h-5 w-5 text-success" />
+                        Pro: 600 faxes/month
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
 
-              <Card className="border-amber-200 dark:border-amber-800">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">Low-Cost Additional Faxes</h3>
-                  <p className="text-muted-foreground text-sm mb-3">
-                    Need more? Additional faxes are affordable and available on-demand.
-                  </p>
-                  <ul className="text-sm space-y-1">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-success" />
-                      Additional faxes: $0.10 each
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+              <StaggerItem>
+                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
+                  <CardContent className="p-8">
+                    <h3 className="font-bold text-xl mb-3 text-foreground">Low-Cost Additional Faxes</h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      Need more? Additional faxes are affordable and available on-demand.
+                    </p>
+                    <ul className="space-y-2 text-sm font-medium">
+                      <li className="flex items-center gap-3">
+                        <CheckCircle2 className="h-5 w-5 text-success" />
+                        Additional faxes: $0.10 each
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
 
-              <Card className="border-amber-200 dark:border-amber-800">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">Automatic Delivery</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Notes can be faxed automatically as soon as they&apos;re generated. 
-                    No extra steps, no manual sending—just seamless delivery to care partners.
-                  </p>
-                </CardContent>
-              </Card>
+              <StaggerItem>
+                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
+                  <CardContent className="p-8">
+                    <h3 className="font-bold text-xl mb-3 text-foreground">Automatic Delivery</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Notes can be faxed automatically as soon as they&apos;re generated. 
+                      No extra steps, no manual sending—just seamless delivery to care partners.
+                    </p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
 
-              <Card className="border-amber-200 dark:border-amber-800">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">HIPAA-Compliant</h3>
-                  <p className="text-muted-foreground text-sm">
-                    All fax transmissions use encrypted, HIPAA-compliant channels with 
-                    complete audit trails for compliance and record-keeping.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+              <StaggerItem>
+                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
+                  <CardContent className="p-8">
+                    <h3 className="font-bold text-xl mb-3 text-foreground">HIPAA-Compliant</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      All fax transmissions use encrypted, HIPAA-compliant channels with 
+                      complete audit trails for compliance and record-keeping.
+                    </p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
+            </StaggerContainer>
 
-            <div className="mt-8 text-center">
-              <Link href="/pricing" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
-                View pricing details
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <FadeIn delay={0.4}>
+              <div className="mt-12 text-center">
+                <Link href="/pricing" className="text-primary font-bold text-lg hover:underline inline-flex items-center gap-2">
+                  View pricing details
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Additional Features Grid */}
-      <section className="py-12 sm:py-16 bg-muted/30">
+      <section className="py-20 sm:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-10">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              And Much More
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Additional features designed to streamline your workflow.
-            </p>
+          <div className="mx-auto max-w-2xl text-center mb-16">
+            <FadeIn>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-6">
+                And Much More
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Additional features designed to streamline your workflow.
+              </p>
+            </FadeIn>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {additionalFeatures.map((feature) => (
-              <Card key={feature.title} className="border-0 shadow-md">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="h-5 w-5 text-primary" />
+              <StaggerItem key={feature.title}>
+                <Card className="border-0 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 h-full">
+                  <CardContent className="pt-8 p-8">
+                    <div className="flex items-start gap-5">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <feature.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Security Features */}
-      <section className="py-12 sm:py-16">
+      <section className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-10">
-            <Badge variant="secondary" className="mb-4">
-              Security
-            </Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Enterprise-Grade Security
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Built from the ground up with HIPAA compliance and data security
-              in mind.
-            </p>
+          <div className="mx-auto max-w-2xl text-center mb-16">
+            <FadeIn>
+              <Badge variant="secondary" className="mb-6 px-4 py-2 bg-success/10 text-success border-success/20">
+                Security
+              </Badge>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-6">
+                Enterprise-Grade Security
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Built from the ground up with HIPAA compliance and data security
+                in mind.
+              </p>
+            </FadeIn>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {securityFeatures.map((feature) => (
-              <Card key={feature.title} className="border-0 shadow-md">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="h-12 w-12 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="h-6 w-6 text-success" />
+              <StaggerItem key={feature.title}>
+                <Card className="border-0 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 h-full border-t-4 border-t-success/50">
+                  <CardContent className="pt-8 p-8">
+                    <div className="flex items-start gap-5">
+                      <div className="h-14 w-14 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0">
+                        <feature.icon className="h-7 w-7 text-success" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </div>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Questions CTA */}
+      <section className="py-20 sm:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <Card className="border-primary/20 bg-primary/5 shadow-lg">
+                <CardContent className="pt-12 pb-12 px-8">
+                  <h3 className="text-3xl font-bold mb-6">Questions About Features?</h3>
+                  <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+                    Want to learn more about how Write Great Notes can help your practice? Our team is ready to help.
+                  </p>
+                  <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 border-2 hover:bg-background">
+                    <Link href="/contact">
+                      Contact Us
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
                 </CardContent>
               </Card>
-            ))}
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -430,32 +482,34 @@ export default function FeaturesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-primary/5">
+      <section className="py-20 sm:py-32 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Start your free trial today and experience the future of clinical
-              documentation.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" asChild className="text-lg px-8 py-6">
-                <Link href="/get-started">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="text-lg px-8 py-6"
-              >
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeIn>
+              <h2 className="text-4xl font-bold tracking-tight sm:text-5xl mb-8">
+                Ready to Get Started?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-12">
+                Start your free trial today and experience the future of clinical
+                documentation.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Button size="lg" asChild className="text-lg px-12 py-8 shadow-xl transition-all hover:scale-105">
+                  <Link href="/get-started">
+                    Start Free Trial
+                    <ArrowRight className="ml-2 h-6 w-6" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="text-lg px-12 py-8 border-2 bg-background/50 backdrop-blur-sm"
+                >
+                  <Link href="/contact">Contact Us</Link>
+                </Button>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>

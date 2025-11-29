@@ -23,6 +23,7 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 
 const benefits = [
   {
@@ -130,8 +131,10 @@ export default function GetStartedPage() {
       if (formState.practiceName) {
         signupUrl.searchParams.set("practice", formState.practiceName);
       }
-      if (data.leadId) {
-        signupUrl.searchParams.set("lead_id", data.leadId);
+      // Check for both camelCase (legacy) and snake_case (new API)
+      const leadId = data.leadId || data.lead_id;
+      if (leadId) {
+        signupUrl.searchParams.set("lead_id", leadId);
       }
       
       window.location.href = signupUrl.toString();
@@ -149,35 +152,39 @@ export default function GetStartedPage() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30 relative">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Left side - Form */}
-              <div>
-                <Badge variant="secondary" className="mb-4">
-                  <Sparkles className="h-3 w-3 mr-1" />
-                  7-Day Free Trial
-                </Badge>
-                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-                  Start Writing Great Notes Today
-                </h1>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Join thousands of healthcare providers saving hours on documentation. 
-                  No credit card required.
-                </p>
+              <FadeIn direction="right" className="lg:sticky lg:top-24">
+                <div className="mb-8">
+                  <Badge variant="secondary" className="mb-4 px-4 py-2 bg-primary/10 text-primary border-primary/20">
+                    <Sparkles className="h-4 w-4 mr-2 fill-current" />
+                    7-Day Free Trial
+                  </Badge>
+                  <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 leading-tight">
+                    Start Writing Great Notes Today
+                  </h1>
+                  <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
+                    Join thousands of healthcare providers saving hours on documentation. 
+                    No credit card required.
+                  </p>
+                </div>
 
-                <Card className="border-0 shadow-xl">
-                  <CardHeader className="pb-4">
-                    <CardTitle className="text-xl">Create Your Free Account</CardTitle>
-                    <CardDescription>
+                <Card className="border-0 shadow-2xl overflow-hidden ring-1 ring-primary/10">
+                  <CardHeader className="pb-6 pt-8 px-8 bg-muted/10 border-b">
+                    <CardTitle className="text-2xl font-bold">Create Your Free Account</CardTitle>
+                    <CardDescription className="text-base">
                       Fill in your details to get started with your free trial.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                  <CardContent className="p-8">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="firstName">First Name *</Label>
@@ -188,6 +195,7 @@ export default function GetStartedPage() {
                             value={formState.firstName}
                             onChange={handleChange}
                             placeholder="John"
+                            className="h-11"
                           />
                         </div>
                         <div className="space-y-2">
@@ -199,6 +207,7 @@ export default function GetStartedPage() {
                             value={formState.lastName}
                             onChange={handleChange}
                             placeholder="Doe"
+                            className="h-11"
                           />
                         </div>
                       </div>
@@ -213,6 +222,7 @@ export default function GetStartedPage() {
                           value={formState.email}
                           onChange={handleChange}
                           placeholder="john.doe@practice.com"
+                          className="h-11"
                         />
                       </div>
 
@@ -224,6 +234,7 @@ export default function GetStartedPage() {
                           value={formState.practiceName}
                           onChange={handleChange}
                           placeholder="ABC Medical Practice"
+                          className="h-11"
                         />
                       </div>
 
@@ -239,7 +250,7 @@ export default function GetStartedPage() {
                               }))
                             }
                           >
-                            <SelectTrigger>
+                            <SelectTrigger className="h-11">
                               <SelectValue placeholder="Select size" />
                             </SelectTrigger>
                             <SelectContent>
@@ -264,7 +275,7 @@ export default function GetStartedPage() {
                               }))
                             }
                           >
-                            <SelectTrigger>
+                            <SelectTrigger className="h-11">
                               <SelectValue placeholder="Select EMR" />
                             </SelectTrigger>
                             <SelectContent>
@@ -289,19 +300,20 @@ export default function GetStartedPage() {
                             value={formState.otherEMR}
                             onChange={handleChange}
                             placeholder="Enter your EMR name"
+                            className="h-11"
                           />
                         </div>
                       )}
 
                       {error && (
-                        <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-lg">
+                        <div className="text-sm text-destructive bg-destructive/10 p-4 rounded-lg font-medium">
                           {error}
                         </div>
                       )}
 
                       <Button
                         type="submit"
-                        className="w-full"
+                        className="w-full h-14 text-lg shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
                         size="lg"
                         disabled={
                           isSubmitting || 
@@ -311,7 +323,7 @@ export default function GetStartedPage() {
                         }
                       >
                         {isSubmitting ? "Starting Your Trial..." : "Start Free Trial"}
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        <ArrowRight className="ml-2 h-6 w-6" />
                       </Button>
 
                       <p className="text-xs text-muted-foreground text-center">
@@ -329,50 +341,74 @@ export default function GetStartedPage() {
                   </CardContent>
                 </Card>
 
-                <p className="mt-4 text-sm text-muted-foreground text-center">
+                <p className="mt-6 text-center text-muted-foreground">
                   Already have an account?{" "}
-                  <Link href="https://app.writegreatnotes.ai/login" className="text-primary hover:underline font-medium">
+                  <Link href="https://app.writegreatnotes.ai/login" className="text-primary hover:underline font-bold text-lg">
                     Sign in
                   </Link>
                 </p>
-              </div>
+              </FadeIn>
 
               {/* Right side - Benefits */}
-              <div className="hidden lg:block">
-                <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
-                  <h2 className="text-2xl font-bold mb-6">What You&apos;ll Get</h2>
-                  <div className="space-y-6">
-                    {benefits.map((benefit) => (
-                      <div key={benefit.title} className="flex items-start gap-4">
-                        <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <benefit.icon className="h-5 w-5 text-primary" />
+              <div className="hidden lg:block pt-10">
+                <FadeIn direction="left" delay={0.2}>
+                  <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-10 border shadow-lg sticky top-24">
+                    <h2 className="text-2xl font-bold mb-8">What You&apos;ll Get</h2>
+                    <div className="space-y-8">
+                      {benefits.map((benefit) => (
+                        <div key={benefit.title} className="flex items-start gap-5">
+                          <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <benefit.icon className="h-6 w-6 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg mb-1">{benefit.title}</h3>
+                            <p className="text-muted-foreground">{benefit.description}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="font-semibold">{benefit.title}</h3>
-                          <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 pt-8 border-t border-primary/10">
-                    <h3 className="font-semibold mb-4">Included in Your Free Trial:</h3>
-                    <ul className="space-y-2">
-                      {[
-                        "Unlimited transcriptions",
-                        "Unlimited note generation",
-                        "Custom note templates",
-                        "EMR integration (Charm Health)",
-                        "Full feature access",
-                      ].map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm">
-                          <CheckCircle2 className="h-4 w-4 text-success" />
-                          {item}
-                        </li>
                       ))}
-                    </ul>
+                    </div>
+
+                    <div className="mt-10 pt-10 border-t border-border">
+                      <h3 className="font-bold text-lg mb-6">Included in Your Free Trial:</h3>
+                      <ul className="space-y-4">
+                        {[
+                          "Unlimited transcriptions",
+                          "Unlimited note generation",
+                          "Custom note templates",
+                          "EMR integration (Charm Health)",
+                          "Full feature access",
+                        ].map((item) => (
+                          <li key={item} className="flex items-center gap-3">
+                            <div className="h-6 w-6 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0">
+                              <CheckCircle2 className="h-4 w-4 text-success" />
+                            </div>
+                            <span className="font-medium">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="mt-10 pt-8 border-t border-border">
+                       <div className="flex items-center gap-4">
+                         <div className="flex -space-x-3">
+                           {[1, 2, 3, 4].map((i) => (
+                             <div key={i} className="h-10 w-10 rounded-full border-2 border-background bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground overflow-hidden">
+                               <div className={`w-full h-full bg-gradient-to-br from-primary/${20 + i * 10} to-primary/${40 + i * 10}`} />
+                             </div>
+                           ))}
+                         </div>
+                         <div className="text-sm">
+                           <p className="font-bold">Trusted by 1,000+ providers</p>
+                           <div className="flex text-amber-500">
+                             {[1, 2, 3, 4, 5].map((i) => (
+                               <span key={i}>★</span>
+                             ))}
+                           </div>
+                         </div>
+                       </div>
+                    </div>
                   </div>
-                </div>
+                </FadeIn>
               </div>
             </div>
           </div>
@@ -380,18 +416,20 @@ export default function GetStartedPage() {
       </section>
 
       {/* Mobile Benefits - Only shown on mobile */}
-      <section className="py-12 bg-muted/30 lg:hidden">
+      <section className="py-16 bg-muted/30 lg:hidden">
         <div className="container mx-auto px-4">
-          <h2 className="text-xl font-bold mb-6 text-center">What You&apos;ll Get</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <h2 className="text-2xl font-bold mb-8 text-center">What You&apos;ll Get</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="bg-card rounded-lg p-4 border text-center">
-                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2">
-                  <benefit.icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="font-semibold text-sm">{benefit.title}</h3>
-                <p className="text-xs text-muted-foreground">{benefit.description}</p>
-              </div>
+              <Card key={benefit.title} className="border-0 shadow-sm">
+                <CardContent className="p-6 text-center">
+                  <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <benefit.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-bold mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -400,22 +438,22 @@ export default function GetStartedPage() {
       {/* Trust Section */}
       <section className="py-12 bg-card border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center items-center gap-8 text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5" />
-              <span className="text-sm font-medium">HIPAA Compliant</span>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 text-muted-foreground">
+            <div className="flex items-center gap-3">
+              <Shield className="h-6 w-6 text-success/80" />
+              <span className="font-medium">HIPAA Compliant</span>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5" />
-              <span className="text-sm font-medium">No Credit Card Required</span>
+            <div className="flex items-center gap-3">
+              <CheckCircle2 className="h-6 w-6 text-success/80" />
+              <span className="font-medium">No Credit Card Required</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-5 w-5" />
-              <span className="text-sm font-medium">7-Day Free Trial</span>
+            <div className="flex items-center gap-3">
+              <Clock className="h-6 w-6 text-success/80" />
+              <span className="font-medium">7-Day Free Trial</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Zap className="h-5 w-5" />
-              <span className="text-sm font-medium">Setup in 5 Minutes</span>
+            <div className="flex items-center gap-3">
+              <Zap className="h-6 w-6 text-success/80" />
+              <span className="font-medium">Setup in 5 Minutes</span>
             </div>
           </div>
         </div>
@@ -423,4 +461,3 @@ export default function GetStartedPage() {
     </div>
   );
 }
-
