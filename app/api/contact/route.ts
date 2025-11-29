@@ -53,48 +53,16 @@ export async function POST(request: NextRequest) {
       console.log("Supabase not configured, skipping database save");
     }
 
-    // Build email content
-    const emailSubject = source 
-      ? `[${source}] New Lead from ${firstName} ${lastName}`
-      : `New Lead from ${firstName} ${lastName}`;
-
-    const emailBody = `
-New Lead Submission
-============================
-
-Name: ${firstName} ${lastName}
-Email: ${email}
-Phone: ${phone || "Not provided"}
-Practice/Organization: ${practiceName || company || "Not specified"}
-Practice Size: ${practiceSize || "Not specified"}
-Current EMR: ${currentEMR || "Not specified"}
-Inquiry Type: ${inquiryType || "Not specified"}
-Source: ${source || "Website"}
-
-Message:
-${message || "No message provided"}
-
----
-Submitted at: ${new Date().toISOString()}
-    `.trim();
-
     // Log the submission
     console.log("Lead submission:", {
-      to: "matthew.weiner@poundofcureweightloss.com",
-      subject: emailSubject,
       email,
+      name: `${firstName} ${lastName}`,
       source,
     });
 
     return NextResponse.json({
       success: true,
       message: "Form submitted successfully",
-      // Return mailto data for client-side fallback
-      mailto: {
-        to: "matthew.weiner@poundofcureweightloss.com",
-        subject: encodeURIComponent(emailSubject),
-        body: encodeURIComponent(emailBody),
-      },
     });
   } catch (error) {
     console.error("Contact form error:", error);
