@@ -95,12 +95,21 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
     setError(null);
 
     try {
-      // Save lead to database
-      const response = await fetch("/api/contact", {
+      // Submit directly to external API
+      const response = await fetch("https://api.writegreatnotes.ai/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formState,
+          first_name: formState.firstName,
+          last_name: formState.lastName,
+          email: formState.email,
+          phone: formState.phone || null,
+          company: formState.company || null,
+          practice_name: formState.company || null,
+          practice_size: formState.practiceSize || null,
+          current_emr: formState.currentEMR || null,
+          inquiry_type: formState.inquiryType || null,
+          message: formState.message || null,
           source: "Main Contact Form",
         }),
       });

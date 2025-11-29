@@ -110,14 +110,20 @@ export default function GetStartedPage() {
     });
 
     try {
-      // Save lead to database and get the lead ID
-      const response = await fetch("/api/contact", {
+      // Submit directly to external API and get the lead ID
+      const response = await fetch("https://api.writegreatnotes.ai/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formState,
-          currentEMR: emrValue,
-          inquiryType: "signup",
+          first_name: formState.firstName,
+          last_name: formState.lastName,
+          email: formState.email,
+          phone: null,
+          practice_name: formState.practiceName || null,
+          practice_size: formState.practiceSize || null,
+          current_emr: emrValue || null,
+          inquiry_type: "signup",
+          message: null,
           source: "Get Started Form",
         }),
       });
