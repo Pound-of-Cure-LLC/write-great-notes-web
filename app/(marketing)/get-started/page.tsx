@@ -91,7 +91,7 @@ export default function GetStartedPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
@@ -107,6 +107,18 @@ export default function GetStartedPage() {
       practice_size: formState.practiceSize,
       current_emr: emrValue,
     });
+
+    // Save lead to database (fire and forget - don't block redirect)
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...formState,
+        currentEMR: emrValue,
+        inquiryType: "signup",
+        source: "Get Started Form",
+      }),
+    }).catch((err) => console.error("Failed to save lead:", err));
 
     // Redirect to signup page with email pre-filled
     const signupUrl = new URL("https://app.writegreatnotes.ai/signup");

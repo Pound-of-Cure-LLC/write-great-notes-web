@@ -27,25 +27,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save lead to Supabase
-    const { error: dbError } = await getSupabase()
-      .from("marketing_leads")
-      .insert({
-        first_name: firstName,
-        last_name: lastName,
-        email,
-        phone: phone || null,
-        practice_name: practiceName || company || null,
-        practice_size: practiceSize || null,
-        current_emr: currentEMR || null,
-        inquiry_type: inquiryType || null,
-        message: message || null,
-        source: source || "Website",
-      });
+    // Save lead to Supabase (if configured)
+    const supabase = getSupabase();
+    if (supabase) {
+      const { error: dbError } = await supabase
+        .from("marketing_leads")
+        .insert({
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          phone: phone || null,
+          practice_name: practiceName || company || null,
+          practice_size: practiceSize || null,
+          current_emr: currentEMR || null,
+          inquiry_type: inquiryType || null,
+          message: message || null,
+          source: source || "Website",
+        });
 
-    if (dbError) {
-      console.error("Supabase error:", dbError);
-      // Don't fail the request if DB save fails - still process the lead
+      if (dbError) {
+        console.error("Supabase error:", dbError);
+        // Don't fail the request if DB save fails - still process the lead
+      }
+    } else {
+      console.log("Supabase not configured, skipping database save");
     }
 
     // Build email content
