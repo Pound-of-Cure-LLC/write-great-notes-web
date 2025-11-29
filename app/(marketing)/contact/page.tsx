@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -114,6 +115,13 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
           "_blank"
         );
       }
+
+      // Track conversion in Google Analytics
+      sendGAEvent("event", "generate_lead", {
+        source: "Contact Form",
+        inquiry_type: formState.inquiryType,
+        practice_size: formState.practiceSize,
+      });
 
       setIsSubmitted(true);
     } catch (err) {

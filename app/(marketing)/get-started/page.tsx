@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -117,6 +118,13 @@ export default function GetStartedPage() {
         const data = await response.json();
         throw new Error(data.error || "Failed to submit form");
       }
+
+      // Track conversion in Google Analytics
+      sendGAEvent("event", "sign_up", {
+        method: "Get Started Form",
+        practice_size: formState.practiceSize,
+        current_emr: emrValue,
+      });
 
       // Redirect to signup page with email pre-filled
       const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
