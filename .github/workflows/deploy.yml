@@ -75,4 +75,4 @@ jobs:
             --cpu=1 \
             --timeout=60 \
             --concurrency=80 \
-            --set-env-vars="NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }},NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}"
+            --set-env-vars="SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }},SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}"
