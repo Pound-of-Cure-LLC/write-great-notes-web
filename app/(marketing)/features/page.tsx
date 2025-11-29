@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Mic,
@@ -58,6 +59,7 @@ const coreFeatures = [
       "Auto-save during recording sessions",
       "Support for multiple languages",
     ],
+    screenshot: null, // Recording interface screenshot needed
   },
   {
     icon: Brain,
@@ -70,6 +72,7 @@ const coreFeatures = [
       "Real-time status updates",
       "Accurate medical terminology",
     ],
+    screenshot: null, // Note generation screenshot needed (with PHI redacted)
   },
   {
     icon: FileEdit,
@@ -82,6 +85,7 @@ const coreFeatures = [
       "AI-powered section import",
       "Per-visit-type instructions",
     ],
+    screenshot: "/images/screenshots/template-sections-followup.png",
   },
   {
     icon: Stethoscope,
@@ -90,10 +94,11 @@ const coreFeatures = [
       "Works standalone or integrates with your existing EMR. Push notes directly to patient charts.",
     benefits: [
       "Charm EMR integration",
-      "Epic FHIR support",
+      "AdvancedMD integration",
       "Athena Health ready",
       "Standalone mode available",
     ],
+    screenshot: "/images/screenshots/emr-integration-charm.png",
   },
   {
     icon: Send,
@@ -106,6 +111,7 @@ const coreFeatures = [
       "Additional faxes just $0.10 each",
       "HIPAA-compliant with full audit trails",
     ],
+    screenshot: null, // Faxing interface screenshot needed
   },
 ];
 
@@ -163,9 +169,9 @@ const securityFeatures = [
   },
   {
     icon: Users,
-    title: "Row-Level Security",
+    title: "Industry-Standard Privacy",
     description:
-      "Complete data isolation between organizations using PostgreSQL RLS.",
+      "Complete data isolation between organizations using industry-standard security practices.",
   },
 ];
 
@@ -224,15 +230,26 @@ export default function FeaturesPage() {
                   </ul>
                 </div>
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  {/* Placeholder for feature screenshot */}
-                  <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/10 to-uranian-blue/10 border border-primary/20 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <feature.icon className="h-16 w-16 text-primary/30 mx-auto mb-4" />
-                      <p className="text-muted-foreground">
-                        Screenshot: {feature.title}
-                      </p>
+                  {feature.screenshot ? (
+                    <div className="aspect-video rounded-xl overflow-hidden border border-border shadow-lg">
+                      <Image
+                        src={feature.screenshot}
+                        alt={`${feature.title} screenshot`}
+                        width={800}
+                        height={450}
+                        className="w-full h-full object-cover object-top"
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/10 to-uranian-blue/10 border border-primary/20 flex items-center justify-center">
+                      <div className="text-center p-8">
+                        <feature.icon className="h-16 w-16 text-primary/30 mx-auto mb-4" />
+                        <p className="text-muted-foreground text-sm">
+                          {feature.title}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -268,11 +285,11 @@ export default function FeaturesPage() {
                   <ul className="text-sm space-y-1">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-success" />
-                      Essential: 200 faxes/month
+                      Essential: 400 faxes/month
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-success" />
-                      Pro: 400 faxes/month
+                      Pro: 600 faxes/month
                     </li>
                   </ul>
                 </CardContent>
@@ -390,6 +407,28 @@ export default function FeaturesPage() {
         </div>
       </section>
 
+      {/* Questions CTA */}
+      <section className="py-12 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <Card className="border-primary/20 bg-primary/5">
+              <CardContent className="pt-8 pb-8">
+                <h3 className="text-2xl font-bold mb-4">Questions About Features?</h3>
+                <p className="text-muted-foreground mb-6">
+                  Want to learn more about how Write Great Notes can help your practice? Our team is ready to help.
+                </p>
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/contact">
+                    Contact Us
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-12 sm:py-16 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -414,7 +453,7 @@ export default function FeaturesPage() {
                 asChild
                 className="text-lg px-8 py-6"
               >
-                <Link href="/pricing">View Pricing</Link>
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>

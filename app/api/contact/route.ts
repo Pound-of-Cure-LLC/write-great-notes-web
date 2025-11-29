@@ -37,6 +37,7 @@ export async function POST(request: NextRequest) {
     // Save lead to Supabase (if configured)
     const supabase = getSupabase();
     let dbSaved = false;
+    let leadId: string | null = null;
     
     if (supabase) {
       console.log("Supabase client created, attempting insert...");
@@ -54,13 +55,15 @@ export async function POST(request: NextRequest) {
           message: message || null,
           source: source || "Website",
         })
-        .select();
+        .select("id")
+        .single();
 
       if (dbError) {
         console.error("Supabase insert error:", JSON.stringify(dbError));
       } else {
         console.log("Supabase insert success:", data);
         dbSaved = true;
+        leadId = data?.id || null;
       }
     } else {
       console.log("Supabase not configured, skipping database save");
@@ -71,12 +74,14 @@ export async function POST(request: NextRequest) {
       email,
       name: `${firstName} ${lastName}`,
       source,
+      leadId,
     });
 
     return NextResponse.json({
       success: true,
       message: "Form submitted successfully",
       dbSaved,
+      leadId,
     });
   } catch (error) {
     console.error("Contact form error:", error);

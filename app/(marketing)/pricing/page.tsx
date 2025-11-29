@@ -14,7 +14,7 @@ const plans = [
       { name: "Ambient AI medical scribe", included: true },
       { name: "400 notes per month included", included: true },
       { name: "Additional notes: $0.25 each", included: true, muted: true },
-      { name: "200 faxes per month included", included: true },
+      { name: "400 faxes per month included", included: true },
       { name: "Additional faxes: $0.10 each", included: true, muted: true },
       { name: "Works with or without EMR", included: true },
       { name: "Custom note templates", included: true },
@@ -35,7 +35,7 @@ const plans = [
       { name: "Priority support (24-hour response)", included: true },
       { name: "600 notes per month included", included: true },
       { name: "Additional notes: $0.25 each", included: true, muted: true },
-      { name: "400 faxes per month included", included: true },
+      { name: "600 faxes per month included", included: true },
       { name: "Additional faxes: $0.10 each", included: true, muted: true },
     ],
     cta: "Start Free Trial",
@@ -49,7 +49,7 @@ const comparisonFeatures = [
   { name: "EMR Integration", essential: "—", pro: true },
   { name: "Notes Included", essential: "400/mo", pro: "600/mo" },
   { name: "Additional Notes", essential: "$0.25 ea", pro: "$0.25 ea" },
-  { name: "Faxes Included", essential: "200/mo", pro: "400/mo" },
+  { name: "Faxes Included", essential: "400/mo", pro: "600/mo" },
   { name: "Additional Faxes", essential: "$0.10 ea", pro: "$0.10 ea" },
   { name: "Support Level", essential: "Standard", pro: "Priority (24h)" },
 ];
@@ -68,12 +68,12 @@ const faqs = [
   {
     question: "What EMR systems do you integrate with?",
     answer:
-      "We currently integrate with Charm EMR, with Epic and Athena integrations coming soon. Contact us for specific EMR needs.",
+      "We currently integrate with Charm EMR, with AdvancedMD and Athena integrations coming soon. Contact us for specific EMR needs.",
   },
   {
     question: "Is faxing included?",
     answer:
-      "Yes! All plans include a monthly allowance of faxes (200 for Essential, 400 for Pro), with additional faxes available at just $0.10 each.",
+      "Yes! All plans include a monthly allowance of faxes (400 for Essential, 600 for Pro), with additional faxes available at just $0.10 each.",
   },
   {
     question: "Are faxes HIPAA compliant?",
@@ -222,7 +222,7 @@ export default function PricingPage() {
                     <h3 className="font-bold text-lg mb-2">🔥 Launch Special: 6 Months Unlimited Faxing</h3>
                     <p className="text-muted-foreground text-sm">
                       Sign up now and get unlimited faxing for your first 6 months. 
-                      After that, your plan includes monthly fax credits (200 or 400 depending on plan) 
+                      After that, your plan includes monthly fax credits (400 or 600 depending on plan) 
                       with additional faxes at just $0.10 each.
                     </p>
                   </div>
@@ -328,8 +328,8 @@ export default function PricingPage() {
                     <div>
                       <h3 className="font-semibold mb-1">Monthly Allowances</h3>
                       <p className="text-sm text-muted-foreground">
-                        Essential: 200 faxes/month<br />
-                        Pro: 400 faxes/month
+                        Essential: 400 faxes/month<br />
+                        Pro: 600 faxes/month
                       </p>
                     </div>
                   </div>

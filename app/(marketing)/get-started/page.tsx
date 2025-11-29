@@ -108,27 +108,44 @@ export default function GetStartedPage() {
       current_emr: emrValue,
     });
 
-    // Save lead to database (fire and forget - don't block redirect)
-    fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...formState,
-        currentEMR: emrValue,
-        inquiryType: "signup",
-        source: "Get Started Form",
-      }),
-    }).catch((err) => console.error("Failed to save lead:", err));
+    try {
+      // Save lead to database and get the lead ID
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formState,
+          currentEMR: emrValue,
+          inquiryType: "signup",
+          source: "Get Started Form",
+        }),
+      });
 
-    // Redirect to signup page with email pre-filled
-    const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
-    signupUrl.searchParams.set("email", formState.email);
-    signupUrl.searchParams.set("name", `${formState.firstName} ${formState.lastName}`);
-    if (formState.practiceName) {
-      signupUrl.searchParams.set("practice", formState.practiceName);
+      const data = await response.json();
+
+      // Redirect to signup page with email pre-filled and lead_id for tracking
+      const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
+      signupUrl.searchParams.set("email", formState.email);
+      signupUrl.searchParams.set("name", `${formState.firstName} ${formState.lastName}`);
+      if (formState.practiceName) {
+        signupUrl.searchParams.set("practice", formState.practiceName);
+      }
+      if (data.leadId) {
+        signupUrl.searchParams.set("lead_id", data.leadId);
+      }
+      
+      window.location.href = signupUrl.toString();
+    } catch (err) {
+      console.error("Failed to save lead:", err);
+      // Still redirect even if lead save fails, just without the lead_id
+      const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
+      signupUrl.searchParams.set("email", formState.email);
+      signupUrl.searchParams.set("name", `${formState.firstName} ${formState.lastName}`);
+      if (formState.practiceName) {
+        signupUrl.searchParams.set("practice", formState.practiceName);
+      }
+      window.location.href = signupUrl.toString();
     }
-    
-    window.location.href = signupUrl.toString();
   };
 
   return (

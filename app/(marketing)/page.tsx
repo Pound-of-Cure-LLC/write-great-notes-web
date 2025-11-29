@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   FileText,
   Shield,
-  Clock,
   ArrowRight,
   CheckCircle2,
   Sparkles,
@@ -18,6 +17,8 @@ import {
   RefreshCw,
   Send,
 } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
+import { TypingEffect } from "@/components/marketing/typing-effect";
 
 export const metadata: Metadata = {
   title: "AI Medical Scribe - Ambient Clinical Documentation | Write Great Notes",
@@ -43,24 +44,6 @@ export const metadata: Metadata = {
     canonical: "https://writegreatnotes.ai",
   },
 };
-
-const oldWayProblems = [
-  {
-    icon: Copy,
-    title: "Copy-Paste Templates",
-    description: "The same generic text for every patient. \"Patient is a pleasant X-year-old...\"",
-  },
-  {
-    icon: FileText,
-    title: "Dot Phrases & SmartText",
-    description: "Pre-written paragraphs that say nothing specific about this patient's visit.",
-  },
-  {
-    icon: XCircle,
-    title: "Checkbox Medicine",
-    description: "Click, click, click. Documentation that satisfies requirements but tells no story.",
-  },
-];
 
 const newWayBenefits = [
   {
@@ -107,59 +90,75 @@ const features = [
   },
 ];
 
+const exampleHPI = "Mr. Johnson is a 45-year-old carpenter who presents with progressive right knee pain over the past 3 weeks. He reports the pain began after kneeling for extended periods while installing flooring. Pain is localized to the anterior knee, worse with stairs and prolonged sitting, rated 6/10. He has tried ibuprofen with minimal relief. He denies locking, giving way, or swelling. No prior knee injuries or surgeries.";
+const exampleAssessment = "Presentation is most consistent with patellofemoral syndrome given the anterior location, provocation with stairs and prolonged flexion, and occupational risk factors. Less likely but considered: prepatellar bursitis (no visible swelling on exam), meniscal pathology (no mechanical symptoms).";
+
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-16 sm:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-20 sm:py-32 lg:py-40">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
         
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl text-center">
             {/* Main headline */}
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-foreground mb-6">
-              You listen. You examine. You care.
-            </h1>
-            <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
-              Your notes should show it.
-            </p>
-
-            <p className="mt-8 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              EMRs destroyed the art of writing a great medical note. Our AI scribe is bringing it back.
-            </p>
-
-            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
-              <Button 
-                size="lg" 
-                asChild 
-                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 shadow-lg transition-all hover:scale-105"
-              >
-                <Link href="/get-started">
-                  Start Writing Great Notes
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7"
-              >
-                <Link href="/how-it-works">
-                  See How It Works
-                </Link>
-              </Button>
-            </div>
+            <FadeIn delay={0.1} duration={0.8}>
+              <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground mb-8 leading-tight">
+                You listen. You examine.
+                <br />
+                <span className="text-primary">You care.</span>
+              </h1>
+            </FadeIn>
             
-            <p className="mt-6 text-sm text-muted-foreground">
-              No credit card required · 7-day free trial · Integrated faxing included · Works with any EMR
-            </p>
+            <FadeIn delay={0.3} duration={0.8}>
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-medium text-muted-foreground/80 mb-8">
+                Your notes should show it.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.5} duration={0.8}>
+              <p className="mt-8 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                EMRs destroyed the art of writing a great medical note. Our AI scribe is bringing it back.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.7} duration={0.8}>
+              <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
+                <Button 
+                  size="lg" 
+                  asChild 
+                  className="w-full sm:w-auto text-lg px-10 py-7 shadow-xl transition-all hover:scale-105 hover:shadow-2xl bg-primary hover:bg-primary/90"
+                >
+                  <Link href="/get-started">
+                    Start Writing Great Notes
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="w-full sm:w-auto text-lg px-10 py-7 border-2 hover:bg-accent/50"
+                >
+                  <Link href="/how-it-works">
+                    See How It Works
+                  </Link>
+                </Button>
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.9} duration={0.8}>
+              <p className="mt-8 text-sm text-muted-foreground/80 font-medium">
+                No credit card required · 7-day free trial · Integrated faxing included · Works with any EMR
+              </p>
+            </FadeIn>
           </div>
         </div>
 
         {/* Decorative glow using brand colors */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} />
         
         {/* Additional brand color decoration */}
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
@@ -174,302 +173,315 @@ export default function HomePage() {
       </section>
 
       {/* Your Notes, Your Way Section */}
-      <section className="py-12 sm:py-16 bg-card">
+      <section className="py-20 sm:py-32 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 text-primary font-semibold text-xl uppercase tracking-wider mb-4">
-                <Upload className="h-5 w-5" />
-                Personalized to You
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-                Your notes should look like
-                <br />
-                <span className="text-primary">your notes.</span>
-              </h2>
-              <div className="space-y-4 text-lg text-muted-foreground">
-                <p>
-                  Every specialty is different. Every provider has their own style. 
-                  That&apos;s why Write Great Notes learns <em>your</em> format.
-                </p>
-                <p>
-                  <strong className="text-foreground">Upload one example note</strong> and our AI parses your structure, 
-                  your sections, your style. Future notes match your format exactly.
-                </p>
-                <p>
-                  Dermatology SOAP notes. Cardiology consults. Primary care visits. 
-                  Psychiatry evaluations. <strong className="text-foreground">Your notes look like YOUR notes.</strong>
-                </p>
-              </div>
-            </div>
-            <div className="bg-muted/30 rounded-2xl p-8 border border-border">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold">1</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">Upload an example</h3>
-                    <p className="text-muted-foreground">Paste one of your best notes—the format you want to keep using.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold">2</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">We learn your style</h3>
-                    <p className="text-muted-foreground">AI parses your sections, headings, and documentation patterns.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold">3</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">Every note matches</h3>
-                    <p className="text-muted-foreground">All future notes follow your format. Consistency without the copy-paste.</p>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <FadeIn direction="right">
+              <div>
+                <span className="inline-flex items-center gap-2 text-primary font-bold text-lg uppercase tracking-wider mb-4">
+                  <Upload className="h-5 w-5" />
+                  Personalized to You
+                </span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
+                  Your notes should look like
+                  <br />
+                  <span className="text-primary">your notes.</span>
+                </h2>
+                <div className="space-y-6 text-lg sm:text-xl text-muted-foreground">
+                  <p>
+                    Every specialty is different. Every provider has their own style. 
+                    That&apos;s why Write Great Notes learns <em>your</em> format.
+                  </p>
+                  <p>
+                    <strong className="text-foreground">Upload one example note</strong> and our AI parses your structure, 
+                    your sections, your style. Future notes match your format exactly.
+                  </p>
+                  <p>
+                    Dermatology SOAP notes. Cardiology consults. Primary care visits. 
+                    Psychiatry evaluations. <strong className="text-foreground">Your notes look like YOUR notes.</strong>
+                  </p>
                 </div>
               </div>
-            </div>
+            </FadeIn>
+
+            <FadeIn direction="left" delay={0.2}>
+              <div className="bg-muted/30 rounded-3xl p-10 border border-border shadow-sm">
+                <StaggerContainer className="space-y-8">
+                  <StaggerItem className="flex items-start gap-5">
+                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold text-lg">1</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">Upload an example</h3>
+                      <p className="text-muted-foreground text-lg">Paste one of your best notes—the format you want to keep using.</p>
+                    </div>
+                  </StaggerItem>
+                  <StaggerItem className="flex items-start gap-5">
+                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold text-lg">2</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">We learn your style</h3>
+                      <p className="text-muted-foreground text-lg">AI parses your sections, headings, and documentation patterns.</p>
+                    </div>
+                  </StaggerItem>
+                  <StaggerItem className="flex items-start gap-5">
+                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold text-lg">3</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">Every note matches</h3>
+                      <p className="text-muted-foreground text-lg">All future notes follow your format. Consistency without the copy-paste.</p>
+                    </div>
+                  </StaggerItem>
+                </StaggerContainer>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Fight Insurance AI Section */}
-      <section className="py-12 sm:py-16 bg-muted/30">
+      <section className="py-20 sm:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-2 text-destructive font-semibold text-xl uppercase tracking-wider mb-4">
-                <Shield className="h-5 w-5" />
-                Fight Back
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-                Insurance companies use AI to deny your claims.
-                <br />
-                <span className="text-primary">Fight back with better AI.</span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Insurance companies are using algorithms to scan your notes for any excuse to deny payment. 
-                Incomplete documentation? Denied. Missing medical necessity? Denied. 
-                Template notes make you an easy target.
-              </p>
-            </div>
+            <FadeIn>
+              <div className="text-center mb-16">
+                <span className="inline-flex items-center gap-2 text-destructive font-bold text-lg uppercase tracking-wider mb-4">
+                  <Shield className="h-5 w-5" />
+                  Fight Back
+                </span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
+                  Insurance companies use AI to deny your claims.
+                  <br />
+                  <span className="text-primary">Fight back with better AI.</span>
+                </h2>
+                <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Insurance companies are using algorithms to scan your notes for any excuse to deny payment. 
+                  Incomplete documentation? Denied. Missing medical necessity? Denied. 
+                  Template notes make you an easy target.
+                </p>
+              </div>
+            </FadeIn>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-destructive mb-4 flex items-center gap-2">
-                  <XCircle className="h-6 w-6" />
-                  What Insurance AI Looks For
-                </h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Vague or templated language</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Missing documentation of medical necessity</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Lack of clinical reasoning for decisions</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Copy-paste notes that look identical</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Missing pertinent negatives</span>
-                  </li>
-                </ul>
-              </div>
+              <FadeIn delay={0.2} direction="right">
+                <div className="bg-destructive/5 border border-destructive/20 rounded-3xl p-8 sm:p-10 h-full">
+                  <h3 className="text-2xl font-bold text-destructive mb-6 flex items-center gap-3">
+                    <XCircle className="h-7 w-7" />
+                    What Insurance AI Looks For
+                  </h3>
+                  <ul className="space-y-4 text-muted-foreground text-lg">
+                    {[
+                      "Vague or templated language",
+                      "Missing documentation of medical necessity",
+                      "Lack of clinical reasoning for decisions",
+                      "Copy-paste notes that look identical",
+                      "Missing pertinent negatives"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="text-destructive font-bold mt-1">×</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeIn>
 
-              <div className="bg-success/5 border border-success/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-success mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="h-6 w-6" />
-                  What Write Great Notes Generates
-                </h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Unique, patient-specific narratives</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Clear documentation of medical necessity</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Clinical reasoning in assessment & plan</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Detailed HPI with context and timeline</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Relevant positives AND negatives</span>
-                  </li>
-                </ul>
-              </div>
+              <FadeIn delay={0.3} direction="left">
+                <div className="bg-success/5 border border-success/20 rounded-3xl p-8 sm:p-10 h-full">
+                  <h3 className="text-2xl font-bold text-success mb-6 flex items-center gap-3">
+                    <CheckCircle2 className="h-7 w-7" />
+                    What Write Great Notes Generates
+                  </h3>
+                  <ul className="space-y-4 text-muted-foreground text-lg">
+                    {[
+                      "Unique, patient-specific narratives",
+                      "Clear documentation of medical necessity",
+                      "Clinical reasoning in assessment & plan",
+                      "Detailed HPI with context and timeline",
+                      "Relevant positives AND negatives"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle2 className="h-6 w-6 text-success flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeIn>
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="text-lg text-foreground font-semibold">
-                You provide excellent care. Don&apos;t let insurance algorithms say otherwise.
-              </p>
-            </div>
+            <FadeIn delay={0.4}>
+              <div className="mt-16 text-center">
+                <p className="text-xl text-foreground font-semibold">
+                  You provide excellent care. Don&apos;t let insurance algorithms say otherwise.
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* The Solution: AI Note Writing */}
-      <section className="py-12 sm:py-16 bg-slate-900 text-white">
+      <section className="py-20 sm:py-32 bg-slate-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xl uppercase tracking-wider mb-4">
-                <Sparkles className="h-5 w-5" />
-                The New Way
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white">
-                Write comprehensive notes.
-                <br />
-                AI handles the typing.
-              </h2>
-              <p className="mt-6 text-xl text-slate-300 max-w-2xl mx-auto">
-                AI listens to your real conversations and generates notes 
-                with actual clinical reasoning. No templates. No shortcuts.
-              </p>
-            </div>
+            <FadeIn>
+              <div className="text-center mb-16">
+                <span className="inline-flex items-center gap-2 text-slate-300 font-bold text-lg uppercase tracking-wider mb-4">
+                  <Sparkles className="h-5 w-5" />
+                  The New Way
+                </span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+                  Write comprehensive notes.
+                  <br />
+                  AI handles the typing.
+                </h2>
+                <p className="text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                  AI listens to your real conversations and generates notes 
+                  with actual clinical reasoning. No templates. No shortcuts.
+                </p>
+              </div>
+            </FadeIn>
 
             {/* Example of good note */}
-            <div className="bg-slate-800 rounded-2xl p-6 sm:p-8 mb-12 border border-slate-700">
-              <p className="text-sm text-slate-400 uppercase tracking-wider mb-4">What great notes look like:</p>
-              <div className="text-sm text-slate-200 space-y-4 bg-slate-800/50 rounded-lg p-4 sm:p-6">
-                <p><strong className="text-white">HPI:</strong> Mr. Johnson is a 45-year-old carpenter who presents with progressive right knee pain over the past 3 weeks. He reports the pain began after kneeling for extended periods while installing flooring. Pain is localized to the anterior knee, worse with stairs and prolonged sitting, rated 6/10. He has tried ibuprofen with minimal relief. He denies locking, giving way, or swelling. No prior knee injuries or surgeries.</p>
-                <p><strong className="text-white">Assessment:</strong> Presentation is most consistent with patellofemoral syndrome given the anterior location, provocation with stairs and prolonged flexion, and occupational risk factors. Less likely but considered: prepatellar bursitis (no visible swelling on exam), meniscal pathology (no mechanical symptoms).</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              {newWayBenefits.map((benefit) => (
-                <div key={benefit.title} className="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700">
-                  <div className="flex items-start gap-4">
-                    <div className="h-12 w-12 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
-                      <benefit.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1 text-white">{benefit.title}</h3>
-                      <p className="text-slate-300">{benefit.description}</p>
-                    </div>
+            <FadeIn delay={0.2}>
+              <div className="bg-slate-800 rounded-3xl p-8 sm:p-10 mb-16 border border-slate-700 shadow-2xl">
+                <p className="text-sm text-slate-400 uppercase tracking-wider mb-6 font-semibold">What great notes look like:</p>
+                <div className="text-lg text-slate-200 space-y-6 bg-slate-900/50 rounded-xl p-6 sm:p-8 font-mono">
+                  <div>
+                    <strong className="text-white block mb-2">HPI:</strong>
+                    <TypingEffect text={exampleHPI} speed={15} startDelay={500} className="leading-relaxed" />
+                  </div>
+                  <div>
+                    <strong className="text-white block mb-2">Assessment:</strong>
+                    <TypingEffect text={exampleAssessment} speed={15} startDelay={6000} cursorColor="bg-blue-400" className="leading-relaxed" />
                   </div>
                 </div>
+              </div>
+            </FadeIn>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {newWayBenefits.map((benefit) => (
+                <StaggerItem key={benefit.title} className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:bg-slate-800/80 transition-colors">
+                  <div className="flex flex-col gap-6">
+                    <div className="h-14 w-14 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <benefit.icon className="h-7 w-7 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-3 text-white">{benefit.title}</h3>
+                      <p className="text-slate-300 text-lg leading-relaxed">{benefit.description}</p>
+                    </div>
+                  </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
 
       {/* EMR Integration Section */}
-      <section className="py-12 sm:py-16 bg-card">
+      <section className="py-20 sm:py-32 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center gap-2 text-primary font-semibold text-xl uppercase tracking-wider mb-4">
-              <Link2 className="h-5 w-5" />
-              Designed for Integration
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Built to work with your EMR.
-              <br />
-              <span className="text-primary">New integrations every month.</span>
-            </h2>
-            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Write Great Notes was designed from day one to integrate with your existing workflow. 
-              We&apos;re adding new EMR integrations constantly—and if yours isn&apos;t on the list yet, it&apos;s probably next.
-            </p>
+            <FadeIn>
+              <span className="inline-flex items-center gap-2 text-primary font-bold text-lg uppercase tracking-wider mb-4">
+                <Link2 className="h-5 w-5" />
+                Designed for Integration
+              </span>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
+                Built to work with your EMR.
+                <br />
+                <span className="text-primary">New integrations every month.</span>
+              </h2>
+              <p className="text-xl sm:text-2xl text-muted-foreground mb-16 max-w-2xl mx-auto leading-relaxed">
+                Write Great Notes was designed from day one to integrate with your existing workflow. 
+                We&apos;re adding new EMR integrations constantly—and if yours isn&apos;t on the list yet, it&apos;s probably next.
+              </p>
+            </FadeIn>
             
             {/* EMR Logos/Names */}
-            <div className="bg-muted/30 rounded-2xl p-8 border border-border mb-8">
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-6">Current & Coming Soon</p>
-              <div className="flex flex-wrap justify-center gap-4">
-                {/* Charm Health - Available Now */}
-                <Link 
-                  href="/integrations/charm-health"
-                  className="px-6 py-3 bg-success/10 rounded-lg border-2 border-success text-success font-semibold hover:bg-success/20 transition-colors flex items-center gap-2"
-                >
-                  <CheckCircle2 className="h-4 w-4" />
-                  Charm Health
-                </Link>
-                {/* Other EMRs - On Roadmap */}
-                {[
-                  { name: "Epic", slug: "epic" },
-                  { name: "Cerner", slug: "cerner" },
-                  { name: "Athena", slug: "athena" },
-                  { name: "eClinicalWorks", slug: "eclinicalworks" },
-                  { name: "NextGen", slug: "nextgen" },
-                  { name: "Allscripts", slug: "allscripts" },
-                  { name: "DrChrono", slug: "drchrono" },
-                ].map((emr) => (
+            <FadeIn delay={0.2}>
+              <div className="bg-muted/30 rounded-3xl p-10 border border-border mb-12">
+                <p className="text-sm text-muted-foreground uppercase tracking-wider mb-8 font-semibold">Current & Coming Soon</p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  {/* Charm Health - Available Now */}
                   <Link 
-                    key={emr.slug}
-                    href={`/integrations/${emr.slug}`}
-                    className="px-6 py-3 bg-card rounded-lg border border-border text-foreground font-medium hover:border-primary hover:bg-primary/5 transition-colors"
+                    href="/integrations/charm-health"
+                    className="px-8 py-4 bg-success/10 rounded-xl border-2 border-success text-success font-bold hover:bg-success/20 transition-all hover:scale-105 flex items-center gap-3 text-lg"
                   >
-                    {emr.name}
+                    <CheckCircle2 className="h-5 w-5" />
+                    Charm Health
                   </Link>
-                ))}
-                <Link 
-                  href="/contact?type=emr"
-                  className="px-6 py-3 bg-card rounded-lg border border-dashed border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-colors"
-                >
-                  + Other EMRs
-                </Link>
+                  {/* Other EMRs - On Roadmap */}
+                  {[
+                    { name: "AdvancedMD", slug: "advancedmd" },
+                    { name: "Athena", slug: "athena" },
+                    { name: "Cerner", slug: "cerner" },
+                    { name: "eClinicalWorks", slug: "eclinicalworks" },
+                    { name: "NextGen", slug: "nextgen" },
+                    { name: "Allscripts", slug: "allscripts" },
+                    { name: "DrChrono", slug: "drchrono" },
+                  ].map((emr) => (
+                    <Link 
+                      key={emr.slug}
+                      href={`/integrations/${emr.slug}`}
+                      className="px-8 py-4 bg-card rounded-xl border border-border text-foreground font-medium hover:border-primary hover:bg-primary/5 transition-all hover:scale-105 text-lg"
+                    >
+                      {emr.name}
+                    </Link>
+                  ))}
+                  <Link 
+                    href="/contact?type=emr"
+                    className="px-8 py-4 bg-card rounded-xl border border-dashed border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-all hover:scale-105 text-lg"
+                  >
+                    + Other EMRs
+                  </Link>
+                </div>
+                <p className="text-sm text-muted-foreground mt-8 font-medium">
+                  <span className="text-success font-bold">✓ Available now</span> · Click any EMR to learn more or express interest—<span className="text-primary font-bold">demand drives our roadmap!</span>
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
-                <span className="text-success font-medium">✓ Available now</span> · Click any EMR to learn more or express interest—<span className="text-primary font-medium">demand drives our roadmap!</span>
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 { number: "0", label: "Data migrations needed" },
                 { number: "New", label: "Integrations monthly", icon: RefreshCw },
                 { number: "5 min", label: "To get started" },
               ].map((stat) => (
-                <div key={stat.label} className="bg-muted/50 rounded-xl p-6 border border-border">
-                  <div className="text-4xl font-black text-primary mb-2">{stat.number}</div>
-                  <div className="text-muted-foreground">{stat.label}</div>
-                </div>
+                <StaggerItem key={stat.label} className="bg-muted/50 rounded-2xl p-8 border border-border hover:border-primary/50 transition-colors">
+                  <div className="text-5xl font-black text-primary mb-3">{stat.number}</div>
+                  <div className="text-lg text-muted-foreground font-medium">{stat.label}</div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
 
       {/* Deep EMR Integration Section */}
-      <section className="py-12 sm:py-16 bg-slate-900 text-white">
+      <section className="py-20 sm:py-32 bg-slate-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xl uppercase tracking-wider mb-4">
-                <Sparkles className="h-5 w-5" />
-                Deep EMR Integration
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
-                Your EMR, supercharged with AI.
-              </h2>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Write Great Notes doesn&apos;t just sit alongside your EMR—it reaches deep into your existing 
-                system to pull the context you need and enhance every patient encounter with powerful AI.
-              </p>
-            </div>
+            <FadeIn>
+              <div className="text-center mb-16">
+                <span className="inline-flex items-center gap-2 text-slate-300 font-bold text-lg uppercase tracking-wider mb-4">
+                  <Sparkles className="h-5 w-5" />
+                  Deep EMR Integration
+                </span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+                  Your EMR, supercharged with AI.
+                </h2>
+                <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                  Write Great Notes doesn&apos;t just sit alongside your EMR—it reaches deep into your existing 
+                  system to pull the context you need and enhance every patient encounter with powerful AI.
+                </p>
+              </div>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {[
                 {
                   title: "AI Patient Summary",
@@ -502,247 +514,171 @@ export default function HomePage() {
                   icon: "🚀",
                 },
               ].map((feature) => (
-                <div key={feature.title} className="bg-slate-800 rounded-xl p-5 sm:p-6 border border-slate-700">
-                  <div className="flex items-start gap-4">
-                    <div className="text-3xl">{feature.icon}</div>
+                <StaggerItem key={feature.title} className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:bg-slate-800/80 transition-colors group">
+                  <div className="flex items-start gap-5">
+                    <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
                     <div>
-                      <h3 className="text-lg font-semibold mb-1 text-white">{feature.title}</h3>
-                      <p className="text-slate-300 text-sm">{feature.description}</p>
+                      <h3 className="text-xl font-bold mb-2 text-white">{feature.title}</h3>
+                      <p className="text-slate-300 text-base leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
-            <div className="text-center">
-              <p className="text-lg text-slate-200 mb-4">
-                Think of it as <strong className="text-white">AI co-pilot features</strong> for the EMR you already use.
-              </p>
-              <p className="text-slate-400">
-                No migration. No new system to learn. Just powerful new capabilities added to your existing workflow.
-              </p>
-            </div>
+            <FadeIn delay={0.4}>
+              <div className="text-center">
+                <p className="text-2xl text-slate-200 mb-4 font-medium">
+                  Think of it as <strong className="text-white">AI co-pilot features</strong> for the EMR you already use.
+                </p>
+                <p className="text-lg text-slate-400">
+                  No migration. No new system to learn. Just powerful new capabilities added to your existing workflow.
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Integrated Faxing Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
+      <section className="py-24 sm:py-32 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
-                  <Send className="h-10 w-10 text-white" />
+            <FadeIn>
+              <div className="flex flex-col md:flex-row items-center gap-10">
+                <div className="flex-shrink-0">
+                  <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-xl rotate-3 hover:rotate-6 transition-transform duration-300">
+                    <Send className="h-12 w-12 text-white" />
+                  </div>
+                </div>
+                <div className="text-center md:text-left">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                    Deliver notes automatically via integrated HIPAA-compliant faxing.
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                    Every plan includes built-in faxing to send notes directly to referring physicians, 
+                    specialists, and care partners. Additional faxes just $0.10 each.
+                  </p>
+                  <Link href="/pricing" className="text-primary font-bold text-lg hover:underline inline-flex items-center gap-2">
+                    See faxing details on pricing page
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
                 </div>
               </div>
-              <div className="text-center md:text-left">
-                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
-                  Deliver notes automatically via integrated HIPAA-compliant faxing.
-                </h2>
-                <p className="text-muted-foreground mb-4">
-                  Every plan includes built-in faxing to send notes directly to referring physicians, 
-                  specialists, and care partners. Additional faxes just $0.10 each.
-                </p>
-                <Link href="/pricing" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
-                  See faxing details on pricing page
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Fight Insurance AI Section */}
-      <section className="py-12 sm:py-16 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-2 text-destructive font-semibold text-xl uppercase tracking-wider mb-4">
-                <Shield className="h-5 w-5" />
-                Fight Back
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-                Insurance companies use AI to deny your claims.
-                <br />
-                <span className="text-primary">Fight back with better AI.</span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Insurance companies are using algorithms to scan your notes for any excuse to deny payment. 
-                Incomplete documentation? Denied. Missing medical necessity? Denied. 
-                Template notes make you an easy target.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-destructive mb-4 flex items-center gap-2">
-                  <XCircle className="h-6 w-6" />
-                  What Insurance AI Looks For
-                </h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Vague or templated language</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Missing documentation of medical necessity</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Lack of clinical reasoning for decisions</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Copy-paste notes that look identical</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-destructive font-bold">×</span>
-                    <span>Missing pertinent negatives</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-success/5 border border-success/20 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-success mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="h-6 w-6" />
-                  What Write Great Notes Generates
-                </h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Unique, patient-specific narratives</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Clear documentation of medical necessity</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Clinical reasoning in assessment & plan</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Detailed HPI with context and timeline</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Relevant positives AND negatives</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-12 text-center">
-              <p className="text-lg text-foreground font-semibold">
-                You provide excellent care. Don&apos;t let insurance algorithms say otherwise.
-              </p>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Work-Life Balance Section */}
-      <section className="py-12 sm:py-16 bg-primary text-white">
+      <section className="py-20 sm:py-32 bg-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center gap-2 text-white/90 font-semibold text-xl uppercase tracking-wider mb-4">
-              <Heart className="h-5 w-5" />
-              Be a Professional, Not a Box Checker
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
-              Clock in. See patients.
-              <br />
-              Go home on time.
-            </h2>
-            <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
-              You didn&apos;t spend years training to stay late clicking checkboxes. 
-              With Write Great Notes, you can log off at the end of your day knowing 
-              every note is complete—and every note reflects the quality care you provided.
-            </p>
+            <FadeIn>
+              <span className="inline-flex items-center gap-2 text-white/90 font-bold text-lg uppercase tracking-wider mb-4">
+                <Heart className="h-5 w-5" />
+                Be a Professional, Not a Box Checker
+              </span>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+                Clock in. See patients.
+                <br />
+                Go home on time.
+              </h2>
+              <p className="text-xl sm:text-2xl text-white/90 mb-16 max-w-2xl mx-auto leading-relaxed">
+                You didn&apos;t spend years training to stay late clicking checkboxes. 
+                With Write Great Notes, you can log off at the end of your day knowing 
+                every note is complete—and every note reflects the quality care you provided.
+              </p>
+            </FadeIn>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-left">
-              <div className="bg-white/20 rounded-xl p-5 sm:p-6 border border-white/30">
-                <div className="text-4xl mb-4">☀️</div>
-                <h3 className="text-lg font-semibold mb-2 text-white">Morning</h3>
-                <p className="text-white/90">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+              <StaggerItem className="bg-white/10 rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
+                <div className="text-5xl mb-6">☀️</div>
+                <h3 className="text-xl font-bold mb-3 text-white">Morning</h3>
+                <p className="text-white/90 text-lg">
                   Log in. Review your schedule. Start seeing patients.
                 </p>
-              </div>
-              <div className="bg-white/20 rounded-xl p-5 sm:p-6 border border-white/30">
-                <div className="text-4xl mb-4">🩺</div>
-                <h3 className="text-lg font-semibold mb-2 text-white">During the Day</h3>
-                <p className="text-white/90">
+              </StaggerItem>
+              <StaggerItem className="bg-white/10 rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
+                <div className="text-5xl mb-6">🩺</div>
+                <h3 className="text-xl font-bold mb-3 text-white">During the Day</h3>
+                <p className="text-white/90 text-lg">
                   Focus on patients. AI captures and documents each encounter as you go.
                 </p>
-              </div>
-              <div className="bg-white/20 rounded-xl p-5 sm:p-6 border border-white/30">
-                <div className="text-4xl mb-4">🏠</div>
-                <h3 className="text-lg font-semibold mb-2 text-white">End of Day</h3>
-                <p className="text-white/90">
+              </StaggerItem>
+              <StaggerItem className="bg-white/10 rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-colors">
+                <div className="text-5xl mb-6">🏠</div>
+                <h3 className="text-xl font-bold mb-3 text-white">End of Day</h3>
+                <p className="text-white/90 text-lg">
                   Log off. Go home. All notes complete. No pajama time documentation.
                 </p>
-              </div>
-            </div>
+              </StaggerItem>
+            </StaggerContainer>
 
-            <p className="mt-12 text-lg text-white/90 italic">
-              &ldquo;I haven&apos;t brought work home in months. I forgot what that felt like.&rdquo;
-            </p>
+            <FadeIn delay={0.4}>
+              <p className="mt-16 text-xl text-white/90 italic font-medium">
+                &ldquo;I haven&apos;t brought work home in months. I forgot what that felt like.&rdquo;
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Features Grid */}
-      <section className="py-12 sm:py-16 bg-background">
+      <section className="py-20 sm:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-10">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">
-              Built for real clinical workflows
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              From primary care to specialists. Solo practices to large groups.
-            </p>
+          <div className="mx-auto max-w-2xl text-center mb-16">
+            <FadeIn>
+              <h2 className="text-4xl font-bold tracking-tight sm:text-5xl text-foreground mb-6">
+                Built for real clinical workflows
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                From primary care to specialists. Solo practices to large groups.
+              </p>
+            </FadeIn>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature) => (
-              <Card key={feature.title} className="border-border shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-uranian-blue flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <feature.icon className="h-6 w-6 text-primary-foreground" />
+              <StaggerItem key={feature.title}>
+                <Card className="border-border shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 h-full">
+                  <CardContent className="pt-8 p-8">
+                    <div className="flex flex-col gap-6">
+                      <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary to-uranian-blue flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <feature.icon className="h-7 w-7 text-primary-foreground" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1 text-foreground">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 sm:py-16 bg-muted/30">
+      <section className="py-20 sm:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Everything you need to know about Write Great Notes.
-              </p>
-            </div>
+            <FadeIn>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  Everything you need to know about Write Great Notes.
+                </p>
+              </div>
+            </FadeIn>
 
-            <div className="space-y-6">
+            <StaggerContainer className="space-y-6">
               {[
                 {
                   question: "How does Write Great Notes work with my existing EMR?",
-                  answer: "Write Great Notes integrates directly with your EMR through our growing list of integrations (Epic, Cerner, Athena, Charm, and more). You can push notes directly to patient charts, or simply copy and paste. No migration required—it works alongside your current system.",
+                  answer: "Write Great Notes integrates directly with your EMR through our growing list of integrations (AdvancedMD, Athena, Charm, and more). You can push notes directly to patient charts, or simply copy and paste. No migration required—it works alongside your current system.",
                 },
                 {
                   question: "What types of providers can use Write Great Notes?",
@@ -754,7 +690,7 @@ export default function HomePage() {
                 },
                 {
                   question: "Is my patient data secure?",
-                  answer: "Absolutely. Write Great Notes is fully HIPAA compliant with BAA available. All data is encrypted using AES-256 encryption at rest and in transit. We maintain complete audit trails and row-level security to ensure your patients' information stays protected.",
+                  answer: "Absolutely. Write Great Notes is fully HIPAA compliant with BAA available. All data is encrypted using AES-256 encryption at rest and in transit. We use industry-standard encryption and privacy practices, with complete audit trails to ensure your patients' information stays protected.",
                 },
                 {
                   question: "How long does it take to get started?",
@@ -773,62 +709,70 @@ export default function HomePage() {
                   answer: "After your 7-day free trial, you can choose the plan that fits your practice. We offer flexible pricing for solo providers and groups. No commitment during the trial—cancel anytime if it's not right for you.",
                 },
               ].map((faq, index) => (
-                <div key={index} className="bg-card rounded-xl p-6 border border-border">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{faq.question}</h3>
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </div>
+                <StaggerItem key={index}>
+                  <div className="bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="text-xl font-bold text-foreground mb-3">{faq.question}</h3>
+                    <p className="text-muted-foreground text-lg leading-relaxed">{faq.answer}</p>
+                  </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
-            <div className="mt-12 text-center">
-              <p className="text-muted-foreground">
-                Have more questions?{" "}
-                <Link href="/contact" className="text-primary hover:underline font-medium">
-                  Contact our team
-                </Link>
-              </p>
-            </div>
+            <FadeIn delay={0.4}>
+              <div className="mt-16 text-center">
+                <p className="text-muted-foreground text-lg">
+                  Have more questions?{" "}
+                  <Link href="/contact" className="text-primary hover:underline font-bold">
+                    Contact our team
+                  </Link>
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-primary/10">
+      <section className="py-20 sm:py-32 bg-primary/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Your care deserves great documentation.
-            </h2>
-            <p className="text-xl text-muted-foreground mb-10">
-              Stop settling for template notes. Start writing documentation that reflects the care you actually provide.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button 
-                size="lg" 
-                asChild 
-                className="text-lg px-10 py-7 shadow-xl transition-all hover:scale-105"
-              >
-                <Link href="/get-started">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="text-lg px-10 py-7"
-              >
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-            </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              No credit card required · 7-day free trial · Works with any EMR · HIPAA compliant
-            </p>
+            <FadeIn>
+              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
+                Your care deserves great documentation.
+              </h2>
+              <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+                Stop settling for template notes. Start writing documentation that reflects the care you actually provide.
+              </p>
+            </FadeIn>
+            
+            <FadeIn delay={0.2}>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Button 
+                  size="lg" 
+                  asChild 
+                  className="w-full sm:w-auto text-lg px-12 py-8 shadow-xl transition-all hover:scale-105 hover:shadow-2xl"
+                >
+                  <Link href="/get-started">
+                    Start Free Trial
+                    <ArrowRight className="ml-2 h-6 w-6" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="w-full sm:w-auto text-lg px-12 py-8 border-2 bg-background/50 backdrop-blur-sm"
+                >
+                  <Link href="/contact">Contact Us</Link>
+                </Button>
+              </div>
+              <p className="mt-8 text-sm text-muted-foreground font-medium">
+                No credit card required · 7-day free trial · Works with any EMR · HIPAA compliant
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>
     </div>
   );
 }
-

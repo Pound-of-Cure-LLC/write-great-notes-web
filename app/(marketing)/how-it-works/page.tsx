@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -51,6 +52,7 @@ const steps = [
       "Works on any device",
     ],
     duration: "During visit",
+    screenshot: null, // Recording interface screenshot needed
   },
   {
     number: 2,
@@ -65,6 +67,7 @@ const steps = [
       "AI-optimized formatting",
     ],
     duration: "~30 seconds",
+    screenshot: null, // Note generation screenshot needed
   },
   {
     number: 3,
@@ -79,6 +82,7 @@ const steps = [
       "Quick edit capabilities",
     ],
     duration: "1-2 minutes",
+    screenshot: "/images/screenshots/template-sections-followup.png",
   },
   {
     number: 4,
@@ -93,6 +97,7 @@ const steps = [
       "Full audit trail",
     ],
     duration: "Instant",
+    screenshot: "/images/screenshots/emr-integration-charm.png",
   },
 ];
 
@@ -185,18 +190,26 @@ export default function HowItWorksPage() {
                   </div>
 
                   <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                    {/* Placeholder for step screenshot/animation */}
-                    <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/10 to-uranian-blue/10 border border-primary/20 flex items-center justify-center">
-                      <div className="text-center p-8">
-                        <step.icon className="h-16 w-16 text-primary/30 mx-auto mb-4" />
-                        <p className="text-muted-foreground">
-                          Step {step.number}: {step.title}
-                        </p>
-                        <p className="text-sm text-muted-foreground mt-2">
-                          Screenshot/animation placeholder
-                        </p>
+                    {step.screenshot ? (
+                      <div className="aspect-video rounded-xl overflow-hidden border border-border shadow-lg">
+                        <Image
+                          src={step.screenshot}
+                          alt={`Step ${step.number}: ${step.title}`}
+                          width={800}
+                          height={450}
+                          className="w-full h-full object-cover object-top"
+                        />
                       </div>
-                    </div>
+                    ) : (
+                      <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/10 to-uranian-blue/10 border border-primary/20 flex items-center justify-center">
+                        <div className="text-center p-8">
+                          <step.icon className="h-16 w-16 text-primary/30 mx-auto mb-4" />
+                          <p className="text-muted-foreground">
+                            Step {step.number}: {step.title}
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -264,6 +277,28 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      {/* Questions CTA */}
+      <section className="py-12 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <Card className="border-primary/20 bg-primary/5">
+              <CardContent className="pt-8 pb-8">
+                <h3 className="text-2xl font-bold mb-4">Have Questions?</h3>
+                <p className="text-muted-foreground mb-6">
+                  Our team is here to help you understand how Write Great Notes can fit your practice.
+                </p>
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/contact">
+                    Contact Us
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-12 sm:py-16 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -287,7 +322,7 @@ export default function HowItWorksPage() {
                 asChild
                 className="text-lg px-8 py-6"
               >
-                <Link href="/pricing">View Pricing</Link>
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>
