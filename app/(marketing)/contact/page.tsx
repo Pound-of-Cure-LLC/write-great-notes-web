@@ -34,7 +34,7 @@ const contactMethods = [
     title: "In-App Support",
     description: "Get help directly in the app",
     contact: "Submit a support ticket",
-    href: "https://app.writegreatnotes.ai/login",
+    href: "https://app.writegreatnotes.ai/support",
   },
   {
     icon: MessageSquare,
