@@ -126,8 +126,7 @@ export default function HomePage() {
             </p>
 
             <p className="mt-8 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              AI-powered ambient scribing that captures your conversations 
-              and generates comprehensive, professional notes.
+              EMRs destroyed the art of writing a great medical note. Our AI scribe is bringing it back.
             </p>
 
             <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
@@ -328,7 +327,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The Solution: AI Ambient Scribing */}
+      {/* The Solution: AI Note Writing */}
       <section className="py-12 sm:py-16 bg-slate-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
@@ -343,7 +342,7 @@ export default function HomePage() {
                 AI handles the typing.
               </h2>
               <p className="mt-6 text-xl text-slate-300 max-w-2xl mx-auto">
-                AI ambient scribing captures your real conversations and generates notes 
+                AI listens to your real conversations and generates notes 
                 with actual clinical reasoning. No templates. No shortcuts.
               </p>
             </div>
