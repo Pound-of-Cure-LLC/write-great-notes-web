@@ -131,3 +131,4 @@ The app uses these fonts (match when adding replacement text):
 2. Type tool for replacement text
 3. Match fonts and colors precisely
 
+
