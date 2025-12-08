@@ -132,3 +132,7 @@ The app uses these fonts (match when adding replacement text):
 3. Match fonts and colors precisely
 
 
+
+
+
+

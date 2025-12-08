@@ -34,7 +34,7 @@ const contactMethods = [
     title: "In-App Support",
     description: "Get help directly in the app",
     contact: "Submit a support ticket",
-    href: "https://app.writegreatnotes.ai/support",
+    href: "https://app.grailhealth.ai/support",
   },
   {
     icon: MessageSquare,
@@ -96,7 +96,7 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
 
     try {
       // Submit directly to external API
-      const response = await fetch("https://api.writegreatnotes.ai/contact", {
+      const response = await fetch("https://api.grailhealth.ai/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

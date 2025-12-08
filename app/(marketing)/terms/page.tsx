@@ -23,7 +23,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Eligibility</h2>
           <p className="mb-4">
-            Write Great Notes is intended for use by licensed healthcare professionals and authorized staff members. By using our service, you represent that you:
+            Grail is intended for use by licensed healthcare professionals and authorized staff members. By using our service, you represent that you:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>Are a licensed healthcare provider or authorized by one to use the service</li>
@@ -36,7 +36,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Description of Service</h2>
           <p className="mb-4">
-            Write Great Notes provides AI-powered ambient clinical documentation services, including:
+            Grail provides AI-powered ambient clinical documentation services, including:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>Real-time audio transcription of clinical encounters</li>
@@ -135,7 +135,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">HIPAA Compliance</h2>
           <p className="mb-4">
-            Write Great Notes is designed to support HIPAA compliance. For covered entities, we will execute a Business Associate Agreement (BAA) upon request. You remain responsible for:
+            Grail is designed to support HIPAA compliance. For covered entities, we will execute a Business Associate Agreement (BAA) upon request. You remain responsible for:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>Ensuring your use of the service complies with HIPAA</li>

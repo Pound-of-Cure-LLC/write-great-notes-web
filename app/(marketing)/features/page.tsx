@@ -25,8 +25,8 @@ import {
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 
 export const metadata: Metadata = {
-  title: "AI Medical Scribe Features - Real-Time Transcription & EMR Integration",
-  description: "Explore Write Great Notes features: AI-powered ambient listening, real-time transcription, custom note templates, Charm Health EMR integration, HIPAA compliant security. See why doctors choose our AI scribe.",
+  title: "AI Medical Scribe Features - Real-Time Transcription & EMR Integration | Grail Digital Health",
+  description: "Explore Grail Digital Health features: Write great notes with AI-powered ambient listening, real-time transcription, custom note templates, Charm Health EMR integration, HIPAA compliant security. See why doctors choose our AI scribe.",
   keywords: [
     "AI scribe features",
     "medical scribe software features",
@@ -38,12 +38,12 @@ export const metadata: Metadata = {
     "AI documentation features",
   ],
   openGraph: {
-    title: "AI Medical Scribe Features | Write Great Notes",
-    description: "Real-time transcription, AI note generation, EMR integration, HIPAA compliant. See all features of Write Great Notes AI medical scribe.",
-    url: "https://writegreatnotes.ai/features",
+    title: "AI Medical Scribe Features | Grail Digital Health",
+    description: "Real-time transcription, AI note generation, EMR integration, HIPAA compliant. See all features of Grail Digital Health AI medical scribe.",
+    url: "https://grailhealth.ai/features",
   },
   alternates: {
-    canonical: "https://writegreatnotes.ai/features",
+    canonical: "https://grailhealth.ai/features",
   },
 };
 
@@ -444,7 +444,7 @@ export default function FeaturesPage() {
                 <CardContent className="pt-12 pb-12 px-8">
                   <h3 className="text-3xl font-bold mb-6">Questions About Features?</h3>
                   <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                    Want to learn more about how Write Great Notes can help your practice? Our team is ready to help.
+                    Want to learn more about how Grail can help your practice? Our team is ready to help.
                   </p>
                   <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 border-2 hover:bg-background">
                     <Link href="/contact">
@@ -467,7 +467,7 @@ export default function FeaturesPage() {
               <CardContent className="pt-8 pb-8">
                 <h3 className="text-2xl font-bold mb-4">Questions About Features?</h3>
                 <p className="text-muted-foreground mb-6">
-                  Want to learn more about how Write Great Notes can help your practice? Our team is ready to help.
+                  Want to learn more about how Grail can help your practice? Our team is ready to help.
                 </p>
                 <Button size="lg" variant="outline" asChild>
                   <Link href="/contact">

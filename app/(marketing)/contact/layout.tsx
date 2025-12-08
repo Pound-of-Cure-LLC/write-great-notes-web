@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us - Get Started with AI Medical Scribe",
-  description: "Contact Write Great Notes for questions about our AI medical scribe. Request EMR integration, get pricing information, or start your free trial. We respond within 24 hours.",
+  title: "Contact Us - Get Started with AI Medical Scribe | Grail Digital Health",
+  description: "Contact Grail Digital Health for questions about our AI medical scribe. Write great notes - request EMR integration, get pricing information, or start your free trial. We respond within 24 hours.",
   keywords: [
     "contact AI scribe",
     "medical scribe demo",
@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     "clinical documentation help",
   ],
   openGraph: {
-    title: "Contact Write Great Notes | AI Medical Scribe",
+    title: "Contact Grail Digital Health | AI Medical Scribe",
     description: "Get in touch with our team. Request EMR integration, ask questions, or start your free trial.",
-    url: "https://writegreatnotes.ai/contact",
+    url: "https://grailhealth.ai/contact",
   },
   alternates: {
-    canonical: "https://writegreatnotes.ai/contact",
+    canonical: "https://grailhealth.ai/contact",
   },
 };
 
@@ -28,5 +28,9 @@ export default function ContactLayout({
 }) {
   return <>{children}</>;
 }
+
+
+
+
 
 

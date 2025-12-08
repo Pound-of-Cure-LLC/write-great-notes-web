@@ -22,15 +22,15 @@ export function MarketingHeader() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-3">
               <Image
-                src="/images/write-great-notes-logo.png"
-                alt="Write Great Notes"
-                width={32}
-                height={32}
-                className="h-8 w-8"
+                src="/images/grail logo - transparent.png"
+                alt="Grail Digital Health"
+                width={600}
+                height={200}
+                className="h-8 w-auto object-contain"
               />
-              <span className="font-semibold text-lg hidden sm:block">
+              <span className="font-medium text-sm text-muted-foreground hidden lg:block">
                 Write Great Notes
               </span>
             </Link>
@@ -52,7 +52,7 @@ export function MarketingHeader() {
           {/* Desktop CTA */}
           <div className="hidden md:flex md:items-center md:space-x-4">
             <Button variant="ghost" asChild>
-              <Link href="https://app.writegreatnotes.ai/login">Sign In</Link>
+              <Link href="https://app.grailhealth.ai/login">Sign In</Link>
             </Button>
             <Button asChild>
               <Link href="/get-started">Start Free Trial</Link>
@@ -92,7 +92,7 @@ export function MarketingHeader() {
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t">
                 <Button variant="ghost" asChild className="justify-start">
-                  <Link href="https://app.writegreatnotes.ai/login">Sign In</Link>
+                  <Link href="https://app.grailhealth.ai/login">Sign In</Link>
                 </Button>
                 <Button asChild>
                   <Link href="/get-started">Start Free Trial</Link>

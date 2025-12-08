@@ -76,8 +76,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${emr.name} AI Scribe Integration - Coming Soon`,
-    description: `Write Great Notes AI medical scribe integration for ${emr.name} EMR is coming soon. Express interest to help prioritize development. AI ambient scribe for ${emr.name} users.`,
+    title: `${emr.name} AI Scribe Integration - Coming Soon | Grail Digital Health`,
+    description: `Grail Digital Health AI medical scribe integration for ${emr.name} EMR is coming soon. Write great notes - express interest to help prioritize development. AI ambient scribe for ${emr.name} users.`,
     keywords: [
       `${emr.name} AI scribe`,
       `AI scribe for ${emr.name}`,
@@ -88,12 +88,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       "EMR AI integration",
     ],
     openGraph: {
-      title: `${emr.name} AI Scribe Integration | Write Great Notes`,
+      title: `${emr.name} AI Scribe Integration | Grail Digital Health`,
       description: `AI medical scribe integration for ${emr.name} coming soon. Express interest to help prioritize.`,
-      url: `https://writegreatnotes.ai/integrations/${slug}`,
+      url: `https://grailhealth.ai/integrations/${slug}`,
     },
     alternates: {
-      canonical: `https://writegreatnotes.ai/integrations/${slug}`,
+      canonical: `https://grailhealth.ai/integrations/${slug}`,
     },
   };
 }
@@ -240,12 +240,12 @@ export default async function EMRRoadmapPage({ params }: { params: Promise<{ slu
               Can&apos;t Wait?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Write Great Notes is designed to make copying and pasting effortless. 
+              Grail is designed to make copying and pasting effortless. 
               You can still save hours every day by using our standalone mode until the integration launches.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" asChild className="text-lg px-8 py-6">
-                <Link href="https://app.writegreatnotes.ai/signup">
+                <Link href="https://app.grailhealth.ai/signup">
                   Try Standalone Mode
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

@@ -47,15 +47,15 @@ export function MarketingFooter() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex flex-col space-y-2 mb-4">
               <Image
-                src="/images/write-great-notes-logo.png"
-                alt="Write Great Notes"
-                width={32}
-                height={32}
-                className="h-8 w-8"
+                src="/images/grail logo - transparent.png"
+                alt="Grail Digital Health"
+                width={600}
+                height={200}
+                className="h-8 w-auto object-contain object-left"
               />
-              <span className="font-semibold">Write Great Notes</span>
+              <span className="font-medium text-sm text-muted-foreground">Write Great Notes</span>
             </div>
             <p className="text-sm text-muted-foreground">
               AI-powered clinical documentation for modern healthcare practices.

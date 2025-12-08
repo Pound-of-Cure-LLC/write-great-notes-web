@@ -17,8 +17,8 @@ import {
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 
 export const metadata: Metadata = {
-  title: "How AI Medical Scribe Works - From Recording to EMR in Minutes",
-  description: "Learn how Write Great Notes AI medical scribe works: Record patient visits, AI generates clinical notes in 30 seconds, review and push to your EMR. Save 2+ hours daily on documentation.",
+  title: "How AI Medical Scribe Works - From Recording to EMR in Minutes | Grail Digital Health",
+  description: "Learn how Grail Digital Health AI medical scribe works: Write great notes by recording patient visits, AI generates clinical notes in 30 seconds, review and push to your EMR. Save 2+ hours daily on documentation.",
   keywords: [
     "how AI scribe works",
     "AI medical documentation workflow",
@@ -30,12 +30,12 @@ export const metadata: Metadata = {
     "physician documentation",
   ],
   openGraph: {
-    title: "How AI Medical Scribe Works | Write Great Notes",
-    description: "Record, generate, review, push to EMR. See how Write Great Notes AI scribe saves doctors 2+ hours daily on clinical documentation.",
-    url: "https://writegreatnotes.ai/how-it-works",
+    title: "How AI Medical Scribe Works | Grail Digital Health",
+    description: "Record, generate, review, push to EMR. See how Grail Digital Health AI scribe saves doctors 2+ hours daily on clinical documentation.",
+    url: "https://grailhealth.ai/how-it-works",
   },
   alternates: {
-    canonical: "https://writegreatnotes.ai/how-it-works",
+    canonical: "https://grailhealth.ai/how-it-works",
   },
 };
 
@@ -310,7 +310,7 @@ export default function HowItWorksPage() {
                 <CardContent className="pt-12 pb-12 px-8">
                   <h3 className="text-3xl font-bold mb-6">Have Questions?</h3>
                   <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                    Our team is here to help you understand how Write Great Notes can fit your practice.
+                    Our team is here to help you understand how Grail can fit your practice.
                   </p>
                   <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 border-2 hover:bg-background">
                     <Link href="/contact">

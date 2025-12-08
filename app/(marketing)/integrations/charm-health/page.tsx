@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Charm Health AI Scribe Integration - Best AI Scribe for Charm EMR",
-  description: "Write Great Notes is the best AI scribe for Charm Health EMR. Deep integration with automatic appointment sync, one-click note push, patient demographics, and real-time vitals. Start free trial.",
+  title: "Charm Health AI Scribe Integration - Best AI Scribe for Charm EMR | Grail Digital Health",
+  description: "Grail Digital Health: Write great notes with the best AI scribe for Charm Health EMR. Deep integration with automatic appointment sync, one-click note push, patient demographics, and real-time vitals. Start free trial.",
   keywords: [
     "Charm Health AI scribe",
     "Charm AI scribe",
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
     "AI medical scribe Charm",
   ],
   openGraph: {
-    title: "Charm Health AI Scribe Integration | Write Great Notes",
-    description: "The best AI scribe for Charm Health EMR. Automatic appointment sync, one-click note push, deep EMR integration. Start your free trial.",
-    url: "https://writegreatnotes.ai/integrations/charm-health",
+    title: "Charm Health AI Scribe Integration | Grail Digital Health",
+    description: "Write great notes with the best AI scribe for Charm Health EMR. Automatic appointment sync, one-click note push, deep EMR integration. Start your free trial.",
+    url: "https://grailhealth.ai/integrations/charm-health",
   },
   alternates: {
-    canonical: "https://writegreatnotes.ai/integrations/charm-health",
+    canonical: "https://grailhealth.ai/integrations/charm-health",
   },
 };
 
@@ -105,7 +105,7 @@ export default function CharmHealthIntegrationPage() {
               Charm Health Integration
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-              Write Great Notes integrates deeply with Charm Health EMR. 
+              Grail integrates deeply with Charm Health EMR. 
               Sync appointments, push notes, and access patient data—all seamlessly connected.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

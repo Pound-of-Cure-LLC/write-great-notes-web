@@ -5,12 +5,12 @@ import { Toaster } from "sonner";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://writegreatnotes.ai"),
+  metadataBase: new URL("https://grailhealth.ai"),
   title: {
-    default: "Write Great Notes - AI Medical Scribe & Clinical Documentation Software",
-    template: "%s | Write Great Notes",
+    default: "Grail Digital Health - Write Great Notes - AI Medical Scribe & Clinical Documentation Software",
+    template: "%s | Grail Digital Health",
   },
-  description: "AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health, Epic, Athena. HIPAA compliant. Free trial.",
+  description: "Grail Digital Health: Write great notes with our AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health, Epic, Athena. HIPAA compliant. Free trial.",
   keywords: [
     // Primary keywords
     "AI medical scribe",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     "speech to text medical",
     "real-time medical transcription",
   ],
-  authors: [{ name: "Write Great Notes" }],
+  authors: [{ name: "Grail Digital Health" }],
   creator: "Pound of Cure LLC",
   publisher: "Pound of Cure LLC",
   robots: {
@@ -73,27 +73,27 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://writegreatnotes.ai",
-    siteName: "Write Great Notes",
-    title: "Write Great Notes - AI Medical Scribe & Clinical Documentation",
-    description: "AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health. HIPAA compliant. Start free trial.",
+    url: "https://grailhealth.ai",
+    siteName: "Grail Digital Health",
+    title: "Grail Digital Health - Write Great Notes - AI Medical Scribe & Clinical Documentation",
+    description: "Grail Digital Health: Write great notes with our AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health. HIPAA compliant. Start free trial.",
     images: [
       {
-        url: "/images/write-great-notes-logo.png",
-        width: 512,
-        height: 512,
-        alt: "Write Great Notes - AI Medical Scribe",
+        url: "/images/grail logo - transparent.png",
+        width: 1200,
+        height: 400,
+        alt: "Grail Digital Health - AI Medical Scribe",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Write Great Notes - AI Medical Scribe",
-    description: "AI-powered ambient medical scribe for clinical documentation. Captures conversations, generates comprehensive notes. HIPAA compliant.",
-    images: ["/images/write-great-notes-logo.png"],
+    title: "Grail Digital Health - AI Medical Scribe",
+    description: "Grail Digital Health: Write great notes with our AI-powered ambient medical scribe for clinical documentation. Captures conversations, generates comprehensive notes. HIPAA compliant.",
+    images: ["/images/grail logo - transparent.png"],
   },
   alternates: {
-    canonical: "https://writegreatnotes.ai",
+    canonical: "https://grailhealth.ai",
   },
   category: "Healthcare Software",
 };
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Write Great Notes",
+  name: "Grail Digital Health",
   applicationCategory: "HealthcareApplication",
   operatingSystem: "Web Browser",
   description: "AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Integrates with Charm Health, Epic, and Athena EMRs.",
@@ -123,7 +123,7 @@ const jsonLd = {
   provider: {
     "@type": "Organization",
     name: "Pound of Cure LLC",
-    url: "https://writegreatnotes.ai",
+    url: "https://grailhealth.ai",
   },
   featureList: [
     "AI Ambient Medical Scribe",
@@ -138,14 +138,14 @@ const jsonLd = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Write Great Notes",
-  url: "https://writegreatnotes.ai",
-  logo: "https://writegreatnotes.ai/images/write-great-notes-logo.png",
-  description: "AI-powered clinical documentation software for healthcare providers",
+  name: "Grail Digital Health",
+  url: "https://grailhealth.ai",
+  logo: "https://grailhealth.ai/images/grail logo - transparent.png",
+  description: "Write great notes with our AI-powered clinical documentation software for healthcare providers",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    url: "https://writegreatnotes.ai/contact",
+    url: "https://grailhealth.ai/contact",
   },
   sameAs: [],
 };

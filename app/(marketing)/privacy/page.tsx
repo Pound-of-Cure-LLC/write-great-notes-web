@@ -77,7 +77,7 @@ export default function PrivacyPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">HIPAA Compliance</h2>
           <p className="mb-4">
-            Write Great Notes is designed to be HIPAA compliant. We:
+            Grail is designed to be HIPAA compliant. We:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>Execute Business Associate Agreements (BAAs) with covered entities</li>

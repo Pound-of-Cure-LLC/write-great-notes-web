@@ -111,7 +111,7 @@ export default function GetStartedPage() {
 
     try {
       // Submit directly to external API and get the lead ID
-      const response = await fetch("https://api.writegreatnotes.ai/contact", {
+      const response = await fetch("https://api.grailhealth.ai/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -131,7 +131,7 @@ export default function GetStartedPage() {
       const data = await response.json();
 
       // Redirect to signup page with email pre-filled and lead_id for tracking
-      const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
+      const signupUrl = new URL("https://app.grailhealth.ai/signup");
       signupUrl.searchParams.set("email", formState.email);
       signupUrl.searchParams.set("name", `${formState.firstName} ${formState.lastName}`);
       if (formState.practiceName) {
@@ -147,7 +147,7 @@ export default function GetStartedPage() {
     } catch (err) {
       console.error("Failed to save lead:", err);
       // Still redirect even if lead save fails, just without the lead_id
-      const signupUrl = new URL("https://app.writegreatnotes.ai/signup");
+      const signupUrl = new URL("https://app.grailhealth.ai/signup");
       signupUrl.searchParams.set("email", formState.email);
       signupUrl.searchParams.set("name", `${formState.firstName} ${formState.lastName}`);
       if (formState.practiceName) {
@@ -349,7 +349,7 @@ export default function GetStartedPage() {
 
                 <p className="mt-6 text-center text-muted-foreground">
                   Already have an account?{" "}
-                  <Link href="https://app.writegreatnotes.ai/login" className="text-primary hover:underline font-bold text-lg">
+                  <Link href="https://app.grailhealth.ai/login" className="text-primary hover:underline font-bold text-lg">
                     Sign in
                   </Link>
                 </p>
@@ -381,7 +381,6 @@ export default function GetStartedPage() {
                           "Unlimited transcriptions",
                           "Unlimited note generation",
                           "Custom note templates",
-                          "EMR integration (Charm Health)",
                           "Full feature access",
                         ].map((item) => (
                           <li key={item} className="flex items-center gap-3">
@@ -392,26 +391,6 @@ export default function GetStartedPage() {
                           </li>
                         ))}
                       </ul>
-                    </div>
-                    
-                    <div className="mt-10 pt-8 border-t border-border">
-                       <div className="flex items-center gap-4">
-                         <div className="flex -space-x-3">
-                           {[1, 2, 3, 4].map((i) => (
-                             <div key={i} className="h-10 w-10 rounded-full border-2 border-background bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground overflow-hidden">
-                               <div className={`w-full h-full bg-gradient-to-br from-primary/${20 + i * 10} to-primary/${40 + i * 10}`} />
-                             </div>
-                           ))}
-                         </div>
-                         <div className="text-sm">
-                           <p className="font-bold">Trusted by 1,000+ providers</p>
-                           <div className="flex text-amber-500">
-                             {[1, 2, 3, 4, 5].map((i) => (
-                               <span key={i}>★</span>
-                             ))}
-                           </div>
-                         </div>
-                       </div>
                     </div>
                   </div>
                 </FadeIn>

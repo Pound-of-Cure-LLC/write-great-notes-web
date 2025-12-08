@@ -21,8 +21,8 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-an
 import { TypingEffect } from "@/components/marketing/typing-effect";
 
 export const metadata: Metadata = {
-  title: "AI Medical Scribe - Ambient Clinical Documentation | Write Great Notes",
-  description: "Write Great Notes is the best AI medical scribe for Charm Health and other EMRs. Ambient AI listens to patient conversations and generates comprehensive clinical notes in seconds. HIPAA compliant. Start your free trial.",
+  title: "AI Medical Scribe - Ambient Clinical Documentation | Grail Digital Health",
+  description: "Grail Digital Health: Write great notes with the best AI medical scribe for Charm Health and other EMRs. Ambient AI listens to patient conversations and generates comprehensive clinical notes in seconds. HIPAA compliant. Start your free trial.",
   keywords: [
     "AI medical scribe",
     "ambient AI scribe",
@@ -36,12 +36,12 @@ export const metadata: Metadata = {
     "AI for doctors",
   ],
   openGraph: {
-    title: "Write Great Notes - AI Medical Scribe & Ambient Documentation",
-    description: "AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health. Start free trial.",
-    url: "https://writegreatnotes.ai",
+    title: "Grail Digital Health - Write Great Notes - AI Medical Scribe & Ambient Documentation",
+    description: "Grail Digital Health: Write great notes with our AI-powered ambient medical scribe that captures patient conversations and generates comprehensive clinical notes. Best AI scribe for Charm Health. Start free trial.",
+    url: "https://grailhealth.ai",
   },
   alternates: {
-    canonical: "https://writegreatnotes.ai",
+    canonical: "https://grailhealth.ai",
   },
 };
 
@@ -183,14 +183,12 @@ export default function HomePage() {
                   Personalized to You
                 </span>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
-                  Your notes should look like
-                  <br />
-                  <span className="text-primary">your notes.</span>
+                  Your notes should look like <span className="text-primary">your notes.</span>
                 </h2>
                 <div className="space-y-6 text-lg sm:text-xl text-muted-foreground">
                   <p>
                     Every specialty is different. Every provider has their own style. 
-                    That&apos;s why Write Great Notes learns <em>your</em> format.
+                    That&apos;s why Grail learns <em>your</em> format.
                   </p>
                   <p>
                     <strong className="text-foreground">Upload one example note</strong> and our AI parses your structure, 
@@ -396,7 +394,7 @@ export default function HomePage() {
                 <span className="text-primary">New integrations every month.</span>
               </h2>
               <p className="text-xl sm:text-2xl text-muted-foreground mb-16 max-w-2xl mx-auto leading-relaxed">
-                Write Great Notes was designed from day one to integrate with your existing workflow. 
+                Grail was designed from day one to integrate with your existing workflow. 
                 We&apos;re adding new EMR integrations constantly—and if yours isn&apos;t on the list yet, it&apos;s probably next.
               </p>
             </FadeIn>
@@ -475,7 +473,7 @@ export default function HomePage() {
                   Your EMR, supercharged with AI.
                 </h2>
                 <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                  Write Great Notes doesn&apos;t just sit alongside your EMR—it reaches deep into your existing 
+                  Grail doesn&apos;t just sit alongside your EMR—it reaches deep into your existing 
                   system to pull the context you need and enhance every patient encounter with powerful AI.
                 </p>
               </div>
@@ -586,7 +584,7 @@ export default function HomePage() {
               </h2>
               <p className="text-xl sm:text-2xl text-white/90 mb-16 max-w-2xl mx-auto leading-relaxed">
                 You didn&apos;t spend years training to stay late clicking checkboxes. 
-                With Write Great Notes, you can log off at the end of your day knowing 
+                With Grail, you can log off at the end of your day knowing 
                 every note is complete—and every note reflects the quality care you provided.
               </p>
             </FadeIn>
@@ -677,12 +675,12 @@ export default function HomePage() {
             <StaggerContainer className="space-y-6">
               {[
                 {
-                  question: "How does Write Great Notes work with my existing EMR?",
-                  answer: "Write Great Notes integrates directly with your EMR through our growing list of integrations (AdvancedMD, Athena, Charm, and more). You can push notes directly to patient charts, or simply copy and paste. No migration required—it works alongside your current system.",
+                  question: "How does Grail work with my existing EMR?",
+                  answer: "Grail integrates directly with your EMR through our growing list of integrations (AdvancedMD, Athena, Charm, and more). You can push notes directly to patient charts, or simply copy and paste. No migration required—it works alongside your current system.",
                 },
                 {
-                  question: "What types of providers can use Write Great Notes?",
-                  answer: "Write Great Notes is designed for any healthcare provider who documents patient encounters—physicians, nurse practitioners, physician assistants, chiropractors, and more. Our customizable templates adapt to any specialty and documentation style.",
+                  question: "What types of providers can use Grail?",
+                  answer: "Grail is designed for any healthcare provider who documents patient encounters—physicians, nurse practitioners, physician assistants, chiropractors, and more. Our customizable templates adapt to any specialty and documentation style.",
                 },
                 {
                   question: "How do I get notes that match my documentation style?",
@@ -690,7 +688,7 @@ export default function HomePage() {
                 },
                 {
                   question: "Is my patient data secure?",
-                  answer: "Absolutely. Write Great Notes is fully HIPAA compliant with BAA available. All data is encrypted using AES-256 encryption at rest and in transit. We use industry-standard encryption and privacy practices, with complete audit trails to ensure your patients' information stays protected.",
+                  answer: "Absolutely. Grail is fully HIPAA compliant with BAA available. All data is encrypted using AES-256 encryption at rest and in transit. We use industry-standard encryption and privacy practices, with complete audit trails to ensure your patients' information stays protected.",
                 },
                 {
                   question: "How long does it take to get started?",
@@ -698,11 +696,11 @@ export default function HomePage() {
                 },
                 {
                   question: "What if my EMR isn't on your integration list?",
-                  answer: "We're adding new EMR integrations every month. Contact us to let us know which EMR you use—it's likely already on our roadmap. In the meantime, you can use Write Great Notes in standalone mode and copy notes to your EMR.",
+                  answer: "We're adding new EMR integrations every month. Contact us to let us know which EMR you use—it's likely already on our roadmap. In the meantime, you can use Grail in standalone mode and copy notes to your EMR.",
                 },
                 {
                   question: "How does this help with insurance denials?",
-                  answer: "Insurance companies use AI to scan notes for reasons to deny claims. Write Great Notes generates comprehensive documentation with clear medical necessity, clinical reasoning, and detailed patient-specific narratives—exactly what you need to stand up to audits and appeals.",
+                  answer: "Insurance companies use AI to scan notes for reasons to deny claims. Grail generates comprehensive documentation with clear medical necessity, clinical reasoning, and detailed patient-specific narratives—exactly what you need to stand up to audits and appeals.",
                 },
                 {
                   question: "What happens after the free trial?",
