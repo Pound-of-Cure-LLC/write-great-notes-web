@@ -13,10 +13,10 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Agreement to Terms</h2>
           <p className="mb-4">
-            These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you and Pound of Cure LLC (&quot;Write Great Notes,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) governing your use of our AI-powered clinical documentation platform and related services.
+            These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you and Pound of Cure LLC (&quot;Grail,&quot; &quot;Grail Digital Health,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) governing your use of our AI-powered clinical documentation platform and related services.
           </p>
           <p className="mb-4">
-            By accessing or using Write Great Notes, you agree to be bound by these Terms. If you do not agree to these Terms, you may not use our services.
+            By accessing or using Grail, you agree to be bound by these Terms. If you do not agree to these Terms, you may not use our services.
           </p>
         </section>
 
@@ -50,7 +50,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Account Registration</h2>
           <p className="mb-4">
-            To use Write Great Notes, you must create an account and provide accurate, complete information. You are responsible for:
+            To use Grail, you must create an account and provide accurate, complete information. You are responsible for:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>Maintaining the confidentiality of your account credentials</li>
@@ -82,7 +82,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Acceptable Use</h2>
           <p className="mb-4">
-            You agree to use Write Great Notes only for lawful purposes and in accordance with these Terms. You agree NOT to:
+            You agree to use Grail only for lawful purposes and in accordance with these Terms. You agree NOT to:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>Use the service for any purpose other than clinical documentation</li>
@@ -111,7 +111,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">AI-Generated Content</h2>
           <p className="mb-4">
-            Write Great Notes uses artificial intelligence to generate clinical documentation. You acknowledge and agree that:
+            Grail uses artificial intelligence to generate clinical documentation. You acknowledge and agree that:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>AI-generated notes are a starting point and require professional review</li>
@@ -125,7 +125,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Intellectual Property</h2>
           <p className="mb-4">
-            <strong>Our Property:</strong> Write Great Notes, including its software, AI models, user interface, and documentation, is owned by Pound of Cure LLC and protected by intellectual property laws.
+            <strong>Our Property:</strong> Grail, including its software, AI models, user interface, and documentation, is owned by Pound of Cure LLC and protected by intellectual property laws.
           </p>
           <p className="mb-4">
             <strong>Your Content:</strong> You retain ownership of all clinical notes and documentation generated using our service. You grant us a limited license to process your content solely for the purpose of providing the service.
@@ -168,7 +168,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Indemnification</h2>
           <p className="mb-4">
-            You agree to indemnify and hold harmless Write Great Notes, its affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the service, your violation of these Terms, or your violation of any rights of a third party.
+            You agree to indemnify and hold harmless Grail Digital Health, its affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the service, your violation of these Terms, or your violation of any rights of a third party.
           </p>
         </section>
 
@@ -206,7 +206,7 @@ export default function TermsPage() {
           </p>
           <p className="text-muted-foreground">
             Pound of Cure LLC<br />
-            Write Great Notes
+            Grail Digital Health
           </p>
         </section>
       </div>

@@ -13,7 +13,7 @@ export default function PrivacyPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
           <p className="mb-4">
-            Pound of Cure LLC (&quot;Write Great Notes,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your privacy and the privacy of your patients. This Privacy Policy describes how we collect, use, disclose, and safeguard information when you use our AI-powered clinical documentation platform.
+            Pound of Cure LLC (&quot;Grail,&quot; &quot;Grail Digital Health,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your privacy and the privacy of your patients. This Privacy Policy describes how we collect, use, disclose, and safeguard information when you use our AI-powered clinical documentation platform.
           </p>
           <p className="mb-4">
             We are a HIPAA-compliant service provider and take our obligations under the Health Insurance Portability and Accountability Act seriously. We will enter into a Business Associate Agreement (BAA) with covered entities as required.
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
           </p>
           <p className="text-muted-foreground">
             Pound of Cure LLC<br />
-            Write Great Notes
+            Grail Digital Health
           </p>
         </section>
       </div>

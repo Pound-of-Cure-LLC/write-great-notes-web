@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -103,8 +104,25 @@ export default function HomePage() {
         
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl text-center">
+            {/* Logo and Tagline */}
+            <FadeIn delay={0} duration={0.8}>
+              <div className="mb-12 flex flex-col items-center">
+                <Image
+                  src="/images/grail logo - transparent.png"
+                  alt="Grail Digital Health"
+                  width={400}
+                  height={133}
+                  className="h-24 w-auto object-contain mb-4"
+                  priority
+                />
+                <p className="text-lg sm:text-xl text-muted-foreground font-medium">
+                  Write Great Notes
+                </p>
+              </div>
+            </FadeIn>
+
             {/* Main headline */}
-            <FadeIn delay={0.1} duration={0.8}>
+            <FadeIn delay={0.2} duration={0.8}>
               <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground mb-8 leading-tight">
                 You listen. You examine.
                 <br />

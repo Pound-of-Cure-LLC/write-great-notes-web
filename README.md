@@ -1,6 +1,6 @@
-# Write Great Notes - Website
+# Grail Digital Health - Website
 
-The marketing and subscription website for Write Great Notes.
+The marketing and subscription website for Grail Digital Health.
 
 ## Tech Stack
 

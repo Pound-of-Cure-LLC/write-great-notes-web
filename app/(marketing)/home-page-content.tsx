@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -88,8 +89,25 @@ function HeroSection() {
       
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl text-center">
+          {/* Logo and Tagline */}
+          <FadeIn delay={0} duration={0.8}>
+            <div className="mb-12 flex flex-col items-center">
+              <Image
+                src="/images/grail logo - transparent.png"
+                alt="Grail Digital Health"
+                width={400}
+                height={133}
+                className="h-24 w-auto object-contain mb-4"
+                priority
+              />
+              <p className="text-lg sm:text-xl text-muted-foreground font-medium">
+                Write Great Notes
+              </p>
+            </div>
+          </FadeIn>
+
           {/* Main headline with floating animation */}
-          <FadeIn delay={0.1} duration={0.8}>
+          <FadeIn delay={0.2} duration={0.8}>
             <motion.h1 
               className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground mb-8 leading-tight"
               animate={{
@@ -374,7 +392,7 @@ export default function HomePageContent() {
                 <div className="bg-success/5 border border-success/20 rounded-3xl p-8 sm:p-10 h-full">
                   <h3 className="text-2xl font-bold text-success mb-6 flex items-center gap-3">
                     <CheckCircle2 className="h-7 w-7" />
-                    What Write Great Notes Generates
+                    What Gr<span className="text-primary">ai</span>l Generates
                   </h3>
                   <ul className="space-y-4 text-muted-foreground text-lg">
                     {[
@@ -877,7 +895,7 @@ export default function HomePageContent() {
                   Frequently Asked Questions
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Everything you need to know about Write Great Notes.
+                  Everything you need to know about Gr<span className="text-primary">ai</span>l.
                 </p>
               </div>
             </FadeIn>
