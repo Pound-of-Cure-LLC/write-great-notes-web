@@ -72,7 +72,7 @@ const exampleAssessment = "Presentation is most consistent with patellofemoral s
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-20 sm:py-32 lg:py-40">
+    <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 py-12 sm:py-16 lg:py-20">
       {/* Animated background pattern */}
       <motion.div 
         className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"
@@ -91,13 +91,13 @@ function HeroSection() {
         <div className="mx-auto max-w-5xl text-center">
           {/* Logo and Tagline */}
           <FadeIn delay={0} duration={0.8}>
-            <div className="mb-8 flex flex-col items-center">
+            <div className="mb-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <Image
                 src="/images/grail logo - transparent.png"
                 alt="Grail Digital Health"
                 width={400}
                 height={133}
-                className="h-20 w-auto object-contain mb-3"
+                className="h-16 sm:h-14 w-auto object-contain"
                 priority
               />
               <p className="text-base sm:text-lg text-muted-foreground font-medium">
