@@ -106,16 +106,16 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl text-center">
             {/* Logo and Tagline */}
             <FadeIn delay={0} duration={0.8}>
-              <div className="mb-12 flex flex-col items-center">
+              <div className="mb-8 flex flex-col items-center">
                 <Image
                   src="/images/grail logo - transparent.png"
                   alt="Grail Digital Health"
                   width={400}
                   height={133}
-                  className="h-24 w-auto object-contain mb-4"
+                  className="h-20 w-auto object-contain mb-3"
                   priority
                 />
-                <p className="text-lg sm:text-xl text-muted-foreground font-medium">
+                <p className="text-base sm:text-lg text-muted-foreground font-medium">
                   Write Great Notes
                 </p>
               </div>
