@@ -2,9 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, X, ArrowRight, Zap, Send, Flame } from "lucide-react";
+import { CheckCircle2, X, ArrowRight, Zap, Send, Flame, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
+import { SampleNoteModal } from "@/components/marketing/sample-note-modal";
 
 interface PlanFeature {
   name: string;
@@ -458,21 +459,25 @@ export default function PricingPage() {
                 Our team is here to help. Contact us for custom pricing or
                 enterprise solutions.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
                 <Button size="lg" asChild className="text-lg px-10 py-7 shadow-lg transition-all hover:scale-105">
                   <Link href="/get-started">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="text-lg px-10 py-7 border-2"
-                >
-                  <Link href="/contact">Contact Sales</Link>
-                </Button>
+                <SampleNoteModal
+                  trigger={
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="text-lg px-8 py-7 border-2 gap-2"
+                    >
+                      <Eye className="h-5 w-5" />
+                      See a Real Note
+                    </Button>
+                  }
+                />
               </div>
             </FadeIn>
           </div>

@@ -13,8 +13,10 @@ import {
   Play,
   Clock,
   Zap,
+  Eye,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
+import { SampleNoteModal } from "@/components/marketing/sample-note-modal";
 
 export const metadata: Metadata = {
   title: "How AI Medical Scribe Works - From Recording to EMR in Minutes | Grail Digital Health",
@@ -358,21 +360,25 @@ export default function HowItWorksPage() {
               <p className="text-xl text-muted-foreground mb-12">
                 Start your free trial today and experience the difference.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
                 <Button size="lg" asChild className="text-lg px-12 py-8 shadow-xl transition-all hover:scale-105">
                   <Link href="/get-started">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-6 w-6" />
                   </Link>
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="text-lg px-12 py-8 border-2 bg-background/50 backdrop-blur-sm"
-                >
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
+                <SampleNoteModal
+                  trigger={
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="text-lg px-8 py-8 border-2 bg-background/50 backdrop-blur-sm gap-2"
+                    >
+                      <Eye className="h-5 w-5" />
+                      See a Real Note
+                    </Button>
+                  }
+                />
               </div>
             </FadeIn>
           </div>

@@ -812,12 +812,12 @@ export default function HomePage() {
                 Stop settling for template notes. Start writing documentation that reflects the care you actually provide.
               </p>
             </FadeIn>
-            
+
             <FadeIn delay={0.2}>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Button 
-                  size="lg" 
-                  asChild 
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <Button
+                  size="lg"
+                  asChild
                   className="w-full sm:w-auto text-lg px-12 py-8 shadow-xl transition-all hover:scale-105 hover:shadow-2xl"
                 >
                   <Link href="/get-started">
@@ -825,14 +825,18 @@ export default function HomePage() {
                     <ArrowRight className="ml-2 h-6 w-6" />
                   </Link>
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="w-full sm:w-auto text-lg px-12 py-8 border-2 bg-background/50 backdrop-blur-sm"
-                >
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
+                <SampleNoteModal
+                  trigger={
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="w-full sm:w-auto text-lg px-8 py-8 border-2 bg-background/50 backdrop-blur-sm gap-2"
+                    >
+                      <Eye className="h-5 w-5" />
+                      See a Real Note
+                    </Button>
+                  }
+                />
               </div>
               <p className="mt-8 text-sm text-muted-foreground font-medium">
                 No credit card required · 7-day free trial · Works with any EMR · HIPAA compliant
