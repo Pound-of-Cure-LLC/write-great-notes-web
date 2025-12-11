@@ -17,13 +17,15 @@ import {
   Link2,
   RefreshCw,
   Send,
+  Eye,
 } from "lucide-react";
+import { SampleNoteModal } from "@/components/marketing/sample-note-modal";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 import { TypingEffect } from "@/components/marketing/typing-effect";
 
 export const metadata: Metadata = {
   title: "AI Medical Scribe - Ambient Clinical Documentation | Grail Digital Health",
-  description: "Grail Digital Health: Write great notes with the best AI medical scribe for Charm Health and other EMRs. Ambient AI listens to patient conversations and generates comprehensive clinical notes in seconds. HIPAA compliant. Start your free trial.",
+  description: "Grail Digital Health: Write great notes with the best AI medical scribe for Charm Health and other EMRs. Ambient AI listens to patient conversations and generates comprehensive clinical notes in seconds. Plus customizable AI patient summaries, task management, and referral tracking. HIPAA compliant. Start your free trial.",
   keywords: [
     "AI medical scribe",
     "ambient AI scribe",
@@ -110,12 +112,12 @@ export default function HomePage() {
                 <Image
                   src="/images/grail logo - transparent.png"
                   alt="Grail Digital Health"
-                  width={400}
-                  height={133}
-                  className="h-16 sm:h-14 w-auto object-contain"
+                  width={200}
+                  height={67}
+                  className="h-10 sm:h-8 w-auto object-contain"
                   priority
                 />
-                <p className="text-base sm:text-lg text-muted-foreground font-medium">
+                <p className="text-2xl sm:text-3xl text-muted-foreground font-semibold">
                   Write Great Notes
                 </p>
               </div>
@@ -144,9 +146,9 @@ export default function HomePage() {
 
             <FadeIn delay={0.7} duration={0.8}>
               <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
-                <Button 
-                  size="lg" 
-                  asChild 
+                <Button
+                  size="lg"
+                  asChild
                   className="w-full sm:w-auto text-lg px-10 py-7 shadow-xl transition-all hover:scale-105 hover:shadow-2xl bg-primary hover:bg-primary/90"
                 >
                   <Link href="/get-started">
@@ -164,6 +166,25 @@ export default function HomePage() {
                     See How It Works
                   </Link>
                 </Button>
+              </div>
+            </FadeIn>
+
+            {/* Prominent Sample Note CTA */}
+            <FadeIn delay={0.85} duration={0.8}>
+              <div className="mt-8 flex justify-center">
+                <SampleNoteModal
+                  trigger={
+                    <Button
+                      variant="ghost"
+                      size="lg"
+                      className="text-lg px-8 py-6 bg-success/10 hover:bg-success/20 text-success border border-success/30 hover:border-success/50 transition-all hover:scale-105 gap-3"
+                    >
+                      <Eye className="h-5 w-5" />
+                      See a Real AI-Generated Note
+                      <span className="text-xs bg-success/20 px-2 py-1 rounded-full font-semibold">100% Unedited</span>
+                    </Button>
+                  }
+                />
               </div>
             </FadeIn>
             
@@ -364,7 +385,21 @@ export default function HomePage() {
             {/* Example of good note */}
             <FadeIn delay={0.2}>
               <div className="bg-slate-800 rounded-3xl p-8 sm:p-10 mb-16 border border-slate-700 shadow-2xl">
-                <p className="text-sm text-slate-400 uppercase tracking-wider mb-6 font-semibold">What great notes look like:</p>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                  <p className="text-sm text-slate-400 uppercase tracking-wider font-semibold">What great notes look like:</p>
+                  <SampleNoteModal
+                    trigger={
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="bg-transparent border-slate-600 text-slate-200 hover:bg-slate-700 hover:text-white gap-2"
+                      >
+                        <Eye className="h-4 w-4" />
+                        See Full Real Note
+                      </Button>
+                    }
+                  />
+                </div>
                 <div className="text-lg text-slate-200 space-y-6 bg-slate-900/50 rounded-xl p-6 sm:p-8 font-mono">
                   <div>
                     <strong className="text-white block mb-2">HPI:</strong>
@@ -374,6 +409,19 @@ export default function HomePage() {
                     <strong className="text-white block mb-2">Assessment:</strong>
                     <TypingEffect text={exampleAssessment} speed={15} startDelay={6000} cursorColor="bg-blue-400" className="leading-relaxed" />
                   </div>
+                </div>
+                <div className="mt-6 pt-6 border-t border-slate-700 text-center">
+                  <p className="text-slate-400 text-sm">
+                    This is just a preview.
+                    <SampleNoteModal
+                      trigger={
+                        <button className="text-primary hover:underline ml-1 font-semibold">
+                          Click here to see a complete, real AI-generated clinical note
+                        </button>
+                      }
+                    />
+                    — 100% unedited from patient conversation.
+                  </p>
                 </div>
               </div>
             </FadeIn>
@@ -465,7 +513,7 @@ export default function HomePage() {
               {[
                 { number: "0", label: "Data migrations needed" },
                 { number: "New", label: "Integrations monthly", icon: RefreshCw },
-                { number: "5 min", label: "To get started" },
+                { number: "Minutes", label: "To get started" },
               ].map((stat) => (
                 <StaggerItem key={stat.label} className="bg-muted/50 rounded-2xl p-8 border border-border hover:border-primary/50 transition-colors">
                   <div className="text-5xl font-black text-primary mb-3">{stat.number}</div>
@@ -485,14 +533,14 @@ export default function HomePage() {
               <div className="text-center mb-16">
                 <span className="inline-flex items-center gap-2 text-slate-300 font-bold text-lg uppercase tracking-wider mb-4">
                   <Sparkles className="h-5 w-5" />
-                  Deep EMR Integration
+                  Seamless Provider Workflow
                 </span>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-                  Your EMR, supercharged with AI.
+                  Everything you need, one screen.
                 </h2>
                 <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                  Grail doesn&apos;t just sit alongside your EMR—it reaches deep into your existing 
-                  system to pull the context you need and enhance every patient encounter with powerful AI.
+                  Stop clicking through a million screens. Grail pulls all the information you need from your EMR
+                  and presents it during the visit—so you can focus on your patient, not your computer.
                 </p>
               </div>
             </FadeIn>
@@ -500,33 +548,33 @@ export default function HomePage() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {[
                 {
-                  title: "AI Patient Summary",
-                  description: "Get an intelligent summary of your patient before every visit—medical history, recent visits, and key concerns synthesized by AI.",
+                  title: "Customizable AI Patient Summary",
+                  description: "Get an intelligent summary of your patient before every visit. Customize what information matters to you—medical history, recent visits, key concerns, all synthesized by AI.",
                   icon: "🧠",
                 },
                 {
-                  title: "Previous Notes",
-                  description: "Access past notes directly from your EMR. Review previous encounters without switching systems.",
-                  icon: "📋",
+                  title: "Patient Tagging",
+                  description: "Organize your patients your way. Tag patients for follow-ups, conditions, or any workflow that fits your practice.",
+                  icon: "🏷️",
                 },
                 {
-                  title: "Live Vitals",
-                  description: "Current vitals pulled automatically from your EMR and incorporated into your notes.",
-                  icon: "💓",
+                  title: "Task Management",
+                  description: "Create and track tasks for each patient. Never lose track of pending labs, referrals, or follow-up items.",
+                  icon: "✅",
                 },
                 {
-                  title: "Demographics",
-                  description: "Patient demographics flow directly from your EMR—no duplicate data entry.",
-                  icon: "👤",
-                },
-                {
-                  title: "Referring Providers",
-                  description: "See referring provider information and context for every referral patient.",
+                  title: "Referral Management",
+                  description: "Streamlined referral tracking from request to completion. Keep all referral information in one place.",
                   icon: "🔗",
                 },
                 {
+                  title: "Live Vitals & Demographics",
+                  description: "Current vitals and patient demographics pulled automatically from your EMR—no duplicate data entry.",
+                  icon: "💓",
+                },
+                {
                   title: "More Coming Monthly",
-                  description: "We're constantly adding new AI-powered features that enhance your existing EMR capabilities.",
+                  description: "We're constantly adding new AI-powered features to make your workflow even more seamless.",
                   icon: "🚀",
                 },
               ].map((feature) => (
@@ -545,7 +593,7 @@ export default function HomePage() {
             <FadeIn delay={0.4}>
               <div className="text-center">
                 <p className="text-2xl text-slate-200 mb-4 font-medium">
-                  Think of it as <strong className="text-white">AI co-pilot features</strong> for the EMR you already use.
+                  Your <strong className="text-white">AI-powered command center</strong> for better patient care.
                 </p>
                 <p className="text-lg text-slate-400">
                   No migration. No new system to learn. Just powerful new capabilities added to your existing workflow.
@@ -710,7 +758,7 @@ export default function HomePage() {
                 },
                 {
                   question: "How long does it take to get started?",
-                  answer: "You can be up and running in about 5 minutes. Sign up, connect your EMR (optional), upload a sample note to set your format, and start documenting. There's no lengthy onboarding or training required.",
+                  answer: "You can be up and running in just a few minutes. Our streamlined onboarding gets you connected to your EMR, sets up your note format, and has you documenting in no time. No lengthy training required.",
                 },
                 {
                   question: "What if my EMR isn't on your integration list?",
@@ -719,6 +767,10 @@ export default function HomePage() {
                 {
                   question: "How does this help with insurance denials?",
                   answer: "Insurance companies use AI to scan notes for reasons to deny claims. Grail generates comprehensive documentation with clear medical necessity, clinical reasoning, and detailed patient-specific narratives—exactly what you need to stand up to audits and appeals.",
+                },
+                {
+                  question: "What workflow features does Grail offer beyond note-writing?",
+                  answer: "Grail is designed to streamline your entire workflow. You get customizable AI patient summaries before each visit, patient tagging for organization, task management to track follow-ups, and referral management to keep everything in one place. We're adding new workflow features regularly based on provider feedback.",
                 },
                 {
                   question: "What happens after the free trial?",
