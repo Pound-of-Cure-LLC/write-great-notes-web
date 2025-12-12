@@ -177,8 +177,7 @@ export default function GetStartedPage() {
                     Start Writing Great Notes Today
                   </h1>
                   <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-                    Join thousands of healthcare providers saving hours on documentation. 
-                    No credit card required.
+                    Join thousands of healthcare providers saving hours on documentation.
                   </p>
                 </div>
 
@@ -430,7 +429,7 @@ export default function GetStartedPage() {
             </div>
             <div className="flex items-center gap-3">
               <CheckCircle2 className="h-6 w-6 text-success/80" />
-              <span className="font-medium">No Credit Card Required</span>
+              <span className="font-medium">Cancel Anytime</span>
             </div>
             <div className="flex items-center gap-3">
               <Clock className="h-6 w-6 text-success/80" />

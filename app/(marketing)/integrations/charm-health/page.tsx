@@ -216,7 +216,7 @@ export default function CharmHealthIntegrationPage() {
               </Link>
             </Button>
             <p className="mt-6 text-sm text-muted-foreground">
-              No credit card required · 7-day free trial
+              7-day free trial · Cancel anytime
             </p>
           </div>
         </div>

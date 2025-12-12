@@ -65,7 +65,7 @@ export default function TermsPage() {
           
           <h3 className="text-xl font-semibold mb-3">Free Trial</h3>
           <p className="mb-4">
-            We offer a 7-day free trial for new users. No credit card is required to start the trial. At the end of the trial period, you must subscribe to continue using the service.
+            We offer a 7-day free trial for new users. A credit card is required to start the trial. At the end of the trial period, you will be automatically subscribed unless you cancel before the trial ends.
           </p>
 
           <h3 className="text-xl font-semibold mb-3">Subscription Plans</h3>

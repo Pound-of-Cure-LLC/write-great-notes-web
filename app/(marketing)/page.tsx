@@ -190,7 +190,7 @@ export default function HomePage() {
             
             <FadeIn delay={0.9} duration={0.8}>
               <p className="mt-8 text-sm text-muted-foreground/80 font-medium">
-                No credit card required · 7-day free trial · Integrated faxing included · Works with any EMR
+                7-day free trial · Integrated faxing included · Works with any EMR
               </p>
             </FadeIn>
           </div>
@@ -839,7 +839,7 @@ export default function HomePage() {
                 />
               </div>
               <p className="mt-8 text-sm text-muted-foreground font-medium">
-                No credit card required · 7-day free trial · Works with any EMR · HIPAA compliant
+                7-day free trial · Works with any EMR · HIPAA compliant
               </p>
             </FadeIn>
           </div>

@@ -67,7 +67,7 @@ const faqs = [
   {
     question: "How does the free trial work?",
     answer:
-      "Start with a 7-day free trial with full access to all features. No credit card required. Cancel anytime.",
+      "Start with a 7-day free trial with full access to all features. Cancel anytime.",
   },
   {
     question: "Can I change plans later?",
@@ -138,7 +138,7 @@ export default function PricingPage() {
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Choose the plan that fits your practice. Start with a 7-day free
-                trial, no credit card required.
+                trial.
               </p>
             </FadeIn>
           </div>
@@ -223,7 +223,7 @@ export default function PricingPage() {
 
           <FadeIn delay={0.4}>
             <p className="text-center text-muted-foreground mt-12 font-medium">
-              All plans include 7-day free trial. No credit card required.
+              All plans include a 7-day free trial.
             </p>
           </FadeIn>
 

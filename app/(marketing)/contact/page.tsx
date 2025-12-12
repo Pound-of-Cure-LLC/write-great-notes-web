@@ -449,7 +449,7 @@ function ContactPageContent({ emrParam, typeParam }: { emrParam: string | null; 
                 Ready to Get Started?
               </h2>
               <p className="text-xl text-muted-foreground mb-10">
-                Start your free trial today. No credit card required.
+                Start your free trial today.
               </p>
               <Button size="lg" asChild className="text-lg px-12 py-8 shadow-lg transition-all hover:scale-105">
                 <Link href="/get-started">
