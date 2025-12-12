@@ -21,9 +21,9 @@ const plans = [
     price: 99,
     features: [
       { name: "Ambient AI medical scribe", included: true },
-      { name: "400 notes per month included", included: true },
+      { name: "250 notes per month included", included: true },
       { name: "Additional notes: $0.25 each", included: true, muted: true },
-      { name: "400 faxes per month included", included: true },
+      { name: "200 faxes per month included", included: true },
       { name: "Additional faxes: $0.10/page", included: true, muted: true },
       { name: "Works with or without EMR", included: true },
       { name: "Custom note templates", included: true },
@@ -56,9 +56,9 @@ const comparisonFeatures = [
   { name: "Monthly Price", essential: "$99/provider", pro: "$149/provider" },
   { name: "Ambient AI Scribe", essential: true, pro: true },
   { name: "EMR Integration", essential: "—", pro: true },
-  { name: "Notes Included", essential: "400/mo", pro: "600/mo" },
+  { name: "Notes Included", essential: "250/mo", pro: "600/mo" },
   { name: "Additional Notes", essential: "$0.25 ea", pro: "$0.25 ea" },
-  { name: "Faxes Included", essential: "400/mo", pro: "600/mo" },
+  { name: "Faxes Included", essential: "200/mo", pro: "600/mo" },
   { name: "Additional Faxes", essential: "$0.10/page", pro: "$0.10/page" },
   { name: "Support Level", essential: "Standard", pro: "Priority (24h)" },
 ];
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: "Is faxing included?",
     answer:
-      "Yes! All plans include a monthly allowance of faxes (400 for Essential, 600 for Pro), with additional faxes available at just $0.10/page.",
+      "Yes! All plans include a monthly allowance of faxes (200 for Essential, 600 for Pro), with additional faxes available at just $0.10/page.",
   },
   {
     question: "Are faxes HIPAA compliant?",
@@ -243,7 +243,7 @@ export default function PricingPage() {
                       </h3>
                       <p className="text-muted-foreground text-lg leading-relaxed">
                         Sign up now and get unlimited faxing for your first 6 months. 
-                        After that, your plan includes monthly fax credits (400 or 600 depending on plan) 
+                        After that, your plan includes monthly fax credits (200 or 600 depending on plan)
                         with additional faxes at just $0.10/page.
                       </p>
                     </div>
@@ -359,7 +359,7 @@ export default function PricingPage() {
                       <div>
                         <h3 className="font-bold text-lg mb-2">Monthly Allowances</h3>
                         <p className="text-muted-foreground leading-relaxed">
-                          Essential: 400 faxes/month<br />
+                          Essential: 200 faxes/month<br />
                           Pro: 600 faxes/month
                         </p>
                       </div>
