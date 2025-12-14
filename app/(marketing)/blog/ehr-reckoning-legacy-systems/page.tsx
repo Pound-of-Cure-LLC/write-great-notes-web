@@ -148,6 +148,10 @@ export default function EHRReckoningArticle() {
                     <li>Every additional fax line, interface, module, or &quot;premium&quot; feature comes at an additional cost.</li>
                     <li>EHR bills seem to increase year after year despite little noticeable improvement.</li>
                   </ul>
+
+                  <p className="text-base leading-relaxed mt-4">
+                    In contrast, modern AI scribe solutions like Grail offer <Link href="/pricing" className="text-primary hover:underline font-semibold">transparent, predictable pricing</Link> without hidden fees or escalating costs.
+                  </p>
                 </div>
 
                 {/* Section */}
@@ -159,7 +163,7 @@ export default function EHRReckoningArticle() {
                   </p>
 
                   <p className="text-base leading-relaxed mb-4">
-                    AI is uniquely positioned to transform healthcare documentation and workflows. <strong>AI scribe technology and ambient clinical intelligence</strong> are already proving their value. Properly leveraged, AI EMR integration can:
+                    AI is uniquely positioned to transform healthcare documentation and workflows. <Link href="/features" className="text-primary hover:underline font-semibold">AI scribe technology and ambient clinical intelligence</Link> are already proving their value. Properly leveraged, AI EMR integration can:
                   </p>
 
                   <ul className="list-disc pl-6 space-y-2 text-base leading-relaxed mb-4">
@@ -171,7 +175,7 @@ export default function EHRReckoningArticle() {
                   </ul>
 
                   <p className="text-base leading-relaxed">
-                    An <strong>AI medical scribe</strong> can produce documentation that is more detailed, more accurate, and more clinically useful than what even the most diligent human note writers can achieve. <strong>Ambient AI scribes</strong> that listen to patient encounters and automatically generate notes are transforming how providers document care.
+                    An <Link href="/how-it-works" className="text-primary hover:underline font-semibold">AI medical scribe</Link> can produce documentation that is more detailed, more accurate, and more clinically useful than what even the most diligent human note writers can achieve. <Link href="/features" className="text-primary hover:underline font-semibold">Ambient AI scribes</Link> that listen to patient encounters and automatically generate notes are transforming how providers document care.
                   </p>
                 </div>
 
@@ -188,7 +192,7 @@ export default function EHRReckoningArticle() {
                   </p>
 
                   <p className="text-base leading-relaxed mb-4">
-                    This is where <strong>AI scribe software</strong> like what we&apos;re creating at <Link href="/" className="text-primary font-semibold hover:underline">Grail Digital Health</Link> comes in. Rather than simply transcribing visits, modern <strong>ambient AI scribe</strong> solutions with <strong>EMR integration</strong>:
+                    This is where <strong>AI scribe software</strong> like what we&apos;re creating at <Link href="/" className="text-primary font-semibold hover:underline">Grail Digital Health</Link> comes in. Rather than simply transcribing visits, modern <strong>ambient AI scribe</strong> solutions with <Link href="/integrations/charm-health" className="text-primary hover:underline font-semibold">EMR integration</Link>:
                   </p>
 
                   <ul className="list-disc pl-6 space-y-2 text-base leading-relaxed mb-4">
@@ -221,7 +225,7 @@ export default function EHRReckoningArticle() {
                   </ol>
 
                   <p className="text-base leading-relaxed">
-                    Ultimately, the technical debt of legacy EHR systems restricts innovation and will slow direct <strong>AI EMR integration</strong> into their software. Until that debt is managed, <strong>AI scribe EHR add-on solutions</strong> are critical, providing an essential bridge that gives providers and healthcare organizations immediate access to the power of <strong>ambient AI clinical documentation</strong>.
+                    Ultimately, the technical debt of legacy EHR systems restricts innovation and will slow direct <strong>AI EMR integration</strong> into their software. Until that debt is managed, <strong>AI scribe EHR add-on solutions</strong> are critical, providing an essential bridge that gives providers and healthcare organizations immediate access to the power of <Link href="/features" className="text-primary hover:underline font-semibold">ambient AI clinical documentation</Link>.
                   </p>
                 </div>
               </article>
