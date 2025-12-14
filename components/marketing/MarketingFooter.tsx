@@ -15,6 +15,7 @@ const footerNavigation = {
     { name: "Athena", href: "/integrations/athena" },
   ],
   company: [
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [
