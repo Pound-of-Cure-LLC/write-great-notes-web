@@ -19,16 +19,16 @@ export default function BlogPage() {
   return (
     <div className="flex flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
 
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <FadeIn>
-              <Badge variant="secondary" className="mb-6 px-4 py-2 bg-primary/10 text-primary border-primary/20">
+              <Badge variant="secondary" className="mb-4 px-4 py-2 bg-primary/10 text-primary border-primary/20">
                 Blog
               </Badge>
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-8">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6">
                 Insights on Healthcare AI
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
@@ -40,7 +40,7 @@ export default function BlogPage() {
       </section>
 
       {/* Articles Grid */}
-      <section className="py-20 sm:py-32">
+      <section className="pt-8 sm:pt-12 pb-12 sm:pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {articles.map((article) => (

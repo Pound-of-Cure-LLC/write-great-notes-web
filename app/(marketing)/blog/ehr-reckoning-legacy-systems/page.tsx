@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -78,13 +79,36 @@ export default function EHRReckoningArticle() {
       </section>
 
       {/* Article Content */}
-      <section className="py-8 sm:py-12">
+      <section className="pt-4 sm:pt-6 pb-8 sm:pb-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
             <FadeIn>
+              {/* TL;DR Section */}
+              <div className="mb-8 p-6 bg-muted/50 rounded-lg border border-border/50">
+                <h2 className="text-lg font-semibold mb-4">TL;DR</h2>
+                <ul className="space-y-2 text-base leading-relaxed list-disc pl-6">
+                  <li>Legacy EHR systems struggle with massive technical debt, making it difficult to integrate modern AI features.</li>
+                  <li>EHR companies face the challenge of maintaining complex legacy systems while trying to add AI capabilities.</li>
+                  <li>EHR add-on solutions bridge this gap by providing AI scribe integration without requiring core EHR rewrites.</li>
+                  <li>AI will transform healthcare documentation and unlock true interoperability between systems.</li>
+                </ul>
+              </div>
+
+              {/* Featured Image */}
+              <div className="mb-8 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/blog/ehr-legacy-systems-featured.jpg"
+                  alt="Legacy EHR systems struggling with AI integration"
+                  width={800}
+                  height={450}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
+
               <article className="space-y-6">
                 {/* Lead paragraph */}
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-base text-muted-foreground leading-relaxed">
                   Electronic Health Records (EHRs) are the indispensable foundation of all healthcare operations. While often cumbersome and difficult to use, they are absolutely necessary to meet the complex meaningful use, billing, prior authorization, and interoperability requirements. Nearly every healthcare action is executed through an EHR.
                 </p>
 
@@ -115,6 +139,16 @@ export default function EHRReckoningArticle() {
                 {/* Section */}
                 <div className="pt-4">
                   <h2 className="text-xl font-bold mb-4">The Core Problem: Crippling Technical Debt</h2>
+
+                  <div className="my-6 rounded-lg overflow-hidden">
+                    <Image
+                      src="/images/blog/technical-debt-concept.jpg"
+                      alt="Technical debt accumulation in legacy EHR systems"
+                      width={800}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
 
                   <p className="text-base leading-relaxed mb-4">
                     Many EHR companies are not prepared for this transition and will not be able to successfully implement the tools their user base will come to expect. The core problem is <strong>technical debt</strong>.
@@ -158,6 +192,16 @@ export default function EHRReckoningArticle() {
                 <div className="pt-4">
                   <h2 className="text-xl font-bold mb-4">The Promise of AI in Healthcare</h2>
 
+                  <div className="my-6 rounded-lg overflow-hidden">
+                    <Image
+                      src="/images/blog/ai-healthcare-promise.jpg"
+                      alt="AI transforming healthcare documentation and workflows"
+                      width={800}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+
                   <p className="text-base leading-relaxed mb-4">
                     Yet, the irony is that the future of technology in healthcare is incredibly bright. The promises of true system interoperability and universal data sharing that have often been discussed but never meaningfully implemented may eventually be realized.
                   </p>
@@ -186,6 +230,16 @@ export default function EHRReckoningArticle() {
                   <p className="text-base leading-relaxed mb-4">
                     Getting from today&apos;s semi-paralyzed state to that future won&apos;t be immediate.
                   </p>
+
+                  <div className="my-6 rounded-lg overflow-hidden">
+                    <Image
+                      src="/images/blog/ehr-addon-integration.jpg"
+                      alt="EHR add-on solutions bridging legacy systems with AI"
+                      width={800}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
 
                   <p className="text-base leading-relaxed mb-4">
                     In the gap, we will see an explosion of <strong>EHR add-on solutions</strong>—tools that leverage existing EHR capabilities, APIs, and interoperability layers to deliver <strong>AI scribe EHR integration</strong> now, without requiring core EHR rewrites. These <strong>ambient scribe solutions</strong> act as bridges, augmenting legacy EMR systems rather than replacing them.
@@ -238,7 +292,7 @@ export default function EHRReckoningArticle() {
                   <h3 className="text-xl font-bold mb-3">
                     Experience AI Scribe EHR Integration Today
                   </h3>
-                  <p className="text-muted-foreground mb-5 leading-relaxed">
+                  <p className="text-base text-muted-foreground mb-5 leading-relaxed">
                     Grail Digital Health is an ambient AI scribe that bridges the gap between your current EMR and the AI-powered future. Generate detailed, accurate clinical notes with seamless EHR integration—without waiting for your legacy system to catch up.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
