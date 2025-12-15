@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: "Discover why AI scribe EHR integration is challenging legacy systems. Learn how ambient AI scribes and EMR add-on solutions bridge the gap.",
     url: "https://grailhealth.ai/blog/ehr-reckoning-legacy-systems",
     type: "article",
-    publishedTime: "2024-12-13T00:00:00.000Z",
+    publishedTime: "2025-12-13T00:00:00.000Z",
   },
   alternates: {
     canonical: "https://grailhealth.ai/blog/ehr-reckoning-legacy-systems",
@@ -66,7 +66,7 @@ export default function EHRReckoningArticle() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
-                  December 13, 2024
+                  December 13, 2025
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Clock className="h-4 w-4" />

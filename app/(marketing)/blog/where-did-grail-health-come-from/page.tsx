@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "Dr. Matthew Weiner, a bariatric surgeon with 20 years of clinical experience, shares his journey from EHR frustration to building Grail Health -user-friendly, AI-powered healthcare software with AI scribe technology.",
     url: "https://grailhealth.ai/blog/where-did-grail-health-come-from",
     type: "article",
-    publishedTime: "2024-12-14T00:00:00.000Z",
+    publishedTime: "2025-12-07T00:00:00.000Z",
   },
   alternates: {
     canonical: "https://grailhealth.ai/blog/where-did-grail-health-come-from",
@@ -76,7 +76,7 @@ export default function WhereDidGrailComeFromArticle() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
-                  December 14, 2024
+                  December 7, 2025
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Clock className="h-4 w-4" />
