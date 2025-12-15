@@ -6,6 +6,14 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-an
 
 const articles = [
   {
+    slug: "where-did-grail-health-come-from",
+    title: "Where Did Grail Health Come From? A Physician's Journey to Building User-Friendly AI-Powered Healthcare Tools",
+    description: "Dr. Matthew Weiner, a bariatric surgeon with 20 years of clinical experience, shares his journey from EHR frustration to building Grail Health—user-friendly, AI-powered healthcare software with AI scribe technology.",
+    date: "December 14, 2024",
+    readTime: "7 min read",
+    category: "Founder Story",
+  },
+  {
     slug: "ehr-reckoning-legacy-systems",
     title: "AI Scribe EHR Integration: Why Legacy Systems Are Struggling",
     description: "Discover why AI scribe EHR integration is challenging legacy systems. Learn how ambient AI scribes and EMR add-on solutions bridge the gap while EHR vendors struggle with technical debt.",
