@@ -6,6 +6,14 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-an
 
 const articles = [
   {
+    slug: "healthcare-ai-crossroads",
+    title: "Healthcare AI at a Crossroads: The Most Important Choice We'll Make",
+    description: "Healthcare has been optimized for corporate profits. As AI transforms medicine, we face a critical choice: what will we optimize it for? Patients and physicians must work together to ensure AI serves health, not just wealth.",
+    date: "December 17, 2025",
+    readTime: "7 min read",
+    category: "Healthcare & AI",
+  },
+  {
     slug: "ehr-reckoning-legacy-systems",
     title: "AI Scribe EHR Integration: Why Legacy Systems Are Struggling",
     description: "Discover why AI scribe EHR integration is challenging legacy systems. Learn how ambient AI scribes and EMR add-on solutions bridge the gap while EHR vendors struggle with technical debt.",
@@ -16,7 +24,7 @@ const articles = [
   {
     slug: "where-did-grail-health-come-from",
     title: "Where Did Grail Health Come From? A Physician's Journey to Building User-Friendly AI-Powered Healthcare Tools",
-    description: "Dr. Matthew Weiner, a bariatric surgeon with 20 years of clinical experience, shares his journey from EHR frustration to building Grail Health—user-friendly, AI-powered healthcare software with AI scribe technology.",
+    description: "Dr. Matthew Weiner, a bariatric surgeon with 20 years of clinical experience, shares his journey from EHR frustration to building Grail Health - user-friendly, AI-powered healthcare software with AI scribe technology.",
     date: "December 7, 2025",
     readTime: "7 min read",
     category: "Founder Story",
