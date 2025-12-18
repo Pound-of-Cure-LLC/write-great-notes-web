@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, Brain, Sparkles } from "lucide-react";
 import { FadeIn } from "@/components/ui/scroll-animation";
 import { SampleNoteModal } from "@/components/marketing/sample-note-modal";
 
