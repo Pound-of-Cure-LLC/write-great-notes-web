@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "Dr. Matthew Weiner, a bariatric surgeon with 20 years of clinical experience, shares his journey from EHR frustration to building Grail Health -user-friendly, AI-powered healthcare software with AI scribe technology.",
     url: "https://grailhealth.ai/blog/where-did-grail-health-come-from",
     type: "article",
-    publishedTime: "2025-12-07T00:00:00.000Z",
+    publishedTime: "2024-12-14T00:00:00.000Z",
   },
   alternates: {
     canonical: "https://grailhealth.ai/blog/where-did-grail-health-come-from",
@@ -76,7 +76,7 @@ export default function WhereDidGrailComeFromArticle() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
-                  December 7, 2025
+                  December 14, 2024
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Clock className="h-4 w-4" />
@@ -146,17 +146,6 @@ export default function WhereDidGrailComeFromArticle() {
                   </p>
                 </div>
 
-                {/* AI Banner */}
-                <div className="my-8 rounded-xl overflow-hidden">
-                  <Image
-                    src="/images/DCECE009-6FD7-4686-B65F-B3CBB37CC8F5.png"
-                    alt="AI transforming healthcare technology"
-                    width={800}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-
                 <div className="pt-4">
                   <h2 className="text-xl font-bold mb-4">Then AI Changed Everything</h2>
 
@@ -165,7 +154,7 @@ export default function WhereDidGrailComeFromArticle() {
                   </p>
 
                   <p className="text-base leading-relaxed mb-4">
-                    <strong>First, AI let me write code better and faster.</strong> I&apos;ve always written code -it&apos;s been part of how I&apos;ve built and managed my practice for years. But AI amplified what I could do. For the first time, a physician could actually create production-quality software at scale -and at a tiny fraction of the cost it would have taken just a few years ago. I didn&apos;t need to explain my workflow to developers who&apos;d never seen a patient. I didn&apos;t need to compromise on every feature because &quot;that&apos;s not how the system works.&quot; I could build AI-powered tools that worked the way doctors think -software that could search through mountains of medical data and surface exactly what providers need at the point of care.
+                    <strong>First, AI gave me the ability to write code.</strong> For the first time, a physician could actually create the software they envisioned. I didn&apos;t need to explain my workflow to developers who&apos;d never seen a patient. I didn&apos;t need to compromise on every feature because &quot;that&apos;s not how the system works.&quot; I could build AI-powered tools that worked the way doctors think -software that could search through mountains of medical data and surface exactly what providers need at the point of care.
                   </p>
 
                   <p className="text-base leading-relaxed">
@@ -173,16 +162,33 @@ export default function WhereDidGrailComeFromArticle() {
                   </p>
                 </div>
 
-                {/* Demo Video Placeholder */}
-                <div className="my-8 rounded-lg overflow-hidden border-2 border-dashed border-primary/30 bg-muted/30">
-                  <div className="aspect-video flex flex-col items-center justify-center p-8 text-center">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                      <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
+                {/* AI Banner */}
+                <div className="my-8 rounded-lg overflow-hidden border border-border/50 bg-gradient-to-br from-primary/10 via-primary/5 to-uranian-blue/10 relative">
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary))_1px,transparent_1px)] bg-[size:20px_20px] opacity-10" />
+                  <div className="relative p-8 sm:p-12">
+                    <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                      <div className="flex-shrink-0">
+                        <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-primary to-uranian-blue flex items-center justify-center shadow-lg">
+                          <Brain className="h-10 w-10 text-primary-foreground" />
+                        </div>
+                      </div>
+                      <div className="flex-1 text-center sm:text-left">
+                        <h3 className="text-2xl sm:text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-uranian-blue bg-clip-text text-transparent">
+                          AI Changed Everything
+                        </h3>
+                        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                          AI gave physicians the power to build software that works the way doctors think, and transformed clinical documentation forever.
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 hidden sm:block">
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse" />
+                          <div className="relative h-16 w-16 rounded-full bg-gradient-to-br from-primary/30 to-uranian-blue/30 flex items-center justify-center border-2 border-primary/30">
+                            <Sparkles className="h-8 w-8 text-primary" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-lg font-semibold text-foreground mb-2">Product Demo Coming Soon</p>
-                    <p className="text-sm text-muted-foreground">See Grail Health in action</p>
                   </div>
                 </div>
 

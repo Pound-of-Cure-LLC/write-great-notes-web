@@ -133,7 +133,7 @@ export default function HealthcareAICrossroadsArticle() {
                   </p>
 
                   <p className="text-base leading-relaxed mb-4">
-                    The problem isn&apos;t a shortage of talent or dedication. Healthcare is full of brilliant, committed people working themselves to exhaustion. The problem is that trust has collapsed and the incentives point in the wrong direction. Patients know that the system prioritizes revenue over their wellbeing. Physicians feel they can&apos;t practice medicine without fighting through layers of administrative interference. And the painful truth is that both groups are usually right.
+                    The problem isn&apos;t a shortage of talent or dedication. Healthcare is full of brilliant, committed people working themselves to exhaustion. The problem is that trust has collapsed and the incentives point in the wrong direction. Patients know that the system prioritizes revenue over their wellbeing. Physicians feel they can&apos;t practice medicine without fighting through layers of administrative interference. And the painful truth is that both groups are right.
                   </p>
 
                   <p className="text-base leading-relaxed">

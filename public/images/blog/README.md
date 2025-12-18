@@ -23,3 +23,5 @@ The following images are used in `/blog/ehr-reckoning-legacy-systems`:
    - Source: Unsplash (free stock photo)
 
 All images are optimized for web and sourced from Unsplash (free, no watermark required). Descriptive alt text is included in the component.
+
+
