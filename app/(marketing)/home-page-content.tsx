@@ -93,18 +93,15 @@ function HeroSection() {
         <div className="mx-auto max-w-5xl text-center">
           {/* Logo and Tagline */}
           <FadeIn delay={0} duration={0.8}>
-            <div className="mb-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <div className="mb-6">
               <Image
                 src="/images/grail logo - transparent.png"
                 alt="Grail Digital Health"
-                width={400}
-                height={133}
-                className="h-16 sm:h-14 w-auto object-contain"
+                width={500}
+                height={167}
+                className="h-20 sm:h-24 w-auto object-contain mx-auto"
                 priority
               />
-              <p className="text-base sm:text-lg text-muted-foreground font-medium">
-                Write Great Notes
-              </p>
             </div>
           </FadeIn>
 
