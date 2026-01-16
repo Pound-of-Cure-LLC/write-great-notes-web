@@ -661,17 +661,6 @@ export default function HomePageContent() {
                       </Link>
                     </motion.div>
                   ))}
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Link 
-                      href="/contact?type=emr"
-                      className="px-8 py-4 bg-card rounded-xl border border-dashed border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-all text-lg"
-                    >
-                      + Other EMRs
-                    </Link>
-                  </motion.div>
                 </div>
                 <p className="text-sm text-muted-foreground mt-8 font-medium">
                   <span className="text-success font-bold">✓ Available now</span> · Click any EMR to learn more or express interest—<span className="text-primary font-bold">demand drives our roadmap!</span>

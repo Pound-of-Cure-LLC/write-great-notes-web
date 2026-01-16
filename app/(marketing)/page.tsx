@@ -582,12 +582,6 @@ export default function HomePage() {
                       {emr.name}
                     </Link>
                   ))}
-                  <Link 
-                    href="/contact?type=emr#contact-form"
-                    className="px-8 py-4 bg-card rounded-xl border border-dashed border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-all hover:scale-105 text-lg"
-                  >
-                    + Other EMRs
-                  </Link>
                 </div>
                 <p className="text-sm text-muted-foreground mt-8 font-medium">
                   <span className="text-success font-bold">✓ Available now</span> · Click any EMR to learn more or express interest—<span className="text-primary font-bold">demand drives our roadmap!</span>
