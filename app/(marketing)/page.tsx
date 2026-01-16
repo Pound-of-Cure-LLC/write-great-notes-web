@@ -124,6 +124,17 @@ export default function HomePage() {
               </div>
             </FadeIn>
 
+            {/* Trust badge */}
+            <FadeIn delay={0.1} duration={0.6}>
+              <Link
+                href="/blog/where-did-grail-health-come-from"
+                className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/20 rounded-full px-4 py-1.5 text-sm font-medium text-primary transition-colors mb-6"
+              >
+                <Stethoscope className="h-4 w-4" />
+                Created by a Physician, for Physicians
+              </Link>
+            </FadeIn>
+
             {/* Main headline */}
             <FadeIn delay={0.2} duration={0.8}>
               <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground mb-8 leading-tight">
