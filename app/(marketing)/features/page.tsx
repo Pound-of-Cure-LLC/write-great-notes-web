@@ -97,7 +97,7 @@ const coreFeatures = [
     benefits: [
       "Charm EMR integration",
       "AdvancedMD integration",
-      "Athena Health ready",
+      "Athena & Nextech up next",
       "Standalone mode available",
     ],
     screenshot: "/images/screenshots/emr-integration-charm.png",

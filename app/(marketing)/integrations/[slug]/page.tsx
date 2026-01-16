@@ -59,6 +59,10 @@ const emrConfig: Record<string, { name: string; description: string }> = {
     name: "Practice Fusion",
     description: "Cloud-based EHR for independent practices.",
   },
+  "nextech": {
+    name: "Nextech",
+    description: "Specialty-focused EHR and practice management for ophthalmology, dermatology, and plastic surgery.",
+  },
 };
 
 export function generateStaticParams() {

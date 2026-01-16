@@ -561,18 +561,24 @@ export default function HomePage() {
                   {/* Other EMRs - On Roadmap */}
                   {[
                     { name: "AdvancedMD", slug: "advancedmd" },
-                    { name: "Athena", slug: "athena" },
+                    { name: "Athena", slug: "athena", upNext: true },
+                    { name: "Nextech", slug: "nextech", upNext: true },
                     { name: "Cerner", slug: "cerner" },
                     { name: "eClinicalWorks", slug: "eclinicalworks" },
                     { name: "NextGen", slug: "nextgen" },
                     { name: "Allscripts", slug: "allscripts" },
                     { name: "DrChrono", slug: "drchrono" },
                   ].map((emr) => (
-                    <Link 
+                    <Link
                       key={emr.slug}
                       href={`/integrations/${emr.slug}`}
-                      className="px-8 py-4 bg-card rounded-xl border border-border text-foreground font-medium hover:border-primary hover:bg-primary/5 transition-all hover:scale-105 text-lg"
+                      className={`px-8 py-4 bg-card rounded-xl border text-foreground font-medium hover:border-primary hover:bg-primary/5 transition-all hover:scale-105 text-lg relative ${emr.upNext ? 'border-amber-500/50' : 'border-border'}`}
                     >
+                      {emr.upNext && (
+                        <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-amber-500 text-white text-xs font-bold rounded-full">
+                          Up Next
+                        </span>
+                      )}
                       {emr.name}
                     </Link>
                   ))}
