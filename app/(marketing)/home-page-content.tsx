@@ -410,7 +410,7 @@ export default function HomePageContent() {
                       I spent years missing family dinners, soccer games, and bedtimes - all to complete documentation that didn&apos;t even reflect the unique care I was providing to each patient.
                     </p>
                     <p>
-                      Template notes made every patient look the same, when their stories were anything but. <strong className="text-foreground">Copy-paste documentation was killing the art of medicine.</strong>
+                      Templated notes made every patient look the same, when their stories were anything but. <strong className="text-foreground">Copy-paste documentation was killing the art of medicine.</strong>
                     </p>
                     <p>
                       So I built Grail - an AI scribe that listens to real patient conversations and writes comprehensive clinical notes with actual narrative and reasoning. <strong className="text-foreground">Not templates. Not shortcuts. Documentation that tells each patient&apos;s unique story.</strong>
@@ -453,7 +453,7 @@ export default function HomePageContent() {
                 <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                   Insurance companies are using algorithms to scan your notes for any excuse to deny payment.
                   Incomplete documentation? Denied. Missing medical necessity? Denied.
-                  Template notes make you an easy target.
+                  Templated notes make you an easy target.
                 </p>
               </div>
             </FadeIn>
@@ -1268,7 +1268,7 @@ export default function HomePageContent() {
                 Your care deserves great documentation.
               </h2>
               <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-                Stop settling for template notes. Start writing documentation that reflects the care you actually provide.
+                Stop settling for templated notes. Start writing documentation that reflects the care you actually provide.
               </p>
             </FadeIn>
             
