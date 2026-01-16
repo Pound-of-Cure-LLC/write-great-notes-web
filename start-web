@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Kill any process running on port 3010
+lsof -ti:3010 | xargs kill -9 2>/dev/null
+
+# Start the Next.js dev server on port 3010
+npm run dev -- -p 3010
