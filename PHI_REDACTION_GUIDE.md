@@ -61,7 +61,6 @@ The note summaries don't contain specific PHI, just generic medical descriptions
 |-------|----------|--------------|
 | Practice Name | Pound of Cure Weight Loss | Sample Medical Practice |
 | Phone | 5202983300 | (555) 000-0000 |
-| Fax | (555) 123-4568 | (555) 000-0001 |
 | Website | www.poundofcureweightloss.com | www.samplepractice.com |
 | Street Address | 5155 E Farness Dr | 123 Medical Center Blvd |
 | City | Tucson | Anytown |
@@ -130,6 +129,7 @@ The app uses these fonts (match when adding replacement text):
 1. Use selection + fill for backgrounds
 2. Type tool for replacement text
 3. Match fonts and colors precisely
+
 
 
 

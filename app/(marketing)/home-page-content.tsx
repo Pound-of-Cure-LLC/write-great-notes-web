@@ -15,7 +15,6 @@ import {
   Upload,
   Link2,
   RefreshCw,
-  Send,
   XCircle,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
@@ -52,12 +51,6 @@ const features = [
     title: "Growing EMR Integrations",
     description:
       "We're building integrations with major EMRs and adding new ones monthly. Don't see yours? Let us know—it's probably next.",
-  },
-  {
-    icon: Send,
-    title: "Integrated Faxing",
-    description:
-      "Automatically send completed notes to referring doctors. HIPAA-compliant faxing built into every plan.",
   },
   {
     icon: Shield,
@@ -198,7 +191,7 @@ function HeroSection() {
           
           <FadeIn delay={0.9} duration={0.8}>
             <p className="mt-8 text-sm text-muted-foreground/80 font-medium">
-              7-day free trial · Integrated faxing included · Works with any EMR
+              7-day free trial · Works with any EMR
             </p>
           </FadeIn>
         </div>
@@ -718,63 +711,6 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      {/* Integrated Faxing Section */}
-      <section className="py-24 sm:py-32 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <FadeIn>
-              <div className="flex flex-col md:flex-row items-center gap-10">
-                <motion.div 
-                  className="flex-shrink-0"
-                  animate={{ 
-                    rotate: [3, 8, 3],
-                    y: [0, -10, 0],
-                  }}
-                  transition={{ 
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  whileHover={{ scale: 1.1, rotate: 0 }}
-                >
-                  <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-xl">
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <Send className="h-12 w-12 text-white" />
-                    </motion.div>
-                  </div>
-                </motion.div>
-                <div className="text-center md:text-left">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                    Deliver notes automatically via integrated HIPAA-compliant faxing.
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                    Every plan includes built-in faxing to send notes directly to referring physicians, 
-                    specialists, and care partners. Additional faxes just $0.10 each.
-                  </p>
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  >
-                    <Link href="/pricing" className="text-primary font-bold text-lg hover:underline inline-flex items-center gap-2 group">
-                      See faxing details on pricing page
-                      <motion.div
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                      >
-                        <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                      </motion.div>
-                    </Link>
-                  </motion.div>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
       {/* Work-Life Balance Section */}
       <section className="py-20 sm:py-32 bg-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -1023,6 +959,7 @@ export default function HomePageContent() {
     </div>
   );
 }
+
 
 
 

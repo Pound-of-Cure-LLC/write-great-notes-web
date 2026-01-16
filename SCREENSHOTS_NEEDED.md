@@ -30,7 +30,6 @@ All screenshots are saved to the cursor screenshots folder. The following screen
 | AI-Powered Note Generation | `recent-notes-full.png` (redacted) | Shows completed notes |
 | Custom Note Templates | `template-sections-followup.png` or `note-sections-page.png` | Template configuration |
 | EMR Integration | `emr-integration-charm.png` | Charm EMR settings |
-| Integrated Faxing System | **NEEDS CREATION** | Fax settings or send interface |
 
 ### How It Works Page (`/how-it-works`)
 
@@ -61,10 +60,6 @@ All screenshots are saved to the cursor screenshots folder. The following screen
    - Full note with all sections visible
    - Edit capabilities showing
    - This requires opening a specific note (PHI will need redaction)
-
-4. **Faxing Interface**
-   - Fax configuration or send dialog
-   - Fax history/status
 
 ### Video Needed:
 
@@ -110,7 +105,6 @@ cp /var/folders/t1/x_7gmdr175q71ss218sgxzgw0000gn/T/cursor/screenshots/*.png /Us
 1. **Create the missing screenshots:**
    - Recording interface (need an active recording session)
    - Note editor view (open a note, redact PHI)
-   - Fax interface
    - Generation in progress state
 
 2. **Redact PHI from captured screenshots:**
@@ -125,6 +119,7 @@ cp /var/folders/t1/x_7gmdr175q71ss218sgxzgw0000gn/T/cursor/screenshots/*.png /Us
 4. **Update website code:**
    - Replace placeholder components with actual images
    - Reference images from `/public/images/screenshots/`
+
 
 
 

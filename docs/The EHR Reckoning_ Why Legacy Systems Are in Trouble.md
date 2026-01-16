@@ -33,7 +33,7 @@ The result is massively complex software that supports tens of thousands of user
 
 To keep these complex systems running, EHR companies employ large teams of highly specialized developers, each commanding six-figure salaries. This immense expense is passed directly to clinicians and healthcare organizations. That’s why:
 
-* Every additional fax line, interface, module, or “premium” feature comes at an additional cost.  
+* Every additional interface, module, or "premium" feature comes at an additional cost.  
 * EHR bills seem to increase year after year despite little noticeable improvement.
 
 ## The Promise of AI in Healthcare

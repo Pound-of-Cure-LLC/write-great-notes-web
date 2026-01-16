@@ -16,7 +16,6 @@ import {
   Upload,
   Link2,
   RefreshCw,
-  Send,
   Eye,
 } from "lucide-react";
 import { SampleNoteModal } from "@/components/marketing/sample-note-modal";
@@ -78,12 +77,6 @@ const features = [
     title: "Growing EMR Integrations",
     description:
       "We're building integrations with major EMRs and adding new ones monthly. Don't see yours? Let us know—it's probably next.",
-  },
-  {
-    icon: Send,
-    title: "Integrated Faxing",
-    description:
-      "Automatically send completed notes to referring doctors. HIPAA-compliant faxing built into every plan.",
   },
   {
     icon: Shield,
@@ -190,7 +183,7 @@ export default function HomePage() {
             
             <FadeIn delay={0.9} duration={0.8}>
               <p className="mt-8 text-sm text-muted-foreground/80 font-medium">
-                7-day free trial · Integrated faxing included · Works with any EMR
+                7-day free trial · Works with any EMR
               </p>
             </FadeIn>
           </div>
@@ -598,36 +591,6 @@ export default function HomePage() {
                 <p className="text-lg text-slate-400">
                   No migration. No new system to learn. Just powerful new capabilities added to your existing workflow.
                 </p>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* Integrated Faxing Section */}
-      <section className="py-24 sm:py-32 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <FadeIn>
-              <div className="flex flex-col md:flex-row items-center gap-10">
-                <div className="flex-shrink-0">
-                  <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-xl rotate-3 hover:rotate-6 transition-transform duration-300">
-                    <Send className="h-12 w-12 text-white" />
-                  </div>
-                </div>
-                <div className="text-center md:text-left">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                    Deliver notes automatically via integrated HIPAA-compliant faxing.
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                    Every plan includes built-in faxing to send notes directly to referring physicians, 
-                    specialists, and care partners. Additional faxes just $0.10 each.
-                  </p>
-                  <Link href="/pricing" className="text-primary font-bold text-lg hover:underline inline-flex items-center gap-2">
-                    See faxing details on pricing page
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
-                </div>
               </div>
             </FadeIn>
           </div>

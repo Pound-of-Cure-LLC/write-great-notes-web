@@ -179,7 +179,7 @@ export default function EHRReckoningArticle() {
                   </p>
 
                   <ul className="list-disc pl-6 space-y-2 text-base leading-relaxed">
-                    <li>Every additional fax line, interface, module, or &quot;premium&quot; feature comes at an additional cost.</li>
+                    <li>Every additional interface, module, or &quot;premium&quot; feature comes at an additional cost.</li>
                     <li>EHR bills seem to increase year after year despite little noticeable improvement.</li>
                   </ul>
 

@@ -20,7 +20,6 @@ import {
   Cloud,
   Sparkles,
   FileEdit,
-  Send,
   Eye,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
@@ -101,19 +100,6 @@ const coreFeatures = [
       "Standalone mode available",
     ],
     screenshot: "/images/screenshots/emr-integration-charm.png",
-  },
-  {
-    icon: Send,
-    title: "Integrated Faxing System",
-    description:
-      "Deliver notes automatically to referring physicians, specialists, and care partners via built-in HIPAA-compliant faxing.",
-    benefits: [
-      "Faxing included in every plan",
-      "Automatic delivery on note completion",
-      "Additional faxes just $0.10 each",
-      "HIPAA-compliant with full audit trails",
-    ],
-    screenshot: null, // Faxing interface screenshot needed
   },
 ];
 
@@ -263,102 +249,6 @@ export default function FeaturesPage() {
                 </FadeIn>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Faxing Feature Highlight */}
-      <section className="py-24 sm:py-32 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <FadeIn>
-              <div className="text-center mb-16">
-                <Badge variant="secondary" className="mb-6 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 border-amber-200 px-4 py-2 text-sm font-medium">
-                  Included in Every Plan
-                </Badge>
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-6">
-                  Integrated Faxing System
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Faxing is a critical part of medical workflows. WriteGreatNotes.ai makes it 
-                  automatic, affordable, and fully integrated with the clinical note creation process.
-                </p>
-              </div>
-            </FadeIn>
-            
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <StaggerItem>
-                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
-                  <CardContent className="p-8">
-                    <h3 className="font-bold text-xl mb-3 text-foreground">Faxing Included</h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      Each plan includes a monthly allowance of faxes to send notes 
-                      directly to referring physicians and care partners.
-                    </p>
-                    <ul className="space-y-2 text-sm font-medium">
-                      <li className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-success" />
-                        Essential: 400 faxes/month
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-success" />
-                        Pro: 600 faxes/month
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-
-              <StaggerItem>
-                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
-                  <CardContent className="p-8">
-                    <h3 className="font-bold text-xl mb-3 text-foreground">Low-Cost Additional Faxes</h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      Need more? Additional faxes are affordable and available on-demand.
-                    </p>
-                    <ul className="space-y-2 text-sm font-medium">
-                      <li className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-success" />
-                        Additional faxes: $0.10 each
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-
-              <StaggerItem>
-                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
-                  <CardContent className="p-8">
-                    <h3 className="font-bold text-xl mb-3 text-foreground">Automatic Delivery</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Notes can be faxed automatically as soon as they&apos;re generated. 
-                      No extra steps, no manual sending—just seamless delivery to care partners.
-                    </p>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-
-              <StaggerItem>
-                <Card className="border-amber-200 dark:border-amber-800 bg-white/50 dark:bg-black/20 h-full hover:shadow-lg transition-all hover:-translate-y-1">
-                  <CardContent className="p-8">
-                    <h3 className="font-bold text-xl mb-3 text-foreground">HIPAA-Compliant</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      All fax transmissions use encrypted, HIPAA-compliant channels with 
-                      complete audit trails for compliance and record-keeping.
-                    </p>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-            </StaggerContainer>
-
-            <FadeIn delay={0.4}>
-              <div className="mt-12 text-center">
-                <Link href="/pricing" className="text-primary font-bold text-lg hover:underline inline-flex items-center gap-2">
-                  View pricing details
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-              </div>
-            </FadeIn>
           </div>
         </div>
       </section>
