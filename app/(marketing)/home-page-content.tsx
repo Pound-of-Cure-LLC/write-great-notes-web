@@ -16,6 +16,15 @@ import {
   Link2,
   RefreshCw,
   XCircle,
+  Zap,
+  Settings,
+  Mail,
+  ListTodo,
+  Tag,
+  Rocket,
+  MonitorPlay,
+  Quote,
+  Stethoscope,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 import { TypingEffect } from "@/components/marketing/typing-effect";
@@ -143,7 +152,7 @@ function HeroSection() {
 
           <FadeIn delay={0.5} duration={0.8}>
             <p className="mt-8 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              EMRs destroyed the art of writing a great medical note. Our AI scribe is bringing it back.
+              Stop writing the same template note over and over. Start writing documentation that reflects the unique care you actually provide.
             </p>
           </FadeIn>
 
@@ -334,6 +343,90 @@ export default function HomePageContent() {
         </div>
       </section>
 
+      {/* Why I Built Grail - Founder Story Section */}
+      <section className="py-20 sm:py-32 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <FadeIn>
+              <div className="text-center mb-12">
+                <span className="inline-flex items-center gap-2 text-primary font-bold text-lg uppercase tracking-wider mb-4">
+                  <Stethoscope className="h-5 w-5" />
+                  Built by a Physician
+                </span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                  Why I Built Grail
+                </h2>
+              </div>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+              {/* Founder Photo */}
+              <FadeIn direction="right" className="lg:col-span-2">
+                <motion.div
+                  className="relative mx-auto lg:mx-0"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto">
+                    <Image
+                      src="/images/blog/dr-matthew-weiner-headshot.jpg"
+                      alt="Dr. Matthew Weiner, MD - Founder of Grail Health"
+                      fill
+                      className="rounded-2xl object-cover shadow-2xl"
+                    />
+                    <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-xl shadow-lg">
+                      <p className="font-bold text-sm">Matthew Weiner, MD</p>
+                      <p className="text-xs opacity-90">Founder & Physician</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </FadeIn>
+
+              {/* Story Content */}
+              <FadeIn direction="left" delay={0.2} className="lg:col-span-3">
+                <div className="space-y-6">
+                  {/* Quote */}
+                  <motion.div
+                    className="relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-border"
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <Quote className="absolute top-4 left-4 h-8 w-8 text-primary/20" />
+                    <blockquote className="text-2xl sm:text-3xl font-bold text-foreground italic pl-8">
+                      I became a physician to help people. Not to write the same note over and over again.
+                    </blockquote>
+                  </motion.div>
+
+                  <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                    <p>
+                      I spent years missing family dinners, soccer games, and bedtimes - all to complete documentation that didn&apos;t even reflect the unique care I was providing to each patient.
+                    </p>
+                    <p>
+                      Template notes made every patient look the same, when their stories were anything but. <strong className="text-foreground">Copy-paste documentation was killing the art of medicine.</strong>
+                    </p>
+                    <p>
+                      So I built Grail - an AI scribe that listens to real patient conversations and writes comprehensive clinical notes with actual narrative and reasoning. <strong className="text-foreground">Not templates. Not shortcuts. Documentation that tells each patient&apos;s unique story.</strong>
+                    </p>
+                  </div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button variant="outline" asChild className="mt-4">
+                      <Link href="/blog/where-did-grail-health-come-from">
+                        Read the Full Story
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </motion.div>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Fight Insurance AI Section */}
       <section className="py-20 sm:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -350,8 +443,8 @@ export default function HomePageContent() {
                   <span className="text-primary">Fight back with better AI.</span>
                 </h2>
                 <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Insurance companies are using algorithms to scan your notes for any excuse to deny payment. 
-                  Incomplete documentation? Denied. Missing medical necessity? Denied. 
+                  Insurance companies are using algorithms to scan your notes for any excuse to deny payment.
+                  Incomplete documentation? Denied. Missing medical necessity? Denied.
                   Template notes make you an easy target.
                 </p>
               </div>
@@ -611,22 +704,25 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      {/* Deep EMR Integration Section */}
+      {/* One Screen Command Center Section */}
       <section className="py-20 sm:py-32 bg-slate-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <FadeIn>
               <div className="text-center mb-16">
                 <span className="inline-flex items-center gap-2 text-slate-300 font-bold text-lg uppercase tracking-wider mb-4">
-                  <Sparkles className="h-5 w-5" />
-                  Deep EMR Integration
+                  <MonitorPlay className="h-5 w-5" />
+                  Your Command Center
                 </span>
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-                  Your EMR, supercharged with AI.
+                  Stop clicking through screens.
+                  <br />
+                  <span className="text-primary">Everything you need. One place.</span>
                 </h2>
                 <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                  Grail doesn&apos;t just sit alongside your EMR—it reaches deep into your existing 
-                  system to pull the context you need and enhance every patient encounter with powerful AI.
+                  How much of your mental energy goes to clicking around your EMR looking for the info you need?
+                  Grail pulls everything out of your EMR - customized YOUR way - onto a single screen.
+                  See your patient. Provide care. Click a button. Done.
                 </p>
               </div>
             </FadeIn>
@@ -635,49 +731,49 @@ export default function HomePageContent() {
               {[
                 {
                   title: "AI Patient Summary",
-                  description: "Get an intelligent summary of your patient before every visit—medical history, recent visits, and key concerns synthesized by AI.",
+                  description: "Before every visit, get an intelligent summary - medical history, recent visits, key concerns - all synthesized by AI so you walk in prepared.",
                   icon: "🧠",
                 },
                 {
-                  title: "Previous Notes",
-                  description: "Access past notes directly from your EMR. Review previous encounters without switching systems.",
+                  title: "Previous Notes at a Glance",
+                  description: "Access past notes directly from your EMR. Review previous encounters without switching systems or losing focus.",
                   icon: "📋",
                 },
                 {
-                  title: "Live Vitals",
-                  description: "Current vitals pulled automatically from your EMR and incorporated into your notes.",
+                  title: "Live Vitals & Demographics",
+                  description: "Current vitals and patient demographics pulled automatically. No duplicate data entry, no hunting through tabs.",
                   icon: "💓",
                 },
                 {
-                  title: "Demographics",
-                  description: "Patient demographics flow directly from your EMR—no duplicate data entry.",
-                  icon: "👤",
-                },
-                {
-                  title: "Referring Providers",
-                  description: "See referring provider information and context for every referral patient.",
+                  title: "Referring Provider Context",
+                  description: "See referring provider information and referral context for every patient - know why they're here before they sit down.",
                   icon: "🔗",
                 },
                 {
-                  title: "More Coming Monthly",
-                  description: "We're constantly adding new AI-powered features that enhance your existing EMR capabilities.",
-                  icon: "🚀",
+                  title: "One-Click Note to EMR",
+                  description: "When you're done, click a button and your beautiful, comprehensive note goes straight to your EMR. No copy-paste, no extra steps.",
+                  icon: "✨",
+                },
+                {
+                  title: "Customizable to Your Workflow",
+                  description: "Configure what you see and how you see it. Your command center, your way. We're adding new capabilities monthly.",
+                  icon: "⚙️",
                 },
               ].map((feature) => (
                 <StaggerItem key={feature.title}>
-                  <motion.div 
+                  <motion.div
                     className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:bg-slate-800/80 transition-colors group cursor-default"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="flex items-start gap-5">
-                      <motion.div 
+                      <motion.div
                         className="text-4xl"
-                        animate={{ 
+                        animate={{
                           y: [0, -5, 0],
                           rotate: [0, 5, -5, 0],
                         }}
-                        transition={{ 
+                        transition={{
                           duration: 3,
                           repeat: Infinity,
                           ease: "easeInOut",
@@ -700,10 +796,94 @@ export default function HomePageContent() {
             <FadeIn delay={0.4}>
               <div className="text-center">
                 <p className="text-2xl text-slate-200 mb-4 font-medium">
-                  Think of it as <strong className="text-white">AI co-pilot features</strong> for the EMR you already use.
+                  Imagine: You see a patient. You provide care. You click a button.
+                  <strong className="text-white"> A beautiful note is created and sent to your EMR.</strong>
                 </p>
                 <p className="text-lg text-slate-400">
-                  No migration. No new system to learn. Just powerful new capabilities added to your existing workflow.
+                  At the end of the day, after you see your last patient, you leave. That&apos;s it. That&apos;s the workflow.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Workflow Automation Section */}
+      <section className="py-20 sm:py-32 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <FadeIn>
+              <div className="text-center mb-16">
+                <span className="inline-flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold text-lg uppercase tracking-wider mb-4">
+                  <Zap className="h-5 w-5" />
+                  Workflow Automation
+                </span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
+                  Your practice runs itself.
+                  <br />
+                  <span className="text-amber-600 dark:text-amber-400">Nothing slips through the cracks.</span>
+                </h2>
+                <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Plug into your EMR and automate the tasks that eat up your staff&apos;s time.
+                  Automated task creation, email workflows, patient tagging - all completely configurable for YOUR practice.
+                </p>
+              </div>
+            </FadeIn>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {[
+                {
+                  icon: ListTodo,
+                  title: "Automated Task Creation",
+                  description: "Tasks are created automatically based on EMR events. New referral? Task created. Lab results in? Task created. Your staff always knows what needs to happen next.",
+                },
+                {
+                  icon: Mail,
+                  title: "Email Automation",
+                  description: "Automated patient communications, appointment reminders, and follow-up emails. Consistent communication without the manual work.",
+                },
+                {
+                  icon: Tag,
+                  title: "Smart Patient Tagging",
+                  description: "Automatically tag and organize patients based on conditions, visit types, or any criteria you define. Find who you need, when you need them.",
+                },
+                {
+                  icon: Settings,
+                  title: "Fully Configurable",
+                  description: "Every automation is customizable to YOUR practice. You define the triggers, the actions, and the rules. We execute them flawlessly.",
+                },
+              ].map((feature) => (
+                <StaggerItem key={feature.title}>
+                  <motion.div
+                    className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-amber-200 dark:border-amber-800 shadow-md hover:shadow-xl transition-all group cursor-default"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div className="flex items-start gap-5">
+                      <motion.div
+                        className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 shadow-lg"
+                        whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <feature.icon className="h-7 w-7 text-white" />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">{feature.title}</h3>
+                        <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <FadeIn delay={0.4}>
+              <div className="text-center bg-white dark:bg-slate-800 rounded-2xl p-8 border border-amber-200 dark:border-amber-800 shadow-md">
+                <p className="text-xl text-foreground font-medium mb-4">
+                  Your staff becomes more efficient. Things stop slipping through the cracks.
+                </p>
+                <p className="text-lg text-muted-foreground">
+                  And the best part? <strong className="text-amber-600 dark:text-amber-400">Your staff leaves on time too.</strong>
                 </p>
               </div>
             </FadeIn>
@@ -769,9 +949,178 @@ export default function HomePageContent() {
             </StaggerContainer>
 
             <FadeIn delay={0.4}>
-              <p className="mt-16 text-xl text-white/90 italic font-medium">
-                &ldquo;I haven&apos;t brought work home in months. I forgot what that felt like.&rdquo;
-              </p>
+              <div className="mt-16 flex flex-col items-center gap-4">
+                <p className="text-xl text-white/90 italic font-medium">
+                  &ldquo;I haven&apos;t brought work home in months. I forgot what that felt like.&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/images/blog/dr-matthew-weiner-headshot.jpg"
+                    alt="Dr. Matthew Weiner"
+                    width={48}
+                    height={48}
+                    className="rounded-full border-2 border-white/30"
+                  />
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-white">Dr. Matthew Weiner, MD</p>
+                    <p className="text-xs text-white/70">Founder, Grail Health</p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* The Future of Grail Health Section */}
+      <section className="py-20 sm:py-32 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+        {/* Animated background glow */}
+        <motion.div
+          className="absolute inset-0 opacity-30"
+          animate={{
+            background: [
+              "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.3) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 50%, rgba(147, 51, 234, 0.3) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.3) 0%, transparent 50%)",
+            ],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <FadeIn>
+              <div className="text-center mb-16">
+                <motion.span
+                  className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-400/30 rounded-full px-6 py-2 text-purple-300 font-bold text-sm uppercase tracking-wider mb-6"
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Rocket className="h-4 w-4" />
+                  The Future of Grail Health
+                </motion.span>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+                  Your conversation becomes
+                  <br />
+                  <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    automatic action.
+                  </span>
+                </h2>
+                <p className="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                  Imagine: You meet with a patient. You discuss their care. And from that conversation alone,
+                  the AI understands what needs to happen next - and makes it happen.
+                </p>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.2}>
+              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 sm:p-12 border border-white/10 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                  <motion.div
+                    className="group"
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <motion.div
+                      className="text-5xl mb-4"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+                    >
+                      🗣️
+                    </motion.div>
+                    <h3 className="text-xl font-bold mb-2 text-white">You Talk</h3>
+                    <p className="text-slate-400">&ldquo;Let&apos;s get an MRI of that knee and follow up in two weeks.&rdquo;</p>
+                  </motion.div>
+
+                  <motion.div
+                    className="group"
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <motion.div
+                      className="text-5xl mb-4"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                    >
+                      🧠
+                    </motion.div>
+                    <h3 className="text-xl font-bold mb-2 text-white">AI Understands</h3>
+                    <p className="text-slate-400">Grail processes your conversation and identifies actionable items.</p>
+                  </motion.div>
+
+                  <motion.div
+                    className="group"
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <motion.div
+                      className="text-5xl mb-4"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
+                    >
+                      ✨
+                    </motion.div>
+                    <h3 className="text-xl font-bold mb-2 text-white">It Just Happens</h3>
+                    <p className="text-slate-400">MRI ordered. Follow-up scheduled. Tasks created. Automatically.</p>
+                  </motion.div>
+                </div>
+              </div>
+            </FadeIn>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+              {[
+                { icon: "🔬", text: "Order imaging and labs from your conversation" },
+                { icon: "📅", text: "Schedule follow-ups automatically" },
+                { icon: "📋", text: "Create staff tasks based on care plan" },
+                { icon: "💊", text: "Trigger medication refill workflows" },
+                { icon: "📨", text: "Send patient instructions and education" },
+                { icon: "🔗", text: "Coordinate referrals seamlessly" },
+              ].map((item) => (
+                <StaggerItem key={item.text}>
+                  <motion.div
+                    className="flex items-center gap-4 bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors cursor-default"
+                    whileHover={{ x: 4 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  >
+                    <span className="text-2xl">{item.icon}</span>
+                    <span className="text-lg text-slate-200">{item.text}</span>
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <FadeIn delay={0.4}>
+              <div className="text-center">
+                <p className="text-2xl text-white font-bold mb-4">
+                  Your practice executes seamlessly. Almost invisibly.
+                </p>
+                <p className="text-xl text-slate-300 mb-8">
+                  This is what you&apos;re signing up to be a part of.
+                  <br />
+                  <span className="text-purple-400 font-semibold">New features shipping almost weekly.</span>
+                </p>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <Button
+                    size="lg"
+                    asChild
+                    className="text-lg px-10 py-7 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-xl border-0"
+                  >
+                    <Link href="/get-started" className="flex items-center">
+                      Join the Future
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </motion.div>
+                    </Link>
+                  </Button>
+                </motion.div>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -861,6 +1210,10 @@ export default function HomePageContent() {
                 {
                   question: "What if my EMR isn't on your integration list?",
                   answer: "We're adding new EMR integrations every month. Contact us to let us know which EMR you use—it's likely already on our roadmap. In the meantime, you can use Grail in standalone mode and copy notes to your EMR.",
+                },
+                {
+                  question: "What workflow automation features are available?",
+                  answer: "Grail includes powerful workflow automation: automated task creation from EMR events, email automation for patient communications, smart patient tagging, and configurable workflows customized to your practice. We're constantly adding new automation capabilities to help your staff be more efficient.",
                 },
                 {
                   question: "How does this help with insurance denials?",

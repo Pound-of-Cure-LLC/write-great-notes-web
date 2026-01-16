@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Shield, Lock, FileCheck } from "lucide-react";
+import { Shield, Lock, FileCheck, Stethoscope } from "lucide-react";
 
 const footerNavigation = {
   product: [
@@ -30,6 +30,13 @@ export function MarketingFooter() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Trust badges */}
         <div className="flex flex-wrap justify-center gap-8 mb-12 pb-8 border-b">
+          <Link
+            href="/blog/where-did-grail-health-come-from"
+            className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors group"
+          >
+            <Stethoscope className="h-5 w-5" />
+            <span className="text-sm font-medium group-hover:underline">Built by a Physician, for Physicians</span>
+          </Link>
           <div className="flex items-center space-x-2 text-muted-foreground">
             <Shield className="h-5 w-5" />
             <span className="text-sm font-medium">HIPAA Compliant</span>

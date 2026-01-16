@@ -21,6 +21,7 @@ import {
   Sparkles,
   FileEdit,
   Eye,
+  Zap,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 import { SampleNoteModal } from "@/components/marketing/sample-note-modal";
@@ -100,6 +101,19 @@ const coreFeatures = [
       "Standalone mode available",
     ],
     screenshot: "/images/screenshots/emr-integration-charm.png",
+  },
+  {
+    icon: Zap,
+    title: "Workflow Automation",
+    description:
+      "Automate routine tasks and workflows. Create tasks, send emails, and tag patients automatically based on EMR events and your custom rules.",
+    benefits: [
+      "Automated task creation from EMR events",
+      "Email automation for patient communications",
+      "Smart patient tagging and organization",
+      "Fully configurable to your practice",
+    ],
+    screenshot: null,
   },
 ];
 
