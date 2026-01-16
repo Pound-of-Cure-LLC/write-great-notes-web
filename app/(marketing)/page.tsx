@@ -152,7 +152,7 @@ export default function HomePage() {
 
             <FadeIn delay={0.5} duration={0.8}>
               <p className="mt-8 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Stop writing the same templated note over and over. Start writing documentation that reflects the unique care you actually provide.
+                EMRs destroyed the art of writing a great medical note. Our AI scribe is bringing it back.
               </p>
             </FadeIn>
 
